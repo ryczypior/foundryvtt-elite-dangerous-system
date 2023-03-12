@@ -1,0 +1,32 @@
+{
+  "name": "edrpg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "edrpg.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=development rollup --config rollup.config.js --watch",
+    "release": "cross-env NODE_ENV=production rollup --config rollup.config.js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/ryczypior/elite-dangerous-rpg-foundry-vtt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/ryczypior/elite-dangerous-rpg-foundry-vtt/issues"
+  },
+  "homepage": "https://gitlab.com/ryczypior/elite-dangerous-rpg-foundry-vtt",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^10.1.0",
+    "path": "^0.12.7",
+    "rollup": "^2.79.1",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-copy-watch": "^0.0.1",
+    "rollup-plugin-jscc": "^2.0.0",
+    "rollup-plugin-scss": "^3.0.0"
+  }
+}

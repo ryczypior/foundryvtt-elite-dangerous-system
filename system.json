@@ -1,0 +1,61 @@
+{
+    "id": "edrpg",
+    "name": "edrpg",
+    "title": "E.D.R.P.G. - Unofficial ",
+    "description": "TAKE CONTROL OF YOUR OWN SPACESHIP AND FORGE YOUR OWN DESTINY IN A CUT-THROAT GALAXY USING FOUNDRY VTT",
+    "version": "0.0.1",
+    "authors" : [
+        {
+            "name": "Ryczypior",
+            "email": "ryczypior@gmail.com",
+            "discord": "Ryczypior#1313"
+        }
+    ],
+    "esmodules" : [],
+    "scripts": ["edrpg.js"],
+    "styles": ["./css/edrpg.css"],
+    "packs": [
+        {
+            "name": "basic",
+            "label": "Basic Items",
+            "system": "edrpg",
+            "path": "./packs/basic.db",
+            "type": "Item"
+        }
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        },
+        {
+            "lang": "pl",
+            "name": "Polski",
+            "path": "lang/pl.json"
+        }
+    ],
+    "media": [
+        {
+            "type": "cover",
+            "url": "https://user-images.githubusercontent.com/28637157/97379891-e4a1cc00-1893-11eb-9e0c-d93b92844d5b.jpg"
+        }
+    ],
+    "initiative": "1d10 + @skills.intelligence.skills.tactics.bonus",
+    "background" : "systems/elite-dangerous-rpg-foundry-vtt/edrpg-header.jpg",
+    "gridDistance": 10,
+    "gridUnits": "m",
+    "primaryTokenAttribute": "status.wounds",
+    "secondaryTokenAttribute": "status.advantage",
+    "compatibility" : {
+        "minimum" : 10.279,
+        "verified" : 10,
+        "maximum" : 10
+    },
+    "manifestPlusVersion": "1.0.0",
+    "templateVersion":3,
+    "socket": true,
+    "manifest" :  "https://gitlab.com/ryczypior/elite-dangerous-rpg-foundry-vtt/releases/latest/download/system.json",
+    "download" :  "https://gitlab.com/ryczypior/elite-dangerous-rpg-foundry-vtt/releases/download/1.0.0/edrpg.zip",
+    "url" : "https://gitlab.com/ryczypior/elite-dangerous-rpg-foundry-vtt"
+}

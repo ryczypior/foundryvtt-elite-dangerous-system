@@ -1,0 +1,8 @@
+    <h2 class="note-section label">{{localize "Description"}}</h2>
+    {{editor system.details.description.value target="system.details.description.value" engine="prosemirror" button=true
+    owner=owner editable=editable}}
+    {{#if (isGM)}}
+    <h2 class="note-section label">{{localize "GM Notes"}}</h2>
+    {{editor system.details.gmdescription.value target="system.details.gmdescription.value" engine="prosemirror"
+    button=true owner=owner editable=editable}}
+    {{/if}}

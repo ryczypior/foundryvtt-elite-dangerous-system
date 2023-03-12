@@ -1,0 +1,13 @@
+<h2 class="note-section label">{{localize "ITEM.Background.Bonus"}}</h2>
+{{editor system.backgrounds.bonuses.value target="system.backgrounds.bonuses.value" engine="prosemirror" button=true
+owner=owner editable=editable}}
+<div class="flex">
+    <div class="col-4">
+        {{localize "ITEM.Background.ChoicesNumber"}}
+    </div>
+    <div class="col-8">
+        <input class="input-info" type="text" value="{{system.backgrounds.choices.value}}" name="system.backgrounds.choices.value"
+               placeholder="{{localize 'ITEM.Background.ChoicesNumber'}}" title="{{localize 'ITEM.Background.ChoicesNumber'}}">
+
+    </div>
+</div>

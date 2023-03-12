@@ -1,0 +1,123 @@
+.edrpgsheet {
+  .window-content{
+    background: $window-background-color;
+  }
+  input, textarea, select, .personal{
+  /*  background: $personal-info-gradient;
+    border: solid 1px $default-color;
+    border-radius: 0;
+    padding: 5px 10px;*/
+  }
+  .row{
+    margin-bottom: .5em;
+  }
+  header.sheet-header {
+  }
+  label{
+    overflow: hidden;
+    input, .input{
+      background: $personal-info-gradient;
+      border: solid 1px $default-color;
+      border-radius: 0;
+      padding: 3px 10px;
+      display: block;
+      font-size: .9em;
+      height: auto;
+    }
+    span{
+      display: block;
+      padding: 3px 10px;
+      background: $default-heading-gradient;
+      color: $default-heading-color;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: .6em;
+      float: left;
+      border-color: transparent transparent $default-color transparent;
+      border-width: 0 20px 20px 20px;
+    }
+
+    &.nameField{
+      input{
+        font-size: 2em;
+      }
+      span{
+      }
+    }
+    &.karma{
+      input {
+        background: $karma-input-gradient;
+      }
+      span{
+        background: $karma-heading-gradient;
+      }
+    }
+    &.endurance{
+      input {
+        background: $endurance-input-gradient;
+      }
+      span{
+        background: $endurance-heading-gradient;
+      }
+    }
+  }
+
+  .text-right{
+    text-align: right;
+  }
+
+  .tableskill{
+    .tableheading{
+      margin-bottom: 0;
+      text-align: center;
+      > div{
+        background: $skill-heading-color;
+        color: white;
+        font-weight: bold;
+        font-size: .7em;
+        text-transform: uppercase;
+        border: solid 1px #ffffff;
+      }
+    }
+    .tablerow{
+      margin-bottom: 0;
+      >div{
+        border: solid 1px #ffffff;
+        position: relative;
+        align-items: center;
+        align-content: center;
+      }
+      .tableheader{
+        background: $skills-gradient;
+        text-align: right;
+        font-weight: bold;
+        font-size: .8em;
+      }
+      .tableinput{
+        > *{
+          font-size: .8em;
+          position: absolute;
+          display: flex;
+          align-items: center;
+          align-content: center;
+          justify-content: center;
+          top: 0;
+          left: 0;
+          padding-left: 5px;
+          padding-right: 5px;
+          text-align: center;
+          width: 100%;
+          height: 100%;
+          border: solid 1px $skill-default-border;
+          background: $skill-default-color;
+        }
+        &.tableinputblue{
+          > * {
+            border: solid 1px $skill-blue-border;
+            background: $skill-blue-color;
+          }
+        }
+      }
+    }
+  }
+}

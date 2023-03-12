@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row">
+        <h2 class="col">
+            {{localize 'SHEET.Backgrounds'}}
+        </h2>
+    </div>
+    <div class="tablebackgrounds">
+        <div class="row tableheading">
+            <div class="col-2">
+                {{localize 'ITEM.Background.ChoicesNumber'}}
+            </div>
+            <div class="col-8">
+                {{localize 'SHEET.Background'}}
+            </div>
+            <div class="col-2">
+                <i class="fas fa-trash"></i>
+            </div>
+        </div>
+        <section class="background-list item-list">
+            {{#each items as |background id|}}
+            <div class="row tablerow">
+                <div class="col-2">
+                    {{background.system.backgrounds.choices.value}}
+                </div>
+                <div class="col-8">
+                    {{background.name}}
+                </div>
+                <div class="col-2">
+                    <a class="clickRemoveItem" data-id="{{background._id}}">
+                    <i class="fas fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+            {{/each}}
+        </section>
+    </div>
+</div>

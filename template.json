@@ -1,0 +1,210 @@
+{
+  "Actor": {
+    "types": [
+      "character",
+      "npc"
+    ],
+    "templates": {
+      "info": {
+        "info": {
+          "gender": {
+            "type": "String",
+            "label": "SHEET.Gender",
+            "value": ""
+          },
+          "age": {
+            "type": "String",
+            "label": "SHEET.Age",
+            "value": ""
+          },
+          "height": {
+            "type": "String",
+            "label": "SHEET.Height",
+            "value": ""
+          },
+          "weight": {
+            "type": "String",
+            "label": "SHEET.Weight",
+            "value": ""
+          }
+        }
+      },
+      "status": {
+        "status": {
+          "dodge": {
+            "type": "Number",
+            "label": "SHEET.DefenceDodge",
+            "initial": 0,
+            "value": 0,
+            "modifier": 0,
+            "calculationBonusModifier": 0
+          },
+          "initiative": {
+            "type": "Number",
+            "label": "SHEET.InitiativeTactics",
+            "initial": 0,
+            "value": 0,
+            "modifier": 0,
+            "calculationBonusModifier": 0
+          },
+          "parry": {
+            "type": "Number",
+            "label": "SHEET.DefenceParry",
+            "initial": 0,
+            "value": 0,
+            "modifier": 0,
+            "calculationBonusModifier": 0
+          },
+          "karma": {
+            "type": "Number",
+            "label": "SHEET.Karma",
+            "initial": 10,
+            "value": 10,
+            "modifier": 0,
+            "calculationBonusModifier": 0
+          },
+          "endurance": {
+            "type": "Number",
+            "label": "SHEET.Endurance",
+            "initial": 20,
+            "value": 20,
+            "modifier": 0,
+            "calculationBonusModifier": 0
+          },
+          "rank": {
+            "label": "SHEET.Rank",
+            "value": {
+              "name": "RANK.Harmless",
+              "minRankPoints": 0,
+              "maxRankPoints": 7,
+              "skillCap": 40,
+              "karmaPoints": 10,
+              "karmaCap": 3,
+              "endurance": 20
+            }
+          },
+          "rankPoints": {
+            "type": "Number",
+            "label": "SHEET.RankPoints",
+            "value": 0
+          }
+        }
+      },
+      "skills": {
+        "skills": {}
+      }
+    },
+    "character": {
+      "templates": [
+        "status",
+        "skills"
+      ]
+    },
+    "npc": {
+      "templates": [
+        "status"
+      ]
+    }
+  },
+  "Item": {
+    "types": [
+      "armour",
+      "backgrounds",
+      "commodities",
+      "cybernetics",
+      "enhancements",
+      "equipment",
+      "karmacap",
+      "money",
+      "weapon",
+      "ship-power-plant",
+      "ship-thrusters",
+      "ship-fsd",
+      "ship-life-support",
+      "ship-power-distributor",
+      "ship-sensors",
+      "ship-weapons",
+      "ship-utility-mounts",
+      "ship-internal-components",
+      "vehicle-shields",
+      "vehicle-weapons",
+      "vehicle-specials"
+    ],
+    "templates": {
+      "details": {
+        "details": {
+          "description": {
+            "type": "String",
+            "label": "ITEM.Description",
+            "value": ""
+          },
+          "gmdescription": {
+            "type": "String",
+            "label": "ITEM.GMDescription",
+            "value": ""
+          }
+        }
+      },
+      "backgrounds": {
+        "backgrounds": {
+          "bonuses": {
+            "type": "String",
+            "label": "ITEM.Background.Bonus",
+            "value": ""
+          },
+          "effects": [],
+          "choices": {
+            "type": "Number",
+            "label": "ITEM.Background.Choices",
+            "value": 1
+          }
+        }
+      },
+      "karma": {
+        "karma": {
+          "effect": {
+            "type": "String",
+            "label": "ITEM.Karma.Effect",
+            "value": ""
+          },
+          "cost": {
+            "type": "Number",
+            "label": "ITEM.Karma.Cost",
+            "value": 1
+          },
+          "prerequisite": {
+            "type": "String",
+            "label": "ITEM.Karma.Prerequisite",
+            "value": ""
+          }
+        }
+      }
+    },
+    "backgrounds": {
+      "templates": [
+        "details",
+        "backgrounds"
+      ]
+    },
+    "enhancements": {
+      "templates": [
+        "details"
+      ]
+    },
+    "karmacaps": {
+      "templates": [
+        "details",
+        "karma"
+      ]
+    },
+    "equipment": {
+      "templates": [
+        "details"
+      ],
+      "count": {
+        "type": "Number",
+        "value": 1
+      }
+    }
+  }
+}

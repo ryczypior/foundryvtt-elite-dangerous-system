@@ -1,0 +1,48 @@
+/** 0. Settings **/
+
+$gutter: .2rem;
+
+$window-background-color: #ffffff;
+
+$personal-info-gradient: linear-gradient(90deg, rgba(187,199,221,1) 0%, rgba(255,255,255,1) 100%);
+$default-heading-gradient: linear-gradient(90deg, rgba(3,19,24,1) 0%, rgba(0,83,125,1) 100%);
+$default-heading-color: #ffffff;
+$karma-heading-gradient: linear-gradient(90deg, rgba(86,36,133,1) 0%, rgba(101,73,150,1) 100%);
+$karma-input-gradient: linear-gradient(90deg, rgba(197,191,220,1) 0%, rgba(255,255,255,1) 100%);
+$endurance-heading-gradient: linear-gradient(90deg, rgba(226,73,15,1) 0%, rgba(244,163,0,1) 100%);
+$endurance-input-gradient: linear-gradient(90deg, rgba(240,205,198,1) 0%, rgba(255,255,255,1) 100%);
+$skills-gradient: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(179,197,227,1) 100%);
+
+$skill-heading-color: #78a0d1;
+$skill-default-color: #f1f1f3;
+$skill-default-border: #a5a4a8;
+$skill-blue-color: #e4ecf7;
+$skill-blue-border: #a9b6c5;
+
+$default-color: #012533;
+
+
+@import 'bootstrap/bootstrap-grid';
+@import "custom/1-fonts";
+@import "custom/2-windows";
+@import "custom/3-sheet";
+
+#tinymce {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.editor-content ul {
+  margin: 0px 0px;
+}
+
+body{
+  font-family: "Saira Semi Condensed", sans-serif;
+
+  font-size: 1em;
+}
+
+.input{
+  max-width: 100%;
+}
+

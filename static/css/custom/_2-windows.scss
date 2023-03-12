@@ -1,0 +1,28 @@
+.edrpgsheet{
+}
+
+.tab{
+  display: none;
+}
+.tab-sections{
+  height: calc(100% - 129px);
+  .content{
+    height: calc(100% - 44px);
+    .tab.active{
+      display: flex;
+      flex-flow: column;
+      min-height: 100%;
+      overflow: hidden;
+      margin-top: 7px;
+      .editor{
+        min-height: 50px;
+        border: solid 1px $default-color;
+        padding: 3px;
+        display: flex;
+        flex-grow: 1;
+        margin-top: 0;
+        margin-bottom: 7px;
+      }
+    }
+  }
+}

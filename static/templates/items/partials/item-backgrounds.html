@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+        <h2>{{localize "ITEM.Background.Bonus"}}</h2>
+        </div>
+        <div class="col-12">
+{{editor system.backgrounds.bonuses.value target="system.backgrounds.bonuses.value" engine="prosemirror" button=true
+owner=owner editable=editable}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 flex">
+            <span>ITEM.Background.Bonuses</span>
+            <a class="bonusEffectCreate" title="{{localize 'SHEET.CreateItem'}}"><i class="fas fa-plus"></i></a>
+        </div>
+    </div>
+    {{#each system.backgrounds.effects as |effect idx|}}
+    <div class="row">
+        <div class="col-3">
+            <select>
+                <option></option>
+                {{#each backgroundBonusTypes as |type id|}}
+                <option value="{{id}}">{{localize 'type.name'}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-4">
+        </div>
+        <div class="col-3">
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+    {{/each}}
+    <div class="row">
+        <div class="col-12 col-md-4">
+            {{localize "ITEM.Background.ChoicesNumber"}}
+        </div>
+        <div class="col-12 col-md-8">
+            <input class="input-info" type="text" value="{{system.backgrounds.choices.value}}" name="system.backgrounds.choices.value"
+                   placeholder="{{localize 'ITEM.Background.ChoicesNumber'}}" title="{{localize 'ITEM.Background.ChoicesNumber'}}">
+
+        </div>
+    </div>
+</div>
