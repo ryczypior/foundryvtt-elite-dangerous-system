@@ -1,10 +1,10 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="container-fluid" ondragstart="return false;" ondrop="return false;">
         <div class="row">
-            <div class="col-2 characterImage">
+            <div class="col-4 col-lg-2 characterImage">
                 <img class="" src="{{actor.img}}" title="{{actor.name}}" data-edit="img">
             </div>
-            <div class="col-10">
+            <div class="col-6 col-lg-10">
                 <div class="row">
                     <div class="col-12">
                         <label class="nameField">
@@ -17,35 +17,35 @@
                 <div class="row">
                     <div class="col-6">
                         <label>
-                        <div class="input">{{localize system.status.rank.value.name}}</div>
-                        <span>{{localize "SHEET.Rank"}}</span>
+                            <div class="input">{{localize system.status.rank.value.name}}</div>
+                            <span>{{localize "SHEET.Rank"}}</span>
                         </label>
                     </div>
                     <div class="col-6">
                         <label>
-                        <input class="rankPoints changeStatusValue"
-                               data-stateid="rankPoints" type="number" value="{{system.status.rankPoints.value}}"
-                               placeholder="{{localize 'SHEET.RankPoints'}}"
-                               min="0"
-                               step="1"
-                        >
-                        <span>{{localize "SHEET.RankPoints"}}</span>
+                            <input class="rankPoints changeStatusValue"
+                                   data-stateid="rankPoints" type="number" value="{{system.status.rankPoints.value}}"
+                                   placeholder="{{localize 'SHEET.RankPoints'}}"
+                                   min="0"
+                                   step="1"
+                            >
+                            <span>{{localize "SHEET.RankPoints"}}</span>
                         </label>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-lg-4">
                 <label>
                     <input
-                           type="number" value="{{system.skills.personalCombat.skills.dodge.bonus}}"
-                           readonly="readonly"
+                            type="number" value="{{system.skills.personalCombat.skills.dodge.bonus}}"
+                            readonly="readonly"
                     >
                     <span>{{localize "SHEET.DefenceDodge"}}</span>
                 </label>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-lg-4">
                 <label>
                     <input
                             type="number" value="{{system.skills.intelligence.skills.tactics.bonus}}"
@@ -54,7 +54,7 @@
                     <span>{{localize "SHEET.InitiativeTactics"}}</span>
                 </label>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-lg-4">
                 <label>
                     <input
                             type="number" value="{{system.skills.personalCombat.skills.parry.bonus}}"
@@ -65,43 +65,74 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-3">
-                <label class="karma">
-                    <input class=""
-                           type="number" value="{{system.status.karma.value}}"
-                           min="0"
-                           step="1"
-                    >
-                    <span>{{localize "SHEET.Karma"}}</span>
-                </label>
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="karma">
+                            <input class=""
+                                   name="system.status.karma.value"
+                                   type="number" value="{{system.status.karma.value}}"
+                                   min="0"
+                                   step="1"
+                            >
+                            <span>{{localize "SHEET.Karma"}}</span>
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label class="karma">
+                            <input type="number"
+                                   value="{{system.status.rank.value.karmaPoints}}"
+                                   readonly="readonly"
+                            >
+                            <span>{{localize "SHEET.Max"}}</span>
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label class="karma">
+                            <input class=""
+                                   name="system.status.karmaCyber.value"
+                                   type="number" value="{{system.status.karmaCyber.value}}"
+                                   min="0"
+                                   step="1"
+                            >
+                            <span>{{localize "SHEET.KarmaCyber"}}</span>
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label class="karma">
+                            <input type="number"
+                                   min="0"
+                                   step="1"
+                                   name="system.status.karmaCyberMax.value"
+                                   value="{{system.status.karmaCyberMax.value}}"
+                            >
+                            <span>{{localize "SHEET.Max"}}</span>
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="col-3">
-                <label class="karma">
-                    <input type="number"
-                            value="{{system.status.rank.value.karmaPoints}}"
-                            readonly="readonly"
-                    >
-                    <span>{{localize "SHEET.Max"}}</span>
-                </label>
-            </div>
-            <div class="col-3">
-                <label class="endurance">
-                    <input class=""
-                           type="number" value="{{system.status.endurance.value}}"
-                           min="0"
-                           step="1"
-                    >
-                    <span>{{localize "SHEET.Endurance"}}</span>
-                </label>
-            </div>
-            <div class="col-3">
-                <label class="endurance">
-                    <input type="number"
-                           value="{{system.status.rank.value.endurance}}"
-                           readonly="readonly"
-                    >
-                    <span>{{localize "SHEET.Max"}}</span>
-                </label>
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-6">
+                        <label class="endurance">
+                            <input class=""
+                                   name="system.status.endurance.value"
+                                   type="number" value="{{system.status.endurance.value}}"
+                                   step="1"
+                            >
+                            <span>{{localize "SHEET.Endurance"}}</span>
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <label class="endurance">
+                            <input type="number"
+                                   value="{{system.status.rank.value.endurance}}"
+                                   readonly="readonly"
+                            >
+                            <span>{{localize "SHEET.Max"}}</span>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -125,8 +156,19 @@
                 {{> systems/edrpg/templates/sheets/partials/actor-skills.html}}
             </div>
             <div class="tab main save-scroll" data-tab="backgroundskarma">
-                {{> systems/edrpg/templates/sheets/partials/actor-backgrounds.html}}
-                {{> systems/edrpg/templates/sheets/partials/actor-karma.html}}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            {{> systems/edrpg/templates/sheets/partials/actor-backgrounds.html}}
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            {{> systems/edrpg/templates/sheets/partials/actor-karma.html}}
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            {{> systems/edrpg/templates/sheets/partials/actor-enhancements.html}}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="tab main save-scroll" data-tab="combat">
                 {{> systems/edrpg/templates/sheets/partials/actor-combat.html}}

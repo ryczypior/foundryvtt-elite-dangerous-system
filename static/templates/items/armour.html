@@ -1,0 +1,25 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header" ondragstart="return false;" ondrop="return false;">
+    <h1 class="charname item">
+      <input class="input name" name="name" type="text" value="{{item.name}}"
+             placeholder="{{localize 'ITEM.ArmourName'}}"/>
+      <span class="label name">{{localize "ITEM.ArmourName"}}</span>
+    </h1>
+  </header>
+  <!-- TABS -->
+  <section class="tab-sections">
+    <nav class="sheet-tabs tabs" ondragstart="return false;" ondrop="return false;">
+      <a class="item active" data-tab="main">{{localize "ITEM.Description"}}</a>
+      <a class="item" data-tab="details">{{localize "ITEM.Details"}}</a>
+    </nav>
+    <section class="content">
+      <div class="tab main save-scroll" data-tab="main">
+        {{> systems/edrpg/templates/items/partials/item-all-cost.html}}
+        {{> systems/edrpg/templates/items/partials/item-all-description.html}}
+      </div>
+      <div class="tab details save-scroll" data-tab="details">
+        {{> systems/edrpg/templates/items/partials/item-armour.html}}
+      </div>
+    </section>
+  </section>
+</form>

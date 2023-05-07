@@ -1,6 +1,14 @@
 import ActorSheetEDRPG from "./ActorSheetEDRPG.js";
+import EDRPGSkillTests from "../../tests/EDRPGSkillTests.js";
 
 export default class ActorSheetEDRPGCharacter extends ActorSheetEDRPG {
+
+  validItemTypes = [
+    'backgrounds',
+    'enhancements',
+    'Karma Capabilities',
+  ];
+
   get template() {
     let template = super.template;
     if (!game.user.isGM && this.actor.limited) return "systems/edrpg/templates/sheets/character-limited.html";
@@ -27,17 +35,50 @@ export default class ActorSheetEDRPGCharacter extends ActorSheetEDRPG {
     return ret;
   }
 
+  async _onDropBackgrounds(item) {
+    const effects = item.system.backgrounds.effects;
+    if (effects && effects.length) {
+      effects.forEach(effect => {
+        if (effect.type === 'skill') {
+          this.addSkillValue(effect.skillId, effect.skillValue);
+        }
+        /** @todo other types! **/
+      });
+    }
+  }
+
+  async _onRemoveBackgrounds(item) {
+    const effects = item.system.backgrounds.effects;
+    if (effects && effects.length) {
+      effects.forEach(effect => {
+        if (effect.type === 'skill') {
+          this.addSkillValue(effect.skillId, -effect.skillValue);
+        }
+        /** @todo other types! **/
+      });
+    }
+  }
+
   async _onSkillClick(event) {
     const skillId = event.target.getAttribute('data-skill');
     const skillSectionId = event.target.getAttribute('data-section');
     const skills = duplicate(this.actor._source.system.skills);
     const skill = skills[skillSectionId].skills[skillId];
-    if(skills[skillSectionId].skills[skillId].isChecked === 0){
-      skills[skillSectionId].skills[skillId].isChecked = 1;
-      await this.actor.update({"system.skills": skills});
+    const data = {
+      ...skill, ...{
+        callback: async () => {
+          if (skills[skillSectionId].skills[skillId].isChecked === 0) {
+            skills[skillSectionId].skills[skillId].isChecked = 1;
+            await this.actor.update({"system.skills": skills});
+          }
+        },
+        difficulty: 9
+      }
     }
-    let roll = await new Roll("1d10").roll({ async: true });
-    console.log(roll.total, skill);
+    const roll = new EDRPGSkillTests(data, this.actor);
+    const rollResult = await roll.prepareTest();
+    //let roll = await new Roll("1d10").roll({ async: true });
+    //console.log(rollResult, skill);
   }
 
   activateListeners(html) {

@@ -1,6 +1,6 @@
 export default class ItemEDRPG extends Item {
-  prepareBaseData() {
-    super.prepareBaseData();
+  prepareData() {
+    super.prepareData();
   }
 }
 

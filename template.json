@@ -63,6 +63,22 @@
             "modifier": 0,
             "calculationBonusModifier": 0
           },
+          "karmaCyber": {
+            "type": "Number",
+            "label": "SHEET.KarmaCyber",
+            "initial": 0,
+            "value": 0,
+            "modifier": 0,
+            "calculationBonusModifier": 0
+          },
+          "karmaCyberMax": {
+            "type": "Number",
+            "label": "SHEET.Max",
+            "initial": 0,
+            "value": 0,
+            "modifier": 0,
+            "calculationBonusModifier": 0
+          },
           "endurance": {
             "type": "Number",
             "label": "SHEET.Endurance",
@@ -108,27 +124,29 @@
   },
   "Item": {
     "types": [
-      "armour",
+      "Armour",
       "backgrounds",
-      "commodities",
-      "cybernetics",
+      "Commodities",
+      "Cybernetics",
       "enhancements",
-      "equipment",
-      "karmacap",
-      "money",
-      "weapon",
-      "ship-power-plant",
-      "ship-thrusters",
-      "ship-fsd",
-      "ship-life-support",
-      "ship-power-distributor",
-      "ship-sensors",
-      "ship-weapons",
-      "ship-utility-mounts",
-      "ship-internal-components",
-      "vehicle-shields",
-      "vehicle-weapons",
-      "vehicle-specials"
+      "Equipment",
+      "Karma Capabilities",
+      "Money",
+      "Ranged Weapons",
+      "Melee Weapon",
+      "Ship Power Plants",
+      "Ship Thrusters",
+      "Ship FSD",
+      "Ship Life Support",
+      "Ship Power Distributor",
+      "Ship Sensors",
+      "Ship Shields",
+      "Ship Weapons",
+      "Ship Utility Mounts",
+      "Ship Internal Components",
+      "Vehicle Shields",
+      "Vehicle Weapons",
+      "Vehicle Specials"
     ],
     "templates": {
       "details": {
@@ -176,12 +194,181 @@
             "type": "String",
             "label": "ITEM.Karma.Prerequisite",
             "value": ""
+          },
+          "skill": {
+            "type": "String",
+            "label": "ITEM.Karma.Skill",
+            "value": ""
+          }
+        }
+      },
+      "socialFactor": {
+        "socialFactor": {
+          "value": 0
+        }
+      },
+      "internalId": {
+        "internalId": {
+          "value": null
+        }
+      },
+      "cost": {
+        "cost": {
+          "value": 0
+        }
+      },
+      "armour": {
+        "armour": {
+          "absorbFighting": {
+            "type": "Number",
+            "label": "ITEM.Armour.AbsorbFighting",
+            "value": 0
+          },
+          "absorbMelee": {
+            "type": "Number",
+            "label": "ITEM.Armour.AbsorbMelee",
+            "value": 0
+          },
+          "absorbKinetic": {
+            "type": "Number",
+            "label": "ITEM.Armour.AbsorbKinetic",
+            "value": 0
+          },
+          "absorbEnergy": {
+            "type": "Number",
+            "label": "ITEM.Armour.AbsorbEnergy",
+            "value": 0
+          },
+          "absorbExplosive": {
+            "type": "Number",
+            "label": "ITEM.Armour.AbsorbExplosive",
+            "value": 0
+          },
+          "absorbToxic": {
+            "type": "Boolean",
+            "label": "ITEM.Armour.AbsorbToxic",
+            "value": false
+          },
+          "discreet": {
+            "type": "Boolean",
+            "label": "ITEM.Armour.Discreet",
+            "value": false
+          },
+          "hardened": {
+            "type": "Number",
+            "label": "ITEM.Armour.Hardened",
+            "value": 0
+          },
+          "athleticsScore": {
+            "type": "Number",
+            "label": "ITEM.Armour.AthleticsScore",
+            "value": 0
+          },
+          "intimidateScore": {
+            "type": "Number",
+            "label": "ITEM.Armour.IntimidateScore",
+            "value": 0
+          },
+          "enhancement": {
+            "type": "String",
+            "label": "ITEM.Armour.Enhancement",
+            "value": false
+          },
+          "wearable": {
+            "type": "Boolean",
+            "label": "ITEM.Armour.Wearable",
+            "value": true
+          },
+          "worn": {
+            "type": "Boolean",
+            "label": "ITEM.Armour.Worn",
+            "value": false
+          }
+        }
+      },
+      "ranged-weapons": {
+        "ranged-weapons": {
+          "type": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.Type",
+            "value": ""
+          },
+          "damage": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.Damage",
+            "value": ""
+          },
+          "shortRange": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.ShortRange",
+            "value": ""
+          },
+          "shortRangeDifficulty": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.ShortRangeDifficulty",
+            "value": ""
+          },
+          "shortRangeDamage": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.ShortRangeDamage",
+            "value": ""
+          },
+          "mediumRange": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.MediumRange",
+            "value": ""
+          },
+          "mediumRangeDifficulty": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.MediumRangeDifficulty",
+            "value": ""
+          },
+          "mediumRangeDamage": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.MediumRangeDamage",
+            "value": ""
+          },
+          "longRange": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.LongRange",
+            "value": ""
+          },
+          "longRangeDifficulty": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.LongRangeDifficulty",
+            "value": ""
+          },
+          "longRangeDamage": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.LongRangeDamage",
+            "value": ""
+          },
+          "burst": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.Burst",
+            "value": ""
+          },
+          "ammo": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.Ammo",
+            "value": ""
+          },
+          "isTwoHanded": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapon.IsTwoHanded",
+            "value": 0
+          },
+          "notes": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.Notes",
+            "value": ""
           }
         }
       }
     },
     "backgrounds": {
       "templates": [
+        "internalId",
         "details",
         "backgrounds"
       ]
@@ -191,20 +378,30 @@
         "details"
       ]
     },
-    "karmacaps": {
+    "Karma Capabilities": {
       "templates": [
+        "internalId",
         "details",
         "karma"
       ]
     },
-    "equipment": {
+    "Equipment": {
       "templates": [
+        "internalId",
         "details"
       ],
       "count": {
         "type": "Number",
         "value": 1
       }
+    },
+    "Armour": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details",
+        "armour"
+      ]
     }
   }
 }

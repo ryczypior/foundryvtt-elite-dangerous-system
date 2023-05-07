@@ -8,6 +8,9 @@ import ItemSheetEDRPGEnhancement from "./modules/item/sheet/ItemSheetEDRPGEnhanc
 import ItemSheetEDRPGKarmaCap from "./modules/item/sheet/ItemSheetEDRPGKarmaCap.js";
 import registerHooks from "./modules/system/hooks.js"
 import EDRPG from "./modules/system/EDRPG";
+import BackgroundEffect from "./modules/item/helpers/BackgroundEffect";
+import ChatMessageEDRPG from "./modules/system/ChatMessageEDRPG";
+import ItemSheetEDRPGArmour from "./modules/item/sheet/ItemSheetEDRPGArmour";
 
 Hooks.once("init", async function () {
   // Register sheet application classes
@@ -16,7 +19,8 @@ Hooks.once("init", async function () {
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet('edrpg', ItemSheetEDRPGBackground, {types: ['backgrounds'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGEnhancement, {types: ['enhancements'], makeDefault: true});
-  Items.registerSheet('edrpg', ItemSheetEDRPGKarmaCap, {types: ['karmacap'], makeDefault: true});
+  Items.registerSheet('edrpg', ItemSheetEDRPGKarmaCap, {types: ['Karma Capabilities'], makeDefault: true});
+  Items.registerSheet('edrpg', ItemSheetEDRPGArmour, {types: ['Armour'], makeDefault: true});
   game.edrpg = {
     apps: {
       ActorSheetEDRPG,
@@ -31,6 +35,8 @@ Hooks.once("init", async function () {
       ItemEDRPG
     },
     config: EDRPG,
+    BackgroundEffect: BackgroundEffect,
+    chat: ChatMessageEDRPG
   };
   CONFIG.Actor.documentClass = ActorEDRPG;
   CONFIG.Item.documentClass = ItemEDRPG;

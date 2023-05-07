@@ -1,16 +1,13 @@
 <div class="container-fluid">
     <div class="row">
         <h2 class="col">
-            {{localize 'SHEET.Backgrounds'}}
+            {{localize 'SHEET.Enhancements'}}
         </h2>
     </div>
     <div class="tablebackgrounds tableitems">
         <div class="row tableheading">
-            <div class="col-8">
-                {{localize 'SHEET.Background'}}
-            </div>
-            <div class="col-2">
-                {{localize 'ITEM.Background.ChoicesNumber'}}
+            <div class="col-10">
+                {{localize 'SHEET.Enhancement'}}
             </div>
             <div class="col-2">
                 {{localize 'SHEET.Actions'}}
@@ -18,15 +15,10 @@
         </div>
         <section class="background-list item-list">
             {{#each items as |item id|}}
-            {{#if (eq item.type "backgrounds")}}
+            {{#if  (eq item.type "enhancements")}}
             <div class="row tablerow">
-                <div class="col-8 tableheader">
+                <div class="col-10 tableheader">
                     <a class="onChangeActiveDescription">{{item.name}}</a>
-                </div>
-                <div class="col-2 tableinput">
-                    <span>
-                        {{item.system.backgrounds.choices.value}}
-                    </span>
                 </div>
                 <div class="col-2 tableinput">
                     <a class="clickRemoveItem" data-id="{{item._id}}">
@@ -36,9 +28,6 @@
                 <div class="col-12 tabledescripion">
                     <div>
                         {{{item.system.details.description.value}}}
-                        <div class="backgroundBonusesDescription">
-                            {{{item.system.backgrounds.bonuses.value}}}
-                        </div>
                     </div>
                 </div>
             </div>

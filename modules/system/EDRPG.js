@@ -499,7 +499,7 @@ EDRPG.backgroundBonusTypes = {
   "enhancement": {
     'name': 'ITEM.BackgroundTypeEnhancement',
   },
-  "skillSellect": {
+  "skillSelect": {
     'name': 'ITEM.BackgroundTypeSkillSelect',
   },
   "enhancementSelect": {

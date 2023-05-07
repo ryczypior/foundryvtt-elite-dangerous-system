@@ -3,8 +3,7 @@ export default class ItemSheetEDRPG extends ItemSheet {
     const options = super.defaultOptions;
     options.tabs = [{navSelector: ".tabs", contentSelector: ".content", initial: "main"}]
     options.height = 500;
-    options.width = 576;
-    console.log(options);
+    options.width = 900;
     return options;
   }
 
@@ -21,6 +20,10 @@ export default class ItemSheetEDRPG extends ItemSheet {
     enrichment["system.details.description.value"] = await TextEditor.enrichHTML(system.details.description.value, { async: true })
     enrichment["system.details.gmdescription.value"] = await TextEditor.enrichHTML(system.details.gmdescription.value, { async: true })
     return expandObject(enrichment);
+  }
+
+  _onRemoveFromCharacter(actor){
+    return null;
   }
 
   activateListeners(html) {

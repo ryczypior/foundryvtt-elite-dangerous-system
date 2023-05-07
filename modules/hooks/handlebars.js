@@ -1,3 +1,5 @@
+import EDRPG from "../system/EDRPG";
+
 export default function () {
 
     Hooks.on("init", () => {
@@ -7,6 +9,10 @@ export default function () {
 
         Handlebars.registerHelper("isGM", function (options) {
             return game.user.isGM
+        })
+
+        Handlebars.registerHelper("eq", function (val1, val2) {
+            return val1 == val2;
         })
 
         Handlebars.registerHelper("config", function (key) {

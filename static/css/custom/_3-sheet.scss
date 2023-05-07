@@ -11,6 +11,11 @@
   .row{
     margin-bottom: .5em;
   }
+  .characterImage{
+    img{
+      background: $personal-info-gradient;
+    }
+  }
   header.sheet-header {
   }
   label{
@@ -66,7 +71,7 @@
     text-align: right;
   }
 
-  .tableskill{
+  .tableitems{
     .tableheading{
       margin-bottom: 0;
       text-align: center;
@@ -92,6 +97,26 @@
         text-align: right;
         font-weight: bold;
         font-size: .8em;
+        a{
+          display: block;
+        }
+      }
+      .tabledescripion{
+        padding-left: 0;
+        padding-right: 0;
+        display: none;
+        > * {
+          font-size: .8em;
+          position: relative;
+          border: solid 1px $description-border;
+          background: $description-background;
+          padding-left: 5px;
+          padding-right: 5px;
+          top: 0;
+          left: 0;
+          width: calc(100%);
+          height: 100%;
+        }
       }
       .tableinput{
         > *{
@@ -118,6 +143,19 @@
           }
         }
       }
+      .inline{
+        >div, >p{
+          display: inline;
+        }
+      }
+    }
+    &.tablebackgrounds {
+      .tablerow {
+        .tableheader {
+          text-align: left;
+        }
+      }
     }
   }
+
 }

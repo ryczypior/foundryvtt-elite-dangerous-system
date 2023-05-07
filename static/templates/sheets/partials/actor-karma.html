@@ -1,3 +1,58 @@
-<div>
-
+<div class="container-fluid">
+    <div class="row">
+        <h2 class="col">
+            {{localize 'SHEET.KarmaCapabilities'}}
+        </h2>
+    </div>
+    <div class="tablebackgrounds tableitems">
+        <div class="row tableheading">
+            <div class="col-10">
+                {{localize 'SHEET.KarmaCapability'}}
+            </div>
+            <div class="col-2">
+                {{localize 'SHEET.Actions'}}
+            </div>
+        </div>
+        <section class="background-list item-list">
+            {{#each items as |item id|}}
+            {{#if  (eq item.type "Karma Capabilities")}}
+            <div class="row tablerow">
+                <div class="col-10 tableheader">
+                    <a class="onChangeActiveDescription">{{item.name}}</a>
+                </div>
+                <div class="col-2 tableinput">
+                    <a class="clickRemoveItem" data-id="{{item._id}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </div>
+                <div class="col-12 tabledescripion">
+                    <div>
+                        <em>{{{item.system.details.description.value}}}</em>
+                        <div>
+                            <strong>{{localize "ITEM.Karma.Cost"}}:</strong>
+                            {{#if (eq 0 item.system.karma.cost.value)}}
+                            {{localize "ITEM.Karma.AllPoints"}}
+                            {{else}}
+                            {{item.system.karma.cost.value}}
+                            {{/if}}
+                        </div>
+                        {{#if item.system.karma.prerequisite.value}}
+                        <div class="inline">
+                            <strong>{{localize "ITEM.Karma.Prerequisite"}}:</strong>
+                            {{{item.system.karma.prerequisite.value}}}
+                        </div>
+                        {{/if}}
+                        {{#if item.system.karma.effect.value}}
+                        <div class="inline">
+                            <strong>{{localize "ITEM.Karma.Effect"}}:</strong>
+                            {{{item.system.karma.effect.value}}}
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+        </section>
+    </div>
 </div>

@@ -1,0 +1,42 @@
+<div class="container skill-test">
+    <div class="row">
+        <div class="col-6">
+            {{localize 'TEST.BonusModifier'}}
+        </div>
+        <div class="col-6">
+            <input type="number" value="0" class="bonusModifier" step="1" min="-99" max="99">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{localize 'TEST.DifficultyNumber'}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 flex difficultyNumbers flex-wrap">
+            {{#each difficultyNumbers as |difficulty id|}}
+            <a data-difficulty="{{difficulty.number}}"
+               title="{{difficulty.difficultyType}}"
+               class="difficulty-button
+               {{#if (eq difficulty.number testDifficulty)}}
+               selected
+               {{/if}}
+               "
+            >{{difficulty.number}}</a>
+            {{/each}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{localize 'TEST.RollType'}}
+        </div>
+        <div class="col-6">
+            <select class="roll-mode">
+                <option value="publicroll">{{localize 'TEST.PublicRoll'}}</option>
+                <option value="gmroll">{{localize 'TEST.GMRoll'}}</option>
+                <option value="blindroll">{{localize 'TEST.BlindRoll'}}</option>
+                <option value="selfroll">{{localize 'TEST.SelfRoll'}}</option>
+            </select>
+        </div>
+    </div>
+</div>

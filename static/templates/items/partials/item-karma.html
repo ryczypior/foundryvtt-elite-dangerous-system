@@ -1,13 +1,20 @@
-<h2 class="note-section label">{{localize "ITEM.Background.Bonus"}}</h2>
-{{editor system.backgrounds.bonuses.value target="system.backgrounds.bonuses.value" engine="prosemirror" button=true
+<h2 class="note-section label">{{localize "ITEM.Karma.Prerequisite"}}</h2>
+{{editor system.karma.effect.value target="system.karma.effect.value" engine="prosemirror" button=true
+owner=owner editable=editable}}
+<h2 class="note-section label">{{localize "ITEM.Karma.Effect"}}</h2>
+{{editor system.karma.prerequisite.value target="system.karma.prerequisite.value" engine="prosemirror" button=true
 owner=owner editable=editable}}
 <div class="flex">
     <div class="col-4">
-        {{localize "ITEM.Background.ChoicesNumber"}}
+        {{localize "ITEM.Karma.Cost"}}
     </div>
     <div class="col-8">
-        <input class="input-info" type="text" value="{{system.backgrounds.choices.value}}" name="system.backgrounds.choices.value"
-               placeholder="{{localize 'ITEM.Background.ChoicesNumber'}}" title="{{localize 'ITEM.Background.ChoicesNumber'}}">
-
+        <input class="input-info" type="number" value="{{system.karma.cost.value}}" name="system.karma.cost.value" min="0" step="1">
+    </div>
+    <div class="col-4">
+        {{localize "ITEM.Karma.Skill"}}
+    </div>
+    <div class="col-8">
+        <input class="input-info" type="text" value="{{system.karma.skill.value}}" name="system.karma.skill.value">
     </div>
 </div>

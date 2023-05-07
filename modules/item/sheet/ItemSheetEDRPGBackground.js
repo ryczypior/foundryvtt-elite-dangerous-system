@@ -3,20 +3,15 @@ import EDRPG from "../../system/EDRPG.js";
 
 export default class ItemSheetEDRPGBackground extends ItemSheetEDRPG {
   get template() {
-    if (!game.user.isGM && this.actor.limited) return "systems/edrpg/templates/items/item-limited.html";
+    if (!game.user.isGM && this.item.limited) return "systems/edrpg/templates/items/item-limited.html";
     return "systems/edrpg/templates/items/backgrounds.html";
   }
 
   async getData() {
     const sheetData = await super.getData();
-    sheetData.backgroundBonusTypes = EDRPG.backgroundBonusTypes;
-    sheetData.skills = EDRPG.skills;
-    sheetData.isGM = this.isGM === true;
+    sheetData.backgroundBonusTypes = duplicate(EDRPG.backgroundBonusTypes);
+    sheetData.skills = duplicate(EDRPG.skills);
     return sheetData;
-  }
-
-  get isGM(){
-    return game.user.isGM;
   }
 
   async _handleEnrichment(system) {
@@ -26,12 +21,70 @@ export default class ItemSheetEDRPGBackground extends ItemSheetEDRPG {
   }
 
   async _onBonusEffectCreateClick(event) {
-    const effects = duplicate(this.item._source.system.effects);
+    let effects = duplicate(this.item._source.system.backgrounds.effects);
+    if(!effects){
+      effects = [];
+    }
+    const effect = duplicate(game.edrpg.BackgroundEffect);
+    //effect.skills = duplicate(EDRPG.skills);
+    //effect.backgroundBonusTypes = duplicate(EDRPG.backgroundBonusTypes);
+    effects.push(effect);
+    return await this.item.update({"system.backgrounds.effects": effects});
+  }
 
+  async _onBonusEffectRemoveClick(event) {
+    if(event){
+      if(event.stopPropagation){
+        event.stopPropagation()
+      }
+      if(event.stopImmediatePropagation){
+        event.stopImmediatePropagation();
+      }
+      if(event.preventDefault){
+        event.preventDefault();
+      }
+    }
+    const effects = duplicate(this.item._source.system.backgrounds.effects);
+    const index = event.target.getAttribute('data-idx');
+    effects.splice(index, 1);
+    return await this.item.update({"system.backgrounds.effects": effects});
+  }
+
+  async _onChangeEffectType(event) {
+    const effects = duplicate(this.item._source.system.backgrounds.effects);
+    const index = event.target.getAttribute('data-idx');
+    effects[index].type = event.target.value;
+    return await this.item.update({"system.backgrounds.effects": effects});
+  }
+
+  async _onChangeEffectSkillType(event) {
+    const effects = duplicate(this.item._source.system.backgrounds.effects);
+    const index = event.target.getAttribute('data-idx');
+    effects[index].skillSelect = event.target.value;
+    return await this.item.update({"system.backgrounds.effects": effects});
+  }
+
+  async _onChangeEffectSkill(event) {
+    const effects = duplicate(this.item._source.system.backgrounds.effects);
+    const index = event.target.getAttribute('data-idx');
+    effects[index].skillId = event.target.value;
+    return await this.item.update({"system.backgrounds.effects": effects});
+  }
+
+  async _onChangeEffectSkillValue(event) {
+    const effects = duplicate(this.item._source.system.backgrounds.effects);
+    const index = event.target.getAttribute('data-idx');
+    effects[index].skillValue = parseInt(event.target.value, 10) || 10;
+    return await this.item.update({"system.backgrounds.effects": effects});
   }
 
   activateListeners(html) {
     super.activateListeners(html);
     html.find('.bonusEffectCreate').click(this._onBonusEffectCreateClick.bind(this));
+    html.find('.bonusEffectRemove').click(this._onBonusEffectRemoveClick.bind(this));
+    html.find('.changeEffectType').change(this._onChangeEffectType.bind(this));
+    html.find('.changeEffectSkillType').change(this._onChangeEffectSkillType.bind(this));
+    html.find('.changeEffectSkill').change(this._onChangeEffectSkill.bind(this));
+    html.find('.changeEffectSkillValue').change(this._onChangeEffectSkillValue.bind(this));
   }
 }

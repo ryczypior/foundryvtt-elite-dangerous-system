@@ -26,3 +26,14 @@
     }
   }
 }
+
+.backgroundBonusesDescription{
+  text-align: center;
+  font-weight: bold;
+  background: $background-description-gradient;
+  color: $background-description-color;
+  border-radius: 3px;
+  padding: 3px 5px;
+  margin: .8em 0;
+  overflow: hidden;
+}

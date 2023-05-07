@@ -3225,6 +3225,16 @@ html {
         margin-top: 0;
         margin-bottom: 7px; }
 
+.backgroundBonusesDescription {
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(90deg, #142136 0%, #457fc1 100%);
+  color: #ffffff;
+  border-radius: 3px;
+  padding: 3px 5px;
+  margin: .8em 0;
+  overflow: hidden; }
+
 .edrpgsheet .window-content {
   background: #ffffff; }
 .edrpgsheet input, .edrpgsheet textarea, .edrpgsheet select, .edrpgsheet .personal {
@@ -3234,6 +3244,8 @@ html {
     padding: 5px 10px;*/ }
 .edrpgsheet .row {
   margin-bottom: .5em; }
+.edrpgsheet .characterImage img {
+  background: linear-gradient(90deg, #bbc7dd 0%, white 100%); }
 .edrpgsheet label {
   overflow: hidden; }
   .edrpgsheet label input, .edrpgsheet label .input {
@@ -3267,29 +3279,46 @@ html {
     background: linear-gradient(90deg, #e2490f 0%, #f4a300 100%); }
 .edrpgsheet .text-right {
   text-align: right; }
-.edrpgsheet .tableskill .tableheading {
+.edrpgsheet .tableitems .tableheading {
   margin-bottom: 0;
   text-align: center; }
-  .edrpgsheet .tableskill .tableheading > div {
+  .edrpgsheet .tableitems .tableheading > div {
     background: #78a0d1;
     color: white;
     font-weight: bold;
     font-size: .7em;
     text-transform: uppercase;
     border: solid 1px #ffffff; }
-.edrpgsheet .tableskill .tablerow {
+.edrpgsheet .tableitems .tablerow {
   margin-bottom: 0; }
-  .edrpgsheet .tableskill .tablerow > div {
+  .edrpgsheet .tableitems .tablerow > div {
     border: solid 1px #ffffff;
     position: relative;
     align-items: center;
     align-content: center; }
-  .edrpgsheet .tableskill .tablerow .tableheader {
+  .edrpgsheet .tableitems .tablerow .tableheader {
     background: linear-gradient(90deg, white 0%, #b3c5e3 100%);
     text-align: right;
     font-weight: bold;
     font-size: .8em; }
-  .edrpgsheet .tableskill .tablerow .tableinput > * {
+    .edrpgsheet .tableitems .tablerow .tableheader a {
+      display: block; }
+  .edrpgsheet .tableitems .tablerow .tabledescripion {
+    padding-left: 0;
+    padding-right: 0;
+    display: none; }
+    .edrpgsheet .tableitems .tablerow .tabledescripion > * {
+      font-size: .8em;
+      position: relative;
+      border: solid 1px #a9b6c5;
+      background: #e4ecf7;
+      padding-left: 5px;
+      padding-right: 5px;
+      top: 0;
+      left: 0;
+      width: calc(100%);
+      height: 100%; }
+  .edrpgsheet .tableitems .tablerow .tableinput > * {
     font-size: .8em;
     position: absolute;
     display: flex;
@@ -3305,9 +3334,117 @@ html {
     height: 100%;
     border: solid 1px #a5a4a8;
     background: #f1f1f3; }
-  .edrpgsheet .tableskill .tablerow .tableinput.tableinputblue > * {
+  .edrpgsheet .tableitems .tablerow .tableinput.tableinputblue > * {
     border: solid 1px #a9b6c5;
     background: #e4ecf7; }
+  .edrpgsheet .tableitems .tablerow .inline > div, .edrpgsheet .tableitems .tablerow .inline > p {
+    display: inline; }
+.edrpgsheet .tableitems.tablebackgrounds .tablerow .tableheader {
+  text-align: left; }
+
+.difficultyNumbers {
+  display: flex;
+  max-width: 100%;
+  overflow: auto; }
+  .difficultyNumbers a {
+    display: block;
+    min-width: 30px;
+    text-align: center;
+    width: 9%;
+    margin: 0 3px 3px 0;
+    box-sizing: border-box;
+    border: solid 1px #444444;
+    font-weight: bold; }
+    .difficultyNumbers a:nth-of-type(1) {
+      background: #d9f2d8; }
+    .difficultyNumbers a:nth-of-type(2) {
+      background: #c4eac4; }
+    .difficultyNumbers a:nth-of-type(3) {
+      background: #ade1ae; }
+    .difficultyNumbers a:nth-of-type(4) {
+      background: #84d185; }
+    .difficultyNumbers a:nth-of-type(5) {
+      background: #51be53; }
+    .difficultyNumbers a:nth-of-type(6) {
+      background: #1caa1f; }
+    .difficultyNumbers a:nth-of-type(7) {
+      background: #5fc434; }
+    .difficultyNumbers a:nth-of-type(8) {
+      background: #9cdb47; }
+    .difficultyNumbers a:nth-of-type(9) {
+      background: #cbed56; }
+    .difficultyNumbers a:nth-of-type(10) {
+      background: #faff65; }
+    .difficultyNumbers a:nth-of-type(11) {
+      background: #faec5f; }
+    .difficultyNumbers a:nth-of-type(12) {
+      background: #fbd559; }
+    .difficultyNumbers a:nth-of-type(13) {
+      background: #fbc253; }
+    .difficultyNumbers a:nth-of-type(14) {
+      background: #fcaf4e; }
+    .difficultyNumbers a:nth-of-type(15) {
+      background: #fd9848; }
+    .difficultyNumbers a:nth-of-type(16) {
+      background: #fd8141; }
+    .difficultyNumbers a:nth-of-type(17) {
+      background: #fd6e3b; }
+    .difficultyNumbers a:nth-of-type(18) {
+      background: #fd5e36; }
+    .difficultyNumbers a:nth-of-type(19) {
+      background: #fe4730; }
+    .difficultyNumbers a:nth-of-type(20) {
+      background: #ff2727; }
+    .difficultyNumbers a.selected {
+      border: solid 1px #d60000;
+      background: #ffffff; }
+
+.chat-message {
+  background: #ffffff;
+  color: #012533;
+  padding: 0; }
+  .chat-message .message-header {
+    background: #78a0d1;
+    color: #ffffff;
+    padding: 3px 5px;
+    font-weight: bold; }
+  .chat-message .message-content {
+    padding: 3px 5px; }
+  .chat-message .testResult .success {
+    color: #33d633; }
+  .chat-message .testResult .failure {
+    color: #d63333; }
+  .chat-message .actor {
+    display: flex;
+    margin: 5px 0;
+    gap: 10px;
+    padding: 0 0 5px 0;
+    border-bottom: dashed 1px #78a0d1; }
+    .chat-message .actor .image {
+      width: 15%;
+      max-width: 50px;
+      background: no-repeat center center/contain #78a0d1; }
+      .chat-message .actor .image:before {
+        content: " ";
+        padding-top: 100%;
+        display: block; }
+    .chat-message .actor .name {
+      font-size: 1.2em;
+      font-weight: bold; }
+  .chat-message .buttons {
+    margin: 5px 0;
+    text-align: right; }
+    .chat-message .buttons a {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 10px;
+      font-weight: bold;
+      border: solid 1px #562485;
+      color: #012533;
+      background: linear-gradient(90deg, #c5bfdc 0%, white 100%); }
+
+i {
+  pointer-events: none; }
 
 #tinymce {
   overflow-y: hidden;

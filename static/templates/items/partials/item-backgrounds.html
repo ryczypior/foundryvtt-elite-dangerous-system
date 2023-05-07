@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-        <h2>{{localize "ITEM.Background.Bonus"}}</h2>
+        <h2>{{localize "ITEM.Background.EffectsDescritpion"}}</h2>
         </div>
         <div class="col-12">
 {{editor system.backgrounds.bonuses.value target="system.backgrounds.bonuses.value" engine="prosemirror" button=true
@@ -10,25 +10,62 @@ owner=owner editable=editable}}
     </div>
     <div class="row">
         <div class="col-12 flex">
-            <span>ITEM.Background.Bonuses</span>
+            <span>{{localize 'ITEM.Background.Effects'}}</span>
             <a class="bonusEffectCreate" title="{{localize 'SHEET.CreateItem'}}"><i class="fas fa-plus"></i></a>
         </div>
     </div>
     {{#each system.backgrounds.effects as |effect idx|}}
     <div class="row">
-        <div class="col-3">
-            <select>
-                <option></option>
-                {{#each backgroundBonusTypes as |type id|}}
-                <option value="{{id}}">{{localize 'type.name'}}</option>
+        <div class="col-4">
+            <select class="changeEffectType" data-idx="{{idx}}">
+                <option>--</option>
+                {{#each ../backgroundBonusTypes as |type id|}}
+                <option value="{{id}}"
+                        {{#if (eq effect.type id)}}
+                        selected="selected"
+                        {{/if}}
+                >{{localize type.name}}</option>
                 {{/each}}
             </select>
         </div>
         <div class="col-4">
-        </div>
-        <div class="col-3">
+            {{#if (eq effect.type "skill")}}
+            <select class="changeEffectSkill" data-idx="{{idx}}">
+                {{#each ../skills as |skillType skillTypeId|}}
+                <optgroup label="{{localize skillType.label}}">
+                    {{#each skillType.skills as |skill skillId|}}
+                        <option value="{{skillId}}"
+                                {{#if (eq effect.skillId skillId)}}
+                                selected="selected"
+                                {{/if}}
+                        >{{localize skill.label}}</option>
+                    {{/each}}
+                </optgroup>
+                {{/each}}
+            </select>
+            {{else if (eq effect.type "skillSelect")}}
+            <select class="changeEffectSkillType" data-idx="{{idx}}">
+                <option value="0">{{localize 'ITEM.Any'}}</option>
+                {{#each effect.skills as |skillType skillTypeId|}}
+                <option value="{{skillTypeId}}"
+                        {{#if (eq effect.skillSelect skillTypeId)}}
+                        selected="selected"
+                        {{/if}}
+                >{{localize skillType.label}}</option>
+                {{/each}}
+            </select>
+            {{/if}}
         </div>
         <div class="col-2">
+            {{#if (or (eq effect.type "skill") (eq effect.type "skillSelect"))}}
+            <input class="changeEffectSkillValue" data-idx="{{idx}}" type="number" min="10" step="10" value="{{effect.skillValue}}"
+                   placeholder="{{localize 'ITEM.BackgroundTypeSkillBonus'}}" title="{{localize 'ITEM.BackgroundTypeSkillBonus'}}">
+            {{/if}}
+        </div>
+        <div class="col-2">
+            <a class="bonusEffectRemove" data-idx="{{idx}}">
+                <i class="fas fa-trash"></i>
+            </a>
         </div>
     </div>
     {{/each}}
@@ -37,7 +74,7 @@ owner=owner editable=editable}}
             {{localize "ITEM.Background.ChoicesNumber"}}
         </div>
         <div class="col-12 col-md-8">
-            <input class="input-info" type="text" value="{{system.backgrounds.choices.value}}" name="system.backgrounds.choices.value"
+            <input type="text" value="{{system.backgrounds.choices.value}}" name="system.backgrounds.choices.value"
                    placeholder="{{localize 'ITEM.Background.ChoicesNumber'}}" title="{{localize 'ITEM.Background.ChoicesNumber'}}">
 
         </div>
