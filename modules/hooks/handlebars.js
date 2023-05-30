@@ -15,6 +15,15 @@ export default function () {
             return val1 == val2;
         })
 
+        Handlebars.registerHelper("in", function (val1, val2) {
+            const arry = String(val2).split('|');
+            return arry.indexOf(val1) !== -1;
+        })
+
+        Handlebars.registerHelper("formatCredits", function (val) {
+            return (new Intl.NumberFormat(navigator.language, { maximumSignificantDigits: 2 })).format(val);
+        })
+
         Handlebars.registerHelper("config", function (key) {
             return game.edrpg.config[key]
         })

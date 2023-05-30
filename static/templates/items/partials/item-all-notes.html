@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>{{localize "ITEM.Notes"}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{editor system.notes.value target="system.notes.value" engine="prosemirror" button=true
+            owner=owner editable=editable}}
+        </div>
+    </div>
+</div>

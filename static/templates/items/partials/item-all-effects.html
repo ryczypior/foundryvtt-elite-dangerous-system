@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+  <div class="col-12">
+    <h2 class="flex"><span>{{localize 'ITEM.Effects'}}</span>
+    <a class="effectCreate" title="{{localize 'SHEET.CreateItem'}}"><i class="fas fa-plus"></i></a>
+    </h2>
+  </div>
+    </div>
+    {{#each system.effects.value as |effect idx|}}
+    <div class="row">
+      <div class="col-6">
+        <select class="changeEffect" data-idx="{{idx}}">
+          {{#each ../skills as |skillType skillTypeId|}}
+          <optgroup label="{{localize skillType.label}}">
+            <option>--</option>
+            {{#each skillType.skills as |skill skillId|}}
+            <option value="{{skillId}}"
+                    {{#if (eq effect.skillId skillId)}}
+                    selected="selected"
+                    {{/if}}
+            >{{localize skill.label}}</option>
+            {{/each}}
+          </optgroup>
+          {{/each}}
+        </select>
+      </div>
+      <div class="col-4">
+        <input class="changeEffectValue" data-idx="{{idx}}" type="number" min="0" step="5" value="{{effect.skillValue}}"
+               placeholder="{{localize 'ITEM.BackgroundTypeSkillBonus'}}" title="{{localize 'ITEM.BackgroundTypeSkillBonus'}}">
+      </div>
+      <div class="col-2">
+        <a class="effectRemove" data-idx="{{idx}}">
+          <i class="fas fa-trash"></i>
+        </a>
+      </div>
+    </div>
+    {{/each}}
+</div>

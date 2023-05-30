@@ -7,6 +7,12 @@ export default class ActorSheetEDRPGCharacter extends ActorSheetEDRPG {
     'backgrounds',
     'enhancements',
     'Karma Capabilities',
+    'Armour',
+    'Cybernetics',
+    'General Equipment',
+    'Ranged Weapons',
+    'Melee Weapon',
+    'Ammo Clips'
   ];
 
   get template() {
@@ -37,26 +43,36 @@ export default class ActorSheetEDRPGCharacter extends ActorSheetEDRPG {
 
   async _onDropBackgrounds(item) {
     const effects = item.system.backgrounds.effects;
+    const skills = [];
     if (effects && effects.length) {
       effects.forEach(effect => {
         if (effect.type === 'skill') {
-          this.addSkillValue(effect.skillId, effect.skillValue);
+          skills.push(effect);
         }
         /** @todo other types! **/
       });
     }
+    if(skills.length > 0){
+      await this.addSkillValue(skills);
+    }
+    return true;
   }
 
   async _onRemoveBackgrounds(item) {
     const effects = item.system.backgrounds.effects;
+    const skills = [];
     if (effects && effects.length) {
       effects.forEach(effect => {
         if (effect.type === 'skill') {
-          this.addSkillValue(effect.skillId, -effect.skillValue);
+          skills.push({skillId: effect.skillId, skillValue: -effect.skillValue});
         }
         /** @todo other types! **/
       });
     }
+    if(skills.length > 0){
+      await this.addSkillValue(skills);
+    }
+    return true;
   }
 
   async _onSkillClick(event) {

@@ -1,0 +1,27 @@
+<header class="container-fluid" ondragstart="return false;" ondrop="return false;">
+  <div class="row">
+    <div class="col-4 col-lg-2 characterImage">
+      <img class="" src="{{item.img}}" title="{{item.name}}" data-edit="img">
+    </div>
+    <div class="col-6 col-lg-10">
+      <div class="row">
+        <div class="col-12">
+          <label class="nameField">
+            <input name="name" type="text" value="{{item.name}}"
+                   placeholder="{{localize 'ITEM.Name'}}">
+            <span>{{localize "Name"}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <label class="internalIdField">
+            <input name="system.internalId.value" type="text" value="{{system.internalId.value}}"
+                   placeholder="{{localize 'ITEM.InternalID'}}">
+            <span>{{localize 'ITEM.InternalID'}}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

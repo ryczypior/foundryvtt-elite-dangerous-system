@@ -33,6 +33,7 @@ owner=owner editable=editable}}
             <select class="changeEffectSkill" data-idx="{{idx}}">
                 {{#each ../skills as |skillType skillTypeId|}}
                 <optgroup label="{{localize skillType.label}}">
+                    <option>--</option>
                     {{#each skillType.skills as |skill skillId|}}
                         <option value="{{skillId}}"
                                 {{#if (eq effect.skillId skillId)}}

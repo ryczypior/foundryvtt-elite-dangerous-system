@@ -111,7 +111,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.PC.Dodge",
         "description": "SHEET.Skills.PC.Dodge.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -121,7 +121,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.PC.EenergyWeapons",
         "description": "SHEET.Skills.PC.EenergyWeapons.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -131,7 +131,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.PC.Fighting",
         "description": "SHEET.Skills.PC.Fighting.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -141,7 +141,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.PC.Grenade",
         "description": "SHEET.Skills.PC.Grenade.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -151,7 +151,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.PC.HeavyWeapons",
         "description": "SHEET.Skills.PC.HeavyWeapons.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -161,7 +161,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.PC.KineticWeapons",
         "description": "SHEET.Skills.PC.KineticWeapons.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -171,7 +171,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.PC.MeleeWeapons",
         "description": "SHEET.Skills.PC.MeleeWeapons.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -181,7 +181,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.PC.Parry",
         "description": "SHEET.Skills.PC.Parry.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -196,7 +196,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.INT.Computer",
         "description": "SHEET.Skills.INT.Computer.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -206,7 +206,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.INT.CultureAndLaw",
         "description": "SHEET.Skills.INT.CultureAndLaw.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -216,7 +216,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.INT.Cyber",
         "description": "SHEET.Skills.INT.Cyber.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -226,7 +226,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.INT.Medicine",
         "description": "SHEET.Skills.INT.Medicine.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -236,7 +236,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.INT.PlanetaryKnowledge",
         "description": "SHEET.Skills.INT.PlanetaryKnowledge.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -246,7 +246,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.INT.Science",
         "description": "SHEET.Skills.INT.Science.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -256,7 +256,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.INT.Tactics",
         "description": "SHEET.Skills.INT.Tactics.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -266,7 +266,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.INT.Trading",
         "description": "SHEET.Skills.INT.Trading.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -280,7 +280,7 @@ EDRPG.skills = {
         "type": "Number",
         "label": "SHEET.Skills.SOC.Bargain",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -289,7 +289,7 @@ EDRPG.skills = {
         "type": "Number",
         "label": "SHEET.Skills.SOC.Bluff",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -298,7 +298,7 @@ EDRPG.skills = {
         "type": "Number",
         "label": "SHEET.Skills.SOC.Charm",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -307,7 +307,7 @@ EDRPG.skills = {
         "type": "Number",
         "label": "SHEET.Skills.SOC.Diplomacy",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -316,7 +316,7 @@ EDRPG.skills = {
         "type": "Number",
         "label": "SHEET.Skills.SOC.Gambling",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -325,7 +325,7 @@ EDRPG.skills = {
         "type": "Number",
         "label": "SHEET.Skills.SOC.Insight",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -334,7 +334,7 @@ EDRPG.skills = {
         "type": "Number",
         "label": "SHEET.Skills.SOC.Intimidate",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -343,7 +343,7 @@ EDRPG.skills = {
         "type": "Number",
         "label": "SHEET.Skills.SOC.Streetwise",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -357,7 +357,7 @@ EDRPG.skills = {
         "type": "Number",
         "label": "SHEET.Skills.VEH.Navigation",
         "description": "SHEET.Skills.VEH.Navigation.Description",
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "initial": 10,
         "bonus": 1,
@@ -367,7 +367,7 @@ EDRPG.skills = {
         "type": "Number",
         "label": "SHEET.Skills.VEH.Repair",
         "description": "SHEET.Skills.VEH.Repair.Description",
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "initial": 10,
         "bonus": 1,
@@ -378,7 +378,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.VEH.SpaceshipPiloting",
         "description": "SHEET.Skills.VEH.SpaceshipPiloting.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -388,7 +388,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.VEH.SpaceshipWeapons",
         "description": "SHEET.Skills.VEH.SpaceshipWeapons.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -398,7 +398,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.VEH.Systems",
         "description": "SHEET.Skills.VEH.Systems.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -408,7 +408,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.VEH.VehiclePiloting",
         "description": "SHEET.Skills.VEH.VehiclePiloting.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -418,7 +418,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.VEH.VehicleWeapons",
         "description": "SHEET.Skills.VEH.VehicleWeapons.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -433,7 +433,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.ESP.Athletics",
         "description": "SHEET.Skills.ESP.Athletics.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -443,7 +443,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.ESP.Perception",
         "description": "SHEET.Skills.ESP.Perception.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -453,7 +453,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.ESP.Security",
         "description": "SHEET.Skills.ESP.Security.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -463,7 +463,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.ESP.SleightOfHand",
         "description": "SHEET.Skills.ESP.SleightOfHand.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -473,7 +473,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.ESP.Stealth",
         "description": "SHEET.Skills.ESP.Stealth.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -483,7 +483,7 @@ EDRPG.skills = {
         "label": "SHEET.Skills.ESP.Survival",
         "description": "SHEET.Skills.ESP.Survival.Description",
         "initial": 10,
-        "isChecked":0,
+        "isChecked": 0,
         "value": 10,
         "bonus": 1,
         "maxCapModifier": 0
@@ -505,6 +505,28 @@ EDRPG.backgroundBonusTypes = {
   "enhancementSelect": {
     'name': 'ITEM.BackgroundTypeEnhancementSelect',
   },
+}
+
+EDRPG.meleeHands = {
+  'onehand': {
+    'name': 'ITEM.OneHanded'
+  },
+  'twohand': {
+    'name': 'ITEM.TwoHanded'
+  },
+  'onetwohand': {
+    'name': 'ITEM.OneTwoHanded'
+  }
+}
+
+EDRPG.meleeWeaponsTypes = {
+  'fighting': {
+    'name': 'ITEM.MeleeWeapons.TypeFighting'
+  }
+  ,
+  'melee': {
+    'name': 'ITEM.MeleeWeapons.TypeMelee'
+  }
 }
 
 export default EDRPG;

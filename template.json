@@ -2,7 +2,9 @@
   "Actor": {
     "types": [
       "character",
-      "npc"
+      "npc",
+      "vehicle",
+      "creature"
     ],
     "templates": {
       "info": {
@@ -120,20 +122,36 @@
       "templates": [
         "status"
       ]
+    },
+    "vehicle": {
+      "templates": [
+        "status"
+      ]
+    },
+    "creature": {
+      "templates": [
+        "status"
+      ]
+    },
+    "ship": {
+      "templates": [
+        "status"
+      ]
     }
   },
   "Item": {
     "types": [
       "Armour",
       "backgrounds",
-      "Commodities",
       "Cybernetics",
       "enhancements",
-      "Equipment",
+      "General Equipment",
       "Karma Capabilities",
-      "Money",
       "Ranged Weapons",
-      "Melee Weapon",
+      "Melee Weapons",
+      "Ammo Clips",
+      "Commodities",
+      "Ship Bulkheads",
       "Ship Power Plants",
       "Ship Thrusters",
       "Ship FSD",
@@ -143,7 +161,20 @@
       "Ship Shields",
       "Ship Weapons",
       "Ship Utility Mounts",
-      "Ship Internal Components",
+      "Ship Internal - AFM Units",
+      "Ship Internal - Cargo Racks",
+      "Ship Internal - Collector Limpet Controllers",
+      "Ship Internal - Docking Computer",
+      "Ship Internal - FSD Interdictor",
+      "Ship Internal - Fuel Scoops",
+      "Ship Internal - Hatch Breaker Limpet Controllers",
+      "Ship Internal - Hull Reinforcement Packages",
+      "Ship Internal - Module Reinforcement Packages",
+      "Ship Internal - Prospector Limpet Controllers",
+      "Ship Internal - Planetary Vehicle Hangars",
+      "Ship Internal - Refineries",
+      "Ship Internal - Shield Cell Banks",
+      "Ship Internal - Shield Generators",
       "Vehicle Shields",
       "Vehicle Weapons",
       "Vehicle Specials"
@@ -217,6 +248,73 @@
           "value": 0
         }
       },
+      "karmaCost": {
+        "karmaCost": {
+          "value": 0
+        }
+      },
+      "resistKnockdown": {
+        "resistKnockdown": {
+          "value": 0
+        }
+      },
+      "extraMeters": {
+        "extraMeters": {
+          "value": 0
+        }
+      },
+      "extraCarryingCapacity": {
+        "extraCarryingCapacity": {
+          "value": 0
+        }
+      },
+      "count": {
+        "count": {
+          "value": 1
+        }
+      },
+      "meleeFightingDamageBonus": {
+        "meleeFightingDamageBonus": {
+          "value": 0
+        }
+      },
+      "enduranceAddition": {
+        "enduranceAddition": {
+          "value": 0
+        }
+      },
+      "initiativeAddition": {
+        "initiativeAddition": {
+          "value": 0
+        }
+      },
+      "notes": {
+        "notes": {
+          "value": ""
+        }
+      },
+      "wearable": {
+        "wearable": {
+          "value": false
+        }
+      },
+      "worn": {
+        "worn": {
+          "value": false
+        }
+      },
+      "effects": {
+        "effects": {
+          "value": []
+        }
+      },
+      "onShip": {
+        "onShip": {
+          "type": "Boolean",
+          "label": "ITEM.OnShip",
+          "value": 0
+        }
+      },
       "armour": {
         "armour": {
           "absorbFighting": {
@@ -272,16 +370,6 @@
           "enhancement": {
             "type": "String",
             "label": "ITEM.Armour.Enhancement",
-            "value": false
-          },
-          "wearable": {
-            "type": "Boolean",
-            "label": "ITEM.Armour.Wearable",
-            "value": true
-          },
-          "worn": {
-            "type": "Boolean",
-            "label": "ITEM.Armour.Worn",
             "value": false
           }
         }
@@ -357,14 +445,198 @@
             "type": "Number",
             "label": "ITEM.RangedWeapon.IsTwoHanded",
             "value": 0
+          }
+        }
+      },
+      "melee": {
+        "melee": {
+          "type": {
+            "type": "Number",
+            "label": "ITEM.MeleeWeapons.Type",
+            "value": 0
           },
-          "notes": {
+          "finesse": {
+            "type": "Number",
+            "label": "ITEM.MeleeWeapons.Finesse",
+            "value": 0
+          },
+          "damage": {
             "type": "String",
-            "label": "ITEM.RangedWeapon.Notes",
+            "label": "ITEM.MeleeWeapons.Damage",
+            "value": 0
+          },
+          "damage2h": {
+            "type": "String",
+            "label": "ITEM.MeleeWeapons.Damage2h",
+            "value": 0
+          },
+          "hands": {
+            "type": "Number",
+            "label": "ITEM.WeaponHands",
             "value": ""
           }
         }
+      },
+      "rangedWeapons": {
+        "rangedWeapons": {
+          "type": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.Type",
+            "value": 0
+          },
+          "shortRange": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.ShortRange",
+            "value": 0
+          },
+          "shortRangeDamage": {
+            "type": "String",
+            "label": "ITEM.RangedWeapons.Damage",
+            "value": 0
+          },
+          "shortRangeDifficulty": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.Difficulty",
+            "value": 0
+          },
+          "mediumRange": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.MediumRange",
+            "value": 0
+          },
+          "mediumRangeDamage": {
+            "type": "String",
+            "label": "ITEM.RangedWeapons.Damage",
+            "value": 0
+          },
+          "mediumRangeDifficulty": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.Difficulty",
+            "value": 0
+          },
+          "longRange": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.LongRange",
+            "value": 0
+          },
+          "longRangeDamage": {
+            "type": "String",
+            "label": "ITEM.RangedWeapons.Damage",
+            "value": 0
+          },
+          "longRangeDifficulty": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.Difficulty",
+            "value": 0
+          },
+          "oneHanded": {
+            "type": "Boolean",
+            "label": "ITEM.RangedWeapons.OneHanded",
+            "value": true
+          },
+          "burst": {
+            "type": "String",
+            "label": "ITEM.RangedWeapons.Burst",
+            "value": 0
+          },
+          "destroyCover": {
+            "type": "Boolean",
+            "label": "ITEM.RangedWeapons.DestroyCover",
+            "value": false
+          },
+          "divideFire": {
+            "type": "Boolean",
+            "label": "ITEM.RangedWeapons.DivideFire",
+            "value": false
+          },
+          "directFireExplosive": {
+            "type": "Boolean",
+            "label": "ITEM.RangedWeapons.DirectFireExplosive",
+            "value": false
+          },
+          "blastRadiusFatal": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.BlastRadiusFatal",
+            "value": 0
+          },
+          "blastRadiusInjury": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.BlastRadiusInjury",
+            "value": 0
+          },
+          "damageFatal": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.BlastRadiusFatal",
+            "value": 0
+          },
+          "damageInjury": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.BlastRadiusInjury",
+            "value": 0
+          },
+          "absorbFighting": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.AbsorbFighting",
+            "value": 0
+          },
+          "absorbMelee": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.AbsorbMelee",
+            "value": 0
+          },
+          "absorbKinetic": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.AbsorbKinetic",
+            "value": 0
+          },
+          "absorbEnergy": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.AbsorbEnergy",
+            "value": 0
+          },
+          "absorbExplosive": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.AbsorbExplosive",
+            "value": 0
+          },
+          "absorbToxic": {
+            "type": "Boolean",
+            "label": "ITEM.RangedWeapons.AbsorbToxic",
+            "value": false
+          },
+          "minimumSafeRange": {
+            "type": "Boolean",
+            "label": "ITEM.RangedWeapons.MinimumSafeRange",
+            "value": false
+          }
+        }
+      },
+      "cybernetics": {
+        "cybernetics": {
+
+        }
+      },
+      "equipment": {
+        "equipment": {
+          "notes": {
+            "type": "String",
+            "label": "ITEM.Notes",
+            "value": 0
+          }
+        }
       }
+    },
+    "Armour": {
+      "templates": [
+        "internalId",
+        "onShip",
+        "cost",
+        "details",
+        "socialFactor",
+        "notes",
+        "wearable",
+        "armour"
+      ]
     },
     "backgrounds": {
       "templates": [
@@ -373,9 +645,36 @@
         "backgrounds"
       ]
     },
+    "Cybernetics": {
+      "templates": [
+        "internalId",
+        "onShip",
+        "cost",
+        "karmaCost",
+        "enduranceAddition",
+        "notes",
+        "details",
+        "socialFactor",
+        "effects",
+        "wearable",
+        "armour",
+        "cybernetics"
+      ]
+    },
     "enhancements": {
       "templates": [
         "details"
+      ]
+    },
+    "General Equipment": {
+      "templates": [
+        "internalId",
+        "onShip",
+        "cost",
+        "details",
+        "notes",
+        "socialFactor",
+        "equipment"
       ]
     },
     "Karma Capabilities": {
@@ -385,22 +684,225 @@
         "karma"
       ]
     },
-    "Equipment": {
+    "Ranged Weapons": {
       "templates": [
         "internalId",
-        "details"
-      ],
-      "count": {
-        "type": "Number",
-        "value": 1
-      }
+        "onShip",
+        "cost",
+        "notes",
+        "details",
+        "rangedWeapons"
+      ]
     },
-    "Armour": {
+    "Melee Weapons": {
+      "templates": [
+        "internalId",
+        "onShip",
+        "cost",
+        "notes",
+        "details",
+        "melee"
+      ]
+    },
+    "Ammo Clips": {
       "templates": [
         "internalId",
         "cost",
+        "onShip",
         "details",
-        "armour"
+        "count"
+      ]
+    },
+    "Commodities": {
+      "templates": [
+        "internalId",
+        "cost",
+        "onShip",
+        "details",
+        "count"
+      ]
+    },
+    "Ship Bulkheads": {
+      "templates": [
+        "internalId",
+        "cost",
+        "onShip",
+        "details"
+      ]
+    },
+    "Ship Power Plants": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Thrusters": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship FSD": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Life Support": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Sensors": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Shields": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Weapons": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Utility Mounts": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - AFM Units": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Cargo Racks": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Collector Limpet Controllers": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Docking Computer": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - FSD Interdictor": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Fuel Scoops": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Hatch Breaker Limpet Controllers": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Hull Reinforcement Packages": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Module Reinforcement Packages": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Prospector Limpet Controllers": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Planetary Vehicle Hangars": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Refineries": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Shield Cell Banks": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Internal - Shield Generators": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Vehicle Shields": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Vehicle Weapons": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Vehicle Specials": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
       ]
     }
   }

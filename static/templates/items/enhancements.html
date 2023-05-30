@@ -1,11 +1,5 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <header class="sheet-header" ondragstart="return false;" ondrop="return false;">
-        <h1 class="charname item">
-            <input class="input name" name="name" type="text" value="{{item.name}}"
-                   placeholder="{{localize 'ITEM.EnhancementName'}}"/>
-            <span class="label name">{{localize "ITEM.EnhancementName"}}</span>
-        </h1>
-    </header>
+    {{> systems/edrpg/templates/items/partials/item-all-header.html}}
     <!-- TABS -->
     <section class="tab-sections">
         <nav class="sheet-tabs tabs" ondragstart="return false;" ondrop="return false;">

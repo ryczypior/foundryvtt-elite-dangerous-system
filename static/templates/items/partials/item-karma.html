@@ -1,20 +1,34 @@
-<h2 class="note-section label">{{localize "ITEM.Karma.Prerequisite"}}</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="note-section label">{{localize "ITEM.Karma.Prerequisite"}}</h2>
 {{editor system.karma.effect.value target="system.karma.effect.value" engine="prosemirror" button=true
 owner=owner editable=editable}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
 <h2 class="note-section label">{{localize "ITEM.Karma.Effect"}}</h2>
 {{editor system.karma.prerequisite.value target="system.karma.prerequisite.value" engine="prosemirror" button=true
 owner=owner editable=editable}}
-<div class="flex">
-    <div class="col-4">
-        {{localize "ITEM.Karma.Cost"}}
+        </div>
     </div>
-    <div class="col-8">
-        <input class="input-info" type="number" value="{{system.karma.cost.value}}" name="system.karma.cost.value" min="0" step="1">
-    </div>
-    <div class="col-4">
-        {{localize "ITEM.Karma.Skill"}}
-    </div>
-    <div class="col-8">
-        <input class="input-info" type="text" value="{{system.karma.skill.value}}" name="system.karma.skill.value">
+    <div class="row">
+        <div class="col-12">
+            <div class="flex">
+                <div class="col-4">
+                    {{localize "ITEM.Karma.Cost"}}
+                </div>
+                <div class="col-8">
+                    <input class="input-info" type="number" value="{{system.karma.cost.value}}" name="system.karma.cost.value" min="0" step="1">
+                </div>
+                <div class="col-4">
+                    {{localize "ITEM.Karma.Skill"}}
+                </div>
+                <div class="col-8">
+                    <input class="input-info" type="text" value="{{system.karma.skill.value}}" name="system.karma.skill.value">
+                </div>
+            </div>
+        </div>
     </div>
 </div>

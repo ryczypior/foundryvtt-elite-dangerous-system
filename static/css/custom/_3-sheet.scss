@@ -157,5 +157,19 @@
       }
     }
   }
-
+  .sheet-tabs{
+    margin: .8em 0;
+    border-top: solid 1px $default-color;
+    border-bottom: solid 1px $default-color;
+    font-weight: bold;
+    background: $sheet-tabs-gradient;
+    .item{
+      padding: 5px 10px;
+    }
+    .active{
+      background: $active-tab-background;
+      color: $active-tab-color;
+      text-shadow: none;
+    }
+  }
 }

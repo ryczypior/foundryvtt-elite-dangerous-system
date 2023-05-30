@@ -72,18 +72,22 @@ export default class ActorSheetEDRPG extends ActorSheet {
     }
     return await this.actor.update({"system.skills": skills});
   }
-  async addSkillValue(skill, valueToAdd){
+
+  /**
+   * @param skillsToChange [{skillId, skillValue}]
+   */
+  async addSkillValue(skillsToChange){
     const skills = duplicate(this.actor._source.system.skills);
-    valueToAdd = Number(valueToAdd);
-    for(let skillSectionId in skills){
-      for(let skillId in skills[skillSectionId].skills){
-        if(skillId === skill){
-          let skillValue = skills[skillSectionId].skills[skillId].value + valueToAdd;
-          return await this.changeSkillValue(skill, skillValue);
+    skillsToChange.forEach(element => {
+      for(let skillSectionId in skills){
+        for(let skillId in skills[skillSectionId].skills){
+          if(skillId === element.skillId){
+            skills[skillSectionId].skills[skillId].value = skills[skillSectionId].skills[skillId].value + element.skillValue;
+          }
         }
       }
-    }
-    return null;
+    });
+    return await this.actor.update({"system.skills": skills});
   }
 
   async _onChangeSkillValue(event) {

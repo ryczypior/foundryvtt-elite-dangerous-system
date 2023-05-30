@@ -3,7 +3,6 @@ import EDRPG from "../../system/EDRPG.js";
 
 export default class ItemSheetEDRPGBackground extends ItemSheetEDRPG {
   get template() {
-    if (!game.user.isGM && this.item.limited) return "systems/edrpg/templates/items/item-limited.html";
     return "systems/edrpg/templates/items/backgrounds.html";
   }
 
@@ -26,8 +25,6 @@ export default class ItemSheetEDRPGBackground extends ItemSheetEDRPG {
       effects = [];
     }
     const effect = duplicate(game.edrpg.BackgroundEffect);
-    //effect.skills = duplicate(EDRPG.skills);
-    //effect.backgroundBonusTypes = duplicate(EDRPG.backgroundBonusTypes);
     effects.push(effect);
     return await this.item.update({"system.backgrounds.effects": effects});
   }

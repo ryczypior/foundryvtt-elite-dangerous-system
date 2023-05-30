@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>{{localize "ITEM.Details"}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+            <span>{{localize 'ITEM.MeleeWeapons.Type'}}</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-8">
+            {{#select system.melee.type.value}}
+            <select name="system.melee.type.value">
+                <option>--</option>
+                {{#each meleeWeaponsTypes as |type id|}}
+                <option value="{{id}}">{{localize type.name}}</option>
+                {{/each}}
+            </select>
+            {{/select}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+            <span>{{localize 'ITEM.MeleeWeapons.Finesse'}}</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-8">
+            <input type="number" value="{{system.melee.finesse.value}}" name="system.melee.finesse.value"
+                   placeholder="{{localize 'ITEM.MeleeWeapons.Finesse'}}" title="{{localize 'ITEM.MeleeWeapons.Finesse'}}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+            <span>{{localize 'ITEM.WeaponHands'}}</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-8">
+            {{#select system.melee.hands.value}}
+            <select name="system.melee.hands.value" class="changeWeaponHands">
+                <option>--</option>
+                {{#each meleeHands as |type id|}}
+                <option value="{{id}}">{{localize type.name}}</option>
+                {{/each}}
+            </select>
+            {{/select}}
+        </div>
+    </div>
+    {{#if (in system.melee.hands.value "onehand|onetwohand")}}
+    <div class="row hand onehand onetwohand">
+        <div class="col-12 col-md-6 col-lg-4">
+            <span>{{localize 'ITEM.MeleeWeapons.Damage'}}</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-8">
+            <input type="text" value="{{system.melee.damage.value}}" name="system.melee.damage.value"
+                   placeholder="{{localize 'ITEM.MeleeWeapons.Damage'}}" title="{{localize 'ITEM.MeleeWeapons.Damage'}}">
+        </div>
+    </div>
+    {{/if}}
+    {{#if (in system.melee.hands.value "twohand|onetwohand")}}
+    <div class="row hand twohand onetwohand">
+        <div class="col-12 col-md-6 col-lg-4">
+            <span>{{localize 'ITEM.MeleeWeapons.Damage2h'}}</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-8">
+            <input type="text" value="{{system.melee.damage2h.value}}" name="system.melee.damage2h.value"
+                   placeholder="{{localize 'ITEM.MeleeWeapons.Damage2h'}}" title="{{localize 'ITEM.MeleeWeapons.Damage2h'}}">
+        </div>
+    </div>
+    {{/if}}
+</div>
