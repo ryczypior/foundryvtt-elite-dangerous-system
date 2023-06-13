@@ -1,3 +1,42 @@
-<div>
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="col">
+                {{localize 'SHEET.SocialFactor'}}
+            </h2>
+            <p><em>{{localize 'SHEET.SocialFactorInfo'}}</em></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{localize 'SHEET.SocialFactorFromWornItems'}}
+        </div>
+        <div class="col-6">
+            <input type="number" readonly="readonly" value="{{system.socialFactor.sfWornItems.value}}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{localize 'SHEET.SocialFactorFromHonoraryRanks'}}
+        </div>
+        <div class="col-6">
+            <input type="number" readonly="readonly" value="{{system.socialFactor.sfHonoraryRanks.value}}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{localize 'SHEET.SocialFactorFromOther'}}
+        </div>
+        <div class="col-6">
+            <input type="number" class="systemSocialFactorSfOtherValue" value="{{system.socialFactor.sfOther.value}}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{localize 'SHEET.SocialFactorTotal'}}
+        </div>
+        <div class="col-6">
+            <input type="number" readonly="readonly" value="{{system.socialFactor.sfTotal.value}}">
+        </div>
+    </div>
 </div>

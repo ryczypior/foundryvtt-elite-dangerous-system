@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="container-fluid">
+    <div class="row">
+        <h2 class="col">
+            {{localize 'SHEET.Equipment.AmmoClips'}}
+        </h2>
+    </div>
+    <div class="tablebackgrounds tableitems">
+        <div class="row tableheading">
+            <div class="col-8">
+                {{localize 'SHEET.Equipment.Item'}}
+            </div>
+            <div class="col-2">
+                {{localize 'SHEET.Equipment.Count'}}
+            </div>
+            <div class="col-2">
+                {{localize 'SHEET.Actions'}}
+            </div>
+        </div>
+        <section class="background-list item-list">
+            {{#each items as |item id|}}
+            {{#if (eq item.type "Ammo Clips")}}
+            <div class="row tablerow">
+                <div class="col-8 tableheader">
+                    <a class="onChangeActiveDescription">{{item.name}}</a>
+                </div>
+                <div class="col-2 tableinput">
+                    <span>
+                        <input type="number" value="{{item.system.count.value}}" name="item.system.count.value" step="1">
+                    </span>
+                </div>
+                <div class="col-2 tableinput">
+                    <a class="clickRemoveItem" data-id="{{item._id}}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </div>
+                <div class="col-12 tabledescripion">
+                    <div>
+                        {{{item.system.details.description.value}}}
+                        <p>
+                            <strong>{{localize 'ITEM.Cost'}}:</strong> {{formatCredits item.system.cost.value}} {{localize 'TIER.CreditsAbbrev'}}
+                        </p>
+                        {{#if item.system.notes.value}}
+                        <div class="backgroundBonusesDescription">
+                            <p>
+                                {{localize "ITEM.Notes"}}: {{item.system.notes.value}}
+                            </p>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+        </section>
+    </div>
+</div>

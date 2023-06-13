@@ -7,10 +7,10 @@
     <div class="tablebackgrounds tableitems">
         <div class="row tableheading">
             <div class="col-8">
-                {{localize 'SHEET.Equipment.Armour'}}
+                {{localize 'SHEET.Equipment.Weapon'}}
             </div>
             <div class="col-2">
-                {{localize 'SHEET.Equipment.Worn'}}
+                {{localize 'SHEET.Equipment.Equipped'}}
             </div>
             <div class="col-2">
                 {{localize 'SHEET.Actions'}}
@@ -18,14 +18,14 @@
         </div>
         <section class="background-list item-list">
             {{#each items as |item id|}}
-            {{#if (eq item.type "Armour")}}
+            {{#if (eq item.type "Melee Weapons")}}
             <div class="row tablerow">
                 <div class="col-8 tableheader">
                     <a class="onChangeActiveDescription">{{item.name}}</a>
                 </div>
                 <div class="col-2 tableinput">
                     <span class="clickCheckedArmourWorn" data-id="{{id}}" data-discreet="{{item.discreet}}">
-                    {{#if item.system.armour.worn.value}}
+                    {{#if item.system.equipped.value}}
                         <i class="far fa-check-square"></i>
                     {{else}}
                         <i class="far fa-square"></i>
@@ -45,45 +45,20 @@
                         </p>
                         <div class="backgroundBonusesDescription">
                             <p>
-                                {{localize "ITEM.Armour.Absorb"}}:
-                                {{#if item.system.armour.absorbFighting.value}}
-                                <span class="list">{{localize 'ITEM.Armour.AbsorbFighting'}}: {{item.system.armour.absorbFighting.value}}</span>
+                                <span class="list">{{localize 'ITEM.MeleeWeapons.Type'}}: {{item.system.melee.type.value}}</span>
+                                <span class="list">{{localize 'ITEM.MeleeWeapons.Finesse'}}: {{item.system.melee.finesse.value}}</span>
+                                {{#if (or (eq item.system.melee.hands.value "onehand") (eq item.system.melee.hands.value "onetwohand"))}}
+                                    <span class="list">{{localize 'ITEM.MeleeWeapons.Damage'}}: {{item.system.melee.damage.value}}</span>
                                 {{/if}}
-                                {{#if item.system.armour.absorbMelee.value}}
-                                <span class="list">{{localize 'ITEM.Armour.AbsorbMelee'}}: {{item.system.armour.absorbMelee.value}}</span>
-                                {{/if}}
-                                {{#if item.system.armour.absorbKinetic.value}}
-                                <span class="list">{{localize 'ITEM.Armour.AbsorbKinetic'}}: {{item.system.armour.absorbKinetic.value}}</span>
-                                {{/if}}
-                                {{#if item.system.armour.absorbEnergy.value}}
-                                <span class="list">{{localize 'ITEM.Armour.AbsorbEnergy'}}: {{item.system.armour.absorbEnergy.value}}</span>
-                                {{/if}}
-                                {{#if item.system.armour.absorbExplosive.value}}
-                                <span class="list">{{localize 'ITEM.Armour.AbsorbExplosive'}}: {{item.system.armour.absorbExplosive.value}}</span>
-                                {{/if}}
-                                {{#if item.system.armour.absorbToxic.value}}
-                                <span class="list">{{localize 'ITEM.Armour.AbsorbToxic'}}</span>
+                                {{#if (or (eq item.system.melee.hands.value "twohand") (eq item.system.melee.hands.value "onetwohand"))}}
+                                    <span class="list">{{localize 'ITEM.MeleeWeapons.Damage2h'}}: {{item.system.melee.damage2h.value}}</span>
                                 {{/if}}
                             </p>
+                            {{#if item.system.notes.value}}
                             <p>
-                                {{localize "ITEM.Notes"}}:
-                                <span class="list">{{localize 'ITEM.Armour.SocialFactor'}}: {{item.system.armour.socialFactor.value}}</span>
-                                {{#if item.system.armour.athleticsScore.value}}
-                                <span class="list">{{localize 'ITEM.Armour.AthleticsScore'}}: {{item.system.armour.athleticsScore.value}}</span>
-                                {{/if}}
-                                {{#if item.system.armour.intimidateScore.value}}
-                                <span class="list">{{localize 'ITEM.Armour.IntimidateScore'}}: {{item.system.armour.intimidateScore.value}}</span>
-                                {{/if}}
-                                {{#if item.system.armour.strongEnhancement.value}}
-                                <span class="list">{{localize 'ITEM.Armour.Enhancement'}}</span>
-                                {{/if}}
-                                {{#if item.system.armour.hardened.value}}
-                                <span class="list">{{localize 'ITEM.Armour.Hardened'}}: {{item.system.armour.hardened.value}}</span>
-                                {{/if}}
-                                {{#if item.system.armour.discreet.value}}
-                                <span class="list">{{localize 'ITEM.Armour.Discreet'}}</span>
-                                {{/if}}
+                                {{localize "ITEM.Notes"}}: {{item.system.notes.value}}
                             </p>
+                            {{/if}}
                         </div>
                     </div>
                 </div>

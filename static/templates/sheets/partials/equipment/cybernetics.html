@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="row">
+    <h2 class="col">
+      {{localize 'SHEET.Equipment.Cybernetics'}}
+    </h2>
+  </div>
+  <div class="tablebackgrounds tableitems">
+    <div class="row tableheading">
+      <div class="col-6">
+        {{localize 'SHEET.Equipment.Item'}}
+      </div>
+      <div class="col-2">
+        {{localize 'SHEET.KarmaCost'}}
+      </div>
+      <div class="col-2">
+        {{localize 'SHEET.Equipment.Worn'}}
+      </div>
+      <div class="col-2">
+        {{localize 'SHEET.Actions'}}
+      </div>
+    </div>
+    <section class="background-list item-list">
+      {{#each items as |item id|}}
+      {{#if (eq item.type "Cybernetics")}}
+      <div class="row tablerow">
+        <div class="col-6 tableheader">
+          <a class="onChangeActiveDescription">{{item.name}}</a>
+        </div>
+        <div class="col-2 tableinput">
+                    <span>
+                      {{item.system.karmaCost.value}}
+                    </span>
+        </div>
+        <div class="col-2 tableinput">
+                    <span class="clickCheckedWorn" data-id="{{id}}">
+                    {{#if item.system.worn.value}}
+                        <i class="far fa-check-square"></i>
+                    {{else}}
+                        <i class="far fa-square"></i>
+                    {{/if}}
+                    </span>
+        </div>
+        <div class="col-2 tableinput">
+          <a class="clickRemoveItem" data-id="{{item._id}}">
+            <i class="fas fa-trash"></i>
+          </a>
+        </div>
+        <div class="col-12 tabledescripion">
+          <div>
+            {{{item.system.details.description.value}}}
+            <p>
+              <strong>{{localize 'ITEM.Cost'}}:</strong> {{formatCredits item.system.cost.value}} {{localize 'TIER.CreditsAbbrev'}}
+            </p>
+            {{#if item.system.notes.value}}
+            <div class="backgroundBonusesDescription">
+              <p>
+                {{localize "ITEM.Notes"}}: {{item.system.notes.value}}
+              </p>
+            </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+    </section>
+  </div>
+</div>

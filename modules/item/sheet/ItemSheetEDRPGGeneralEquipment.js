@@ -5,7 +5,6 @@ export default class ItemSheetEDRPGGeneralEquipment extends ItemSheetEDRPG {
     return "systems/edrpg/templates/items/general-equipment.html";
   }
 
-
   activateListeners(html) {
     super.activateListeners(html);
   }

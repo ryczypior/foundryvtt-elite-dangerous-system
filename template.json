@@ -108,6 +108,34 @@
           }
         }
       },
+      "socialFactor": {
+        "socialFactor": {
+          "sfWornItems": {
+            "value": 0
+          },
+          "sfHonoraryRanks": {
+            "value": 0
+          },
+          "sfOther": {
+            "value": 0
+          },
+          "sfTotal": {
+            "value": 0
+          }
+        }
+      },
+      "honoraryRanks": {
+        "honoraryRanks": {
+          "imperial": {
+            "value": "",
+            "socialFactor": 0
+          },
+          "federation": {
+            "value": "",
+            "socialFactor": 0
+          }
+        }
+      },
       "skills": {
         "skills": {}
       }
@@ -115,7 +143,9 @@
     "character": {
       "templates": [
         "status",
-        "skills"
+        "skills",
+        "socialFactor",
+        "honoraryRanks"
       ]
     },
     "npc": {
@@ -298,8 +328,18 @@
           "value": false
         }
       },
+      "removable": {
+        "removable": {
+          "value": true
+        }
+      },
       "worn": {
         "worn": {
+          "value": false
+        }
+      },
+      "equipped": {
+        "equipped": {
           "value": false
         }
       },
@@ -357,94 +397,10 @@
             "label": "ITEM.Armour.Hardened",
             "value": 0
           },
-          "athleticsScore": {
-            "type": "Number",
-            "label": "ITEM.Armour.AthleticsScore",
-            "value": 0
-          },
-          "intimidateScore": {
-            "type": "Number",
-            "label": "ITEM.Armour.IntimidateScore",
-            "value": 0
-          },
           "enhancement": {
             "type": "String",
             "label": "ITEM.Armour.Enhancement",
             "value": false
-          }
-        }
-      },
-      "ranged-weapons": {
-        "ranged-weapons": {
-          "type": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.Type",
-            "value": ""
-          },
-          "damage": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.Damage",
-            "value": ""
-          },
-          "shortRange": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.ShortRange",
-            "value": ""
-          },
-          "shortRangeDifficulty": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.ShortRangeDifficulty",
-            "value": ""
-          },
-          "shortRangeDamage": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.ShortRangeDamage",
-            "value": ""
-          },
-          "mediumRange": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.MediumRange",
-            "value": ""
-          },
-          "mediumRangeDifficulty": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.MediumRangeDifficulty",
-            "value": ""
-          },
-          "mediumRangeDamage": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.MediumRangeDamage",
-            "value": ""
-          },
-          "longRange": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.LongRange",
-            "value": ""
-          },
-          "longRangeDifficulty": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.LongRangeDifficulty",
-            "value": ""
-          },
-          "longRangeDamage": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.LongRangeDamage",
-            "value": ""
-          },
-          "burst": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.Burst",
-            "value": ""
-          },
-          "ammo": {
-            "type": "String",
-            "label": "ITEM.RangedWeapon.Ammo",
-            "value": ""
-          },
-          "isTwoHanded": {
-            "type": "Number",
-            "label": "ITEM.RangedWeapon.IsTwoHanded",
-            "value": 0
           }
         }
       },
@@ -471,9 +427,22 @@
             "value": 0
           },
           "hands": {
-            "type": "Number",
+            "type": "String",
             "label": "ITEM.WeaponHands",
             "value": ""
+          }
+        }
+      },
+      "ammo": {
+        "ammo": {
+          "usesAmmo": {
+            "value": null
+          },
+          "maxAmmoInClip": {
+            "value": 1
+          },
+          "currentAmmo": {
+            "value": 1
           }
         }
       },
@@ -482,6 +451,11 @@
           "type": {
             "type": "Number",
             "label": "ITEM.RangedWeapons.Type",
+            "value": 0
+          },
+          "isHeavy": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapons.IsHeavy",
             "value": 0
           },
           "shortRange": {
@@ -529,11 +503,6 @@
             "label": "ITEM.RangedWeapons.Difficulty",
             "value": 0
           },
-          "oneHanded": {
-            "type": "Boolean",
-            "label": "ITEM.RangedWeapons.OneHanded",
-            "value": true
-          },
           "burst": {
             "type": "String",
             "label": "ITEM.RangedWeapons.Burst",
@@ -566,48 +535,28 @@
           },
           "damageFatal": {
             "type": "Number",
-            "label": "ITEM.RangedWeapons.BlastRadiusFatal",
+            "label": "ITEM.RangedWeapons.DamageFatal",
             "value": 0
           },
           "damageInjury": {
             "type": "Number",
-            "label": "ITEM.RangedWeapons.BlastRadiusInjury",
+            "label": "ITEM.RangedWeapons.DamageInjury",
             "value": 0
-          },
-          "absorbFighting": {
-            "type": "Number",
-            "label": "ITEM.RangedWeapons.AbsorbFighting",
-            "value": 0
-          },
-          "absorbMelee": {
-            "type": "Number",
-            "label": "ITEM.RangedWeapons.AbsorbMelee",
-            "value": 0
-          },
-          "absorbKinetic": {
-            "type": "Number",
-            "label": "ITEM.RangedWeapons.AbsorbKinetic",
-            "value": 0
-          },
-          "absorbEnergy": {
-            "type": "Number",
-            "label": "ITEM.RangedWeapons.AbsorbEnergy",
-            "value": 0
-          },
-          "absorbExplosive": {
-            "type": "Number",
-            "label": "ITEM.RangedWeapons.AbsorbExplosive",
-            "value": 0
-          },
-          "absorbToxic": {
-            "type": "Boolean",
-            "label": "ITEM.RangedWeapons.AbsorbToxic",
-            "value": false
           },
           "minimumSafeRange": {
             "type": "Boolean",
             "label": "ITEM.RangedWeapons.MinimumSafeRange",
             "value": false
+          },
+          "damage": {
+            "type": "String",
+            "label": "ITEM.RangedWeapon.Damage",
+            "value": ""
+          },
+          "isTwoHanded": {
+            "type": "Number",
+            "label": "ITEM.RangedWeapon.IsTwoHanded",
+            "value": 0
           }
         }
       },
@@ -631,6 +580,7 @@
         "internalId",
         "onShip",
         "cost",
+        "effects",
         "details",
         "socialFactor",
         "notes",
@@ -642,7 +592,8 @@
       "templates": [
         "internalId",
         "details",
-        "backgrounds"
+        "backgrounds",
+        "removable"
       ]
     },
     "Cybernetics": {
@@ -663,7 +614,8 @@
     },
     "enhancements": {
       "templates": [
-        "details"
+        "details",
+        "internalId"
       ]
     },
     "General Equipment": {
@@ -672,16 +624,19 @@
         "onShip",
         "cost",
         "details",
+        "wearable",
         "notes",
         "socialFactor",
-        "equipment"
+        "worn",
+        "effects"
       ]
     },
     "Karma Capabilities": {
       "templates": [
         "internalId",
         "details",
-        "karma"
+        "karma",
+        "removable"
       ]
     },
     "Ranged Weapons": {
@@ -689,8 +644,12 @@
         "internalId",
         "onShip",
         "cost",
+        "equipped",
+        "effects",
+        "ammo",
         "notes",
         "details",
+        "armour",
         "rangedWeapons"
       ]
     },
@@ -700,7 +659,9 @@
         "onShip",
         "cost",
         "notes",
+        "effects",
         "details",
+        "equipped",
         "melee"
       ]
     },

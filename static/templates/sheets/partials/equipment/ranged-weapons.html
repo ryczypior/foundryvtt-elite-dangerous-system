@@ -1,3 +1,71 @@
-<div>
-
+<div class="container-fluid">
+  <div class="row">
+    <h2 class="col">
+      {{localize 'SHEET.Equipment.RangedWeapons'}}
+    </h2>
+  </div>
+  <div class="tablebackgrounds tableitems">
+    <div class="row tableheading">
+      <div class="col-8">
+        {{localize 'SHEET.Equipment.Weapon'}}
+      </div>
+      <div class="col-2">
+        {{localize 'SHEET.Equipment.Equipped'}}
+      </div>
+      <div class="col-2">
+        {{localize 'SHEET.Actions'}}
+      </div>
+    </div>
+    <section class="background-list item-list">
+      {{#each items as |item id|}}
+      {{#if (eq item.type "Ranged Weapons")}}
+      <div class="row tablerow">
+        <div class="col-8 tableheader">
+          <a class="onChangeActiveDescription">{{item.name}}</a>
+        </div>
+        <div class="col-2 tableinput">
+                    <span class="clickCheckedArmourWorn" data-id="{{id}}" data-discreet="{{item.discreet}}">
+                    {{#if item.system.equipped.value}}
+                        <i class="far fa-check-square"></i>
+                    {{else}}
+                        <i class="far fa-square"></i>
+                    {{/if}}
+                    </span>
+        </div>
+        <div class="col-2 tableinput">
+          <a class="clickRemoveItem" data-id="{{item._id}}">
+            <i class="fas fa-trash"></i>
+          </a>
+        </div>
+        <div class="col-12 tabledescripion">
+          <div>
+            {{{item.system.details.description.value}}}
+            <p>
+              <strong>{{localize 'ITEM.Cost'}}:</strong> {{formatCredits item.system.cost.value}} {{localize 'TIER.CreditsAbbrev'}}
+            </p>
+            <div class="backgroundBonusesDescription">
+              <p>
+                <span class="list">{{localize 'ITEM.MeleeWeapons.Type'}}: {{item.system.melee.type.value}}</span>
+                <span class="list">{{localize 'ITEM.MeleeWeapons.Finesse'}}: {{item.system.melee.finesse.value}}</span>
+                <span class="list">{{localize 'ITEM.MeleeWeapons.Finesse'}}: {{item.system.melee.finesse.value}}</span>
+                {{#if (or (eq item.system.melee.hands.value "onehand") (eq item.system.melee.hands.value "onetwohand"))}}
+                <span class="list">{{localize 'ITEM.MeleeWeapons.Damage'}}: {{item.system.melee.damage.value}}</span>
+                {{/if}}
+                {{#if (or (eq item.system.melee.hands.value "twohand") (eq item.system.melee.hands.value "onetwohand"))}}
+                <span class="list">{{localize 'ITEM.MeleeWeapons.Damage2h'}}: {{item.system.melee.damage2h.value}}</span>
+                {{/if}}
+              </p>
+              {{#if item.system.notes.value}}
+              <p>
+                {{localize "ITEM.Notes"}}: {{item.system.notes.value}}
+              </p>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+    </section>
+  </div>
 </div>

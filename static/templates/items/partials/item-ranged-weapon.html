@@ -1,0 +1,250 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>{{localize "ITEM.Details"}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.Type'}}</span>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      {{#select system.rangedWeapons.type.value}}
+      <select name="system.rangedWeapons.type.value">
+        <option>--</option>
+        {{#each rangedWeaponsTypes as |type id|}}
+        <option value="{{id}}">{{localize type.name}}</option>
+        {{/each}}
+      </select>
+      {{/select}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.Damage'}}</span>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="text" class="rangedWeaponDamage" value="{{system.rangedWeapons.damage.value}}"
+             name="system.rangedWeapons.damage.value"
+             placeholder="{{localize 'ITEM.RangedWeapons.Damage'}}"
+             title="{{localize 'ITEM.RangedWeapons.Damage'}}">
+    </div>
+  </div>
+  <div class="tableitems">
+    <div class="row tablerow tableheading">
+      <div class="col-3">
+      </div>
+      <div class="col-3">
+        <span>{{localize 'ITEM.RangedWeapons.Range'}} [m]</span>
+      </div>
+      <div class="col-3">
+        <span>{{localize 'ITEM.RangedWeapons.ToHit'}}</span>
+      </div>
+      <div class="col-3">
+        <span>{{localize 'ITEM.RangedWeapons.DamageAbbr'}}</span>
+      </div>
+    </div>
+    <div class="row tablerow">
+      <div class="col-3 tableheader">
+        <span>{{localize 'ITEM.RangedWeapons.ShortRangeAbbr'}}</span>
+      </div>
+      <div class="col-3 tableinput">
+        <input type="number" value="{{system.rangedWeapons.shortRange.value}}"
+               name="system.rangedWeapons.shortRange.value"
+               placeholder="{{localize 'ITEM.RangedWeapons.Range'}}"
+               title="{{localize 'ITEM.RangedWeapons.Range'}}">
+      </div>
+      <div class="col-3 tableinput">
+        <input type="number" value="{{system.rangedWeapons.shortRangeDifficulty.value}}"
+               name="system.rangedWeapons.shortRangeDifficulty.value"
+               placeholder="{{localize 'ITEM.RangedWeapons.ToHit'}}"
+               title="{{localize 'ITEM.RangedWeapons.ToHit'}}">
+      </div>
+      <div class="col-3 tableinput">
+        <input type="text" value="{{system.rangedWeapons.shortRangeDamage.value}}"
+               name="system.rangedWeapons.shortRangeDamage.value"
+               placeholder="{{localize 'ITEM.RangedWeapons.DamageAbbr'}}"
+               title="{{localize 'ITEM.RangedWeapons.DamageAbbr'}}">
+      </div>
+    </div>
+    <div class="row tablerow">
+      <div class="col-3 tableheader">
+        <span>{{localize 'ITEM.RangedWeapons.MediumRangeAbbr'}}</span>
+      </div>
+      <div class="col-3 tableinput">
+        <input type="number" value="{{system.rangedWeapons.mediumRange.value}}"
+               name="system.rangedWeapons.mediumRange.value"
+               placeholder="{{localize 'ITEM.RangedWeapons.Range'}}"
+               title="{{localize 'ITEM.RangedWeapons.Range'}}">
+      </div>
+      <div class="col-3 tableinput">
+        <input type="number" value="{{system.rangedWeapons.mediumRangeDifficulty.value}}"
+               name="system.rangedWeapons.mediumRangeDifficulty.value"
+               placeholder="{{localize 'ITEM.RangedWeapons.ToHit'}}"
+               title="{{localize 'ITEM.RangedWeapons.ToHit'}}">
+      </div>
+      <div class="col-3 tableinput">
+        <input type="text" value="{{system.rangedWeapons.mediumRangeDamage.value}}"
+               name="system.rangedWeapons.mediumRangeDamage.value"
+               placeholder="{{localize 'ITEM.RangedWeapons.DamageAbbr'}}"
+               title="{{localize 'ITEM.RangedWeapons.DamageAbbr'}}">
+      </div>
+    </div>
+    <div class="row tablerow">
+      <div class="col-3 tableheader">
+        <span>{{localize 'ITEM.RangedWeapons.LongRangeAbbr'}}</span>
+      </div>
+      <div class="col-3 tableinput">
+        <input type="number" value="{{system.rangedWeapons.longRange.value}}"
+               name="system.rangedWeapons.longRange.value"
+               placeholder="{{localize 'ITEM.RangedWeapons.Range'}}"
+               title="{{localize 'ITEM.RangedWeapons.Range'}}">
+      </div>
+      <div class="col-3 tableinput">
+        <input type="number" value="{{system.rangedWeapons.longRangeDifficulty.value}}"
+               name="system.rangedWeapons.longRangeDifficulty.value"
+               placeholder="{{localize 'ITEM.RangedWeapons.ToHit'}}"
+               title="{{localize 'ITEM.RangedWeapons.ToHit'}}">
+      </div>
+      <div class="col-3 tableinput">
+        <input type="text" value="{{system.rangedWeapons.longRangeDamage.value}}"
+               name="system.rangedWeapons.longRangeDamage.value"
+               placeholder="{{localize 'ITEM.RangedWeapons.DamageAbbr'}}"
+               title="{{localize 'ITEM.RangedWeapons.DamageAbbr'}}">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.Burst'}}</span>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="number" value="{{system.rangedWeapons.burst.value}}" name="system.rangedWeapons.burst.value"
+             placeholder="{{localize 'ITEM.RangedWeapons.Burst'}}"
+             title="{{localize 'ITEM.RangedWeapons.Burst'}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.UsesAmmo'}}</span><br>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      {{#select system.ammo.usesAmmo.value}}
+      <select name="system.ammo.usesAmmo.value">
+        <option>--</option>
+        {{#each ammoClips as |ammo id|}}
+        <option value="{{id}}">{{ammo.name}}</option>
+        {{/each}}
+      </select>
+      {{/select}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.MaxAmmoInClip'}}</span><br>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="number" value="{{system.ammo.maxAmmoInClip.value}}" name="system.ammo.maxAmmoInClip.value"
+             placeholder="{{localize 'ITEM.MaxAmmoInClip'}}"
+             title="{{localize 'ITEM.MaxAmmoInClip'}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.DestroyCover'}}</span>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="checkbox" class="destroyCover" value="1"
+             {{#if system.rangedWeapons.destroyCover.value}}
+             checked="checked"
+             {{/if}}
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.DivideFire'}}</span>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="checkbox" class="divideFire" value="1"
+             {{#if system.rangedWeapons.divideFire.value}}
+             checked="checked"
+             {{/if}}
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.DirectFireExplosive'}}</span>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="checkbox" class="directFireExplosive" value="1"
+             {{#if system.rangedWeapons.directFireExplosive.value}}
+             checked="checked"
+             {{/if}}
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.IsTwoHanded'}}</span>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="checkbox" class="isTwoHanded" value="1"
+             {{#if system.rangedWeapons.isTwoHanded.value}}
+             checked="checked"
+             {{/if}}
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.BlastRadiusInjury'}} [m]</span><br>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="number" value="{{system.rangedWeapons.blastRadiusInjury.value}}" name="system.rangedWeapons.blastRadiusInjury.value"
+             placeholder="{{localize 'ITEM.RangedWeapons.BlastRadiusInjury'}}"
+             title="{{localize 'ITEM.RangedWeapons.BlastRadiusInjury'}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.BlastRadiusFatal'}} [m]</span><br>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="number" value="{{system.rangedWeapons.blastRadiusFatal.value}}" name="system.rangedWeapons.blastRadiusFatal.value"
+             placeholder="{{localize 'ITEM.RangedWeapons.BlastRadiusFatal'}}"
+             title="{{localize 'ITEM.RangedWeapons.BlastRadiusFatal'}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.DamageInjury'}}</span><br>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="string" value="{{system.rangedWeapons.damageInjury.value}}" name="system.rangedWeapons.damageInjury.value"
+             placeholder="{{localize 'ITEM.RangedWeapons.DamageInjury'}}"
+             title="{{localize 'ITEM.RangedWeapons.DamageInjury'}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.DamageFatal'}}</span><br>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="string" value="{{system.rangedWeapons.damageFatal.value}}" name="system.rangedWeapons.damageFatal.value"
+             placeholder="{{localize 'ITEM.RangedWeapons.DamageFatal'}}"
+             title="{{localize 'ITEM.RangedWeapons.DamageFatal'}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <span>{{localize 'ITEM.RangedWeapons.MinimumSafeRange'}} [m]</span><br>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <input type="number" value="{{system.rangedWeapons.minimumSafeRange.value}}" name="system.rangedWeapons.minimumSafeRange.value"
+             placeholder="{{localize 'ITEM.RangedWeapons.MinimumSafeRange'}}"
+             title="{{localize 'ITEM.RangedWeapons.MinimumSafeRange'}}">
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import EDRPG from "../../system/EDRPG";
+import EDRPGUtils from "../../system/EDRPGUtils";
 
 export default class ItemSheetEDRPG extends ItemSheet {
   static get defaultOptions() {
@@ -14,7 +15,12 @@ export default class ItemSheetEDRPG extends ItemSheet {
     const sheetData = await super.getData();
     sheetData.system = sheetData.data.system // project system data so that handlebars has the same name and value paths
     sheetData.isGM = this.isGM === true;
+    sheetData.rangedWeaponsTypes = duplicate(EDRPG.rangedWeaponsTypes);
+    sheetData.meleeWeaponsTypes = duplicate(EDRPG.meleeWeaponsTypes);
+    sheetData.meleeHands = duplicate(EDRPG.meleeHands);
     sheetData.skills = duplicate(EDRPG.skills);
+    sheetData.ammoClips = await EDRPGUtils.findItemsByType('Ammo Clips');
+    sheetData.enhancements = await EDRPGUtils.findItemsByType('enhancements');
     sheetData.enrichment = await this._handleEnrichment(sheetData.system);
     return sheetData;
   }
@@ -53,10 +59,9 @@ export default class ItemSheetEDRPG extends ItemSheet {
   }
 
   async _onEffectCreateClick(event) {
-    console.log(this.item._source.system);
-    let effects = duplicate(this.item._source.system.effects);
-    if(!effects.value){
-      effects.value = [];
+    let effects = {value: []};
+    if(this.item._source.system.effects){
+      effects = duplicate(this.item._source.system.effects);
     }
     const effect = duplicate(game.edrpg.ItemEffect);
     effects.value.push(effect);
@@ -95,13 +100,60 @@ export default class ItemSheetEDRPG extends ItemSheet {
     return await this.item.update({"system.effects": effects});
   }
 
+  async _onDestroyCoverChange (event){
+    const rangedWeapons = duplicate(this.item._source.system.rangedWeapons);
+    rangedWeapons.destroyCover.value = event.target.checked;
+    return await this.item.update({"system.rangedWeapons": rangedWeapons});
+  }
+
+  async _onDivideFireChange (event){
+    const rangedWeapons = duplicate(this.item._source.system.rangedWeapons);
+    rangedWeapons.divideFire.value = event.target.checked;
+    return await this.item.update({"system.rangedWeapons": rangedWeapons});
+  }
+
+  async _onDirectFireExplosiveChange (event){
+    const rangedWeapons = duplicate(this.item._source.system.rangedWeapons);
+    rangedWeapons.directFireExplosive.value = event.target.checked;
+    return await this.item.update({"system.rangedWeapons": rangedWeapons});
+  }
+
+  async _onIsTwoHandedChange (event){
+    const rangedWeapons = duplicate(this.item._source.system.rangedWeapons);
+    rangedWeapons.isTwoHanded.value = event.target.checked;
+    return await this.item.update({"system.rangedWeapons": rangedWeapons});
+  }
+
   _onRemoveFromCharacter(actor){
     return null;
+  }
+
+  async _onRangedDamageChange(event){
+    console.log(event);
+    const rangedWeapons = duplicate(this.item._source.system.rangedWeapons);
+    if(EDRPGUtils.isEmpty(rangedWeapons.shortRangeDamage.value)){
+      rangedWeapons.shortRangeDamage.value = event.target.value;
+      event.data.html.find('[name="system.rangedWeapons.shortRangeDamage.value"]').val(event.target.value);
+    }
+    if(EDRPGUtils.isEmpty(rangedWeapons.mediumRangeDamage.value)){
+      rangedWeapons.mediumRangeDamage.value = event.target.value;
+      event.data.html.find('[name="system.rangedWeapons.mediumRangeDamage.value"]').val(event.target.value);
+    }
+    if(EDRPGUtils.isEmpty(rangedWeapons.longRangeDamage.value)){
+      rangedWeapons.longRangeDamage.value = event.target.value;
+      event.data.html.find('[name="system.rangedWeapons.longRangeDamage.value"]').val(event.target.value);
+    }
+    return await this.item.update({"system.rangedWeapons": rangedWeapons});
   }
 
   activateListeners(html) {
     super.activateListeners(html);
     html.find('.discreet').on('change', this._onDiscreetChange.bind(this));
+    html.find('.destroyCover').on('change', this._onDestroyCoverChange.bind(this));
+    html.find('.directFireExplosive').on('change', this._onDirectFireExplosiveChange.bind(this));
+    html.find('.divideFire').on('change', this._onDivideFireChange.bind(this));
+    html.find('.isTwoHanded').on('change', this._onIsTwoHandedChange.bind(this));
+    html.find('.rangedWeaponDamage').on('change', {html}, this._onRangedDamageChange.bind(this));
     html.find('.absorbToxic').on('change', this._onAbsorbToxicChange.bind(this));
     html.find('.isWearable').on('change', this._onIsWearableChange.bind(this));
     html.find('.effectCreate').on('click', this._onEffectCreateClick.bind(this));

@@ -102,6 +102,161 @@ EDRPG.ranks = {
   }
 };
 
+EDRPG.imperialHonoraryRanks = {
+  'none': {
+    'name': 'RANK.None',
+    'socialFactor': 0,
+    'unlocks': null,
+  },
+  'outsider': {
+    'name': 'RANK.Imperial.Outsider',
+    'socialFactor': 0,
+    'unlocks': 'Imperial Eagle',
+  },
+  'serf': {
+    'name': 'RANK.Imperial.Serf',
+    'socialFactor': 1,
+    'unlocks': 'Imperial Eagle',
+  },
+  'master': {
+    'name': 'RANK.Imperial.Master',
+    'socialFactor': 1,
+    'unlocks': 'Imperial Eagle, Imperial Courier',
+  },
+  'squire': {
+    'name': 'RANK.Imperial.Squire',
+    'socialFactor': 1,
+    'unlocks': 'Imperial Eagle, Imperial Courier',
+  },
+  'knight': {
+    'name': 'RANK.Imperial.Knight',
+    'socialFactor': 1,
+    'unlocks': 'Imperial Eagle, Imperial Courier',
+  },
+  'lord': {
+    'name': 'RANK.Imperial.Lord',
+    'socialFactor': 2,
+    'unlocks': 'Imperial Eagle, Imperial Courier',
+  },
+  'baron': {
+    'name': 'RANK.Imperial.Baron',
+    'socialFactor': 2,
+    'unlocks': 'Imperial Eagle, Imperial Courier, Imperial Clipper',
+  },
+  'viscount': {
+    'name': 'RANK.Imperial.Viscount',
+    'socialFactor': 2,
+    'unlocks': 'Imperial Eagle, Imperial Courier, Imperial Clipper',
+  },
+  'count': {
+    'name': 'RANK.Imperial.Count',
+    'socialFactor': 2,
+    'unlocks': 'Imperial Eagle, Imperial Courier, Imperial Clipper',
+  },
+  'earl': {
+    'name': 'RANK.Imperial.Earl',
+    'socialFactor': 3,
+    'unlocks': 'Imperial Eagle, Imperial Courier, Imperial Clipper',
+  },
+  'marquis': {
+    'name': 'RANK.Imperial.Marquis',
+    'socialFactor': 3,
+    'unlocks': 'Imperial Eagle, Imperial Courier, Imperial Clipper',
+  },
+  'duke': {
+    'name': 'RANK.Imperial.Duke',
+    'socialFactor': 3,
+    'unlocks': 'Imperial Eagle, Imperial Courier, Imperial Clipper, Imperial Cutter',
+  },
+  'prince': {
+    'name': 'RANK.Imperial.Prince',
+    'socialFactor': 3,
+    'unlocks': 'Imperial Eagle, Imperial Courier, Imperial Clipper, Imperial Cutter',
+  },
+  'king': {
+    'name': 'RANK.Imperial.King',
+    'socialFactor': 4,
+    'unlocks': 'Imperial Eagle, Imperial Courier, Imperial Clipper, Imperial Cutter, Imperial Explorer',
+  },
+};
+EDRPG.federationHonoraryRanks = {
+  'none': {
+    'name': 'RANK.None',
+    'socialFactor': 0,
+    'unlocks': null,
+  },
+  'recruit': {
+    'name': 'RANK.Federation.Recruit',
+    'socialFactor': 0,
+    'unlocks': null,
+  },
+  'cadet': {
+    'name': 'RANK.Federation.Cadet',
+    'socialFactor': 1,
+    'unlocks': null,
+  },
+  'midshipman': {
+    'name': 'RANK.Federation.Midshipman',
+    'socialFactor': 1,
+    'unlocks': 'Federal Dropship',
+  },
+  'pettyOfficer': {
+    'name': 'RANK.Federation.PettyOfficer',
+    'socialFactor': 1,
+    'unlocks': 'Federal Dropship',
+  },
+  'chiefPettyOfficer': {
+    'name': 'RANK.Federation.ChiefPettyOfficer',
+    'socialFactor': 1,
+    'unlocks': 'Federal Dropship, Federal Assault Ship',
+  },
+  'warrantOfficer': {
+    'name': 'RANK.Federation.WarrantOfficer',
+    'socialFactor': 2,
+    'unlocks': 'Federal Dropship, Federal Assault Ship',
+  },
+  'ensign': {
+    'name': 'RANK.Federation.Ensign',
+    'socialFactor': 2,
+    'unlocks': 'Federal Dropship, Federal Assault Ship, Federal Gunship',
+  },
+  'lieutenantCommander': {
+    'name': 'RANK.Federation.LieutenantCommander',
+    'socialFactor': 2,
+    'unlocks': 'Federal Dropship, Federal Assault Ship, Federal Gunship',
+  },
+  'lieutenant': {
+    'name': 'RANK.Federation.Lieutenant',
+    'socialFactor': 2,
+    'unlocks': 'Federal Dropship, Federal Assault Ship, Federal Gunship',
+  },
+  'postCommander': {
+    'name': 'RANK.Federation.PostCommander',
+    'socialFactor': 2,
+    'unlocks': 'Federal Dropship, Federal Assault Ship, Federal Gunship',
+  },
+  'postCaptain': {
+    'name': 'RANK.Federation.PostCaptain',
+    'socialFactor': 3,
+    'unlocks': 'Federal Dropship, Federal Assault Ship, Federal Gunship',
+  },
+  'rearAdmiral': {
+    'name': 'RANK.Federation.RearAdmiral',
+    'socialFactor': 3,
+    'unlocks': 'Federal Dropship, Federal Assault Ship, Federal Gunship, Federal Corvette',
+  },
+  'viceAdmiral': {
+    'name': 'RANK.Federation.ViceAdmiral',
+    'socialFactor': 3,
+    'unlocks': 'Federal Dropship, Federal Assault Ship, Federal Gunship, Federal Corvette',
+  },
+  'admiral': {
+    'name': 'RANK.Federation.Admiral',
+    'socialFactor': 4,
+    'unlocks': 'Federal Dropship, Federal Assault Ship, Federal Gunship, Federal Corvette',
+  },
+};
+
 EDRPG.skills = {
   "personalCombat": {
     "label": "SHEET.Skills.PersonalCombat",
@@ -527,6 +682,27 @@ EDRPG.meleeWeaponsTypes = {
   'melee': {
     'name': 'ITEM.MeleeWeapons.TypeMelee'
   }
+}
+
+EDRPG.rangedWeaponsTypes = {
+  'kinetic': {
+    'name': 'ITEM.RangedWeapons.TypeKinetic'
+  },
+  'energy': {
+    'name': 'ITEM.RangedWeapons.TypeEnergy'
+  },
+  'grenade': {
+    'name': 'ITEM.RangedWeapons.TypeGrenade'
+  },
+  'heavyKinetic': {
+    'name': 'ITEM.RangedWeapons.TypeHeavyKinetic'
+  },
+  'heavyEnergy': {
+    'name': 'ITEM.RangedWeapons.TypeHeavyEnergy'
+  },
+  'heavyExplosive': {
+    'name': 'ITEM.RangedWeapons.TypeHeavyExplosive'
+  },
 }
 
 export default EDRPG;

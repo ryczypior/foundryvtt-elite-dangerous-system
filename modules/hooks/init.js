@@ -72,6 +72,8 @@ export default function () {
       "systems/edrpg/templates/items/partials/item-all-enduranceAddition.html",
       "systems/edrpg/templates/items/partials/item-all-initiativeAddition.html",
       "systems/edrpg/templates/items/partials/item-all-resistKnockdown.html",
+      "systems/edrpg/templates/items/partials/item-all-wearable.html",
+      "systems/edrpg/templates/items/partials/item-ranged-weapon.html",
       "systems/edrpg/templates/items/partials/item-commodity.html",
       "systems/edrpg/templates/items/partials/item-backgrounds.html",
       "systems/edrpg/templates/items/partials/item-karma.html",
@@ -104,6 +106,14 @@ export default function () {
       config: true,
       default: false,
       type: Boolean
+    });
+    game.settings.register("edrpg", "socialFactorCap", {
+      name: "SETTINGS.socialFactorCapName",
+      hint: "SETTINGS.socialFactorCapHint",
+      scope: "world",
+      config: true,
+      default: 4,
+      type: Number
     });
   });
 }

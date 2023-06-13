@@ -3237,20 +3237,23 @@ html {
   margin: .8em 0;
   overflow: hidden; }
 
-.edrpgsheet .window-content {
+.edrpgsheet .window-content, .edrpgitemsheet .window-content {
   background: #ffffff; }
-.edrpgsheet input, .edrpgsheet textarea, .edrpgsheet select, .edrpgsheet .personal {
-  /*  background: $personal-info-gradient;
-    border: solid 1px $default-color;
-    border-radius: 0;
-    padding: 5px 10px;*/ }
-.edrpgsheet .row {
+.edrpgsheet input, .edrpgsheet textarea, .edrpgsheet select, .edrpgsheet .personal, .edrpgitemsheet input, .edrpgitemsheet textarea, .edrpgitemsheet select, .edrpgitemsheet .personal {
+  background: linear-gradient(90deg, #bbc7dd 0%, white 100%);
+  border: solid 1px #012533;
+  border-radius: 0;
+  padding: 5px 10px; }
+.edrpgsheet select, .edrpgitemsheet select {
+  padding: unset;
+  max-width: 100%; }
+.edrpgsheet .row, .edrpgitemsheet .row {
   margin-bottom: .5em; }
-.edrpgsheet .characterImage img {
+.edrpgsheet .characterImage img, .edrpgitemsheet .characterImage img {
   background: linear-gradient(90deg, #bbc7dd 0%, white 100%); }
-.edrpgsheet label {
+.edrpgsheet label, .edrpgitemsheet label {
   overflow: hidden; }
-  .edrpgsheet label input, .edrpgsheet label .input {
+  .edrpgsheet label input, .edrpgsheet label .input, .edrpgitemsheet label input, .edrpgitemsheet label .input {
     background: linear-gradient(90deg, #bbc7dd 0%, white 100%);
     border: solid 1px #012533;
     border-radius: 0;
@@ -3258,7 +3261,7 @@ html {
     display: block;
     font-size: .9em;
     height: auto; }
-  .edrpgsheet label span {
+  .edrpgsheet label span, .edrpgitemsheet label span {
     display: block;
     padding: 3px 10px;
     background: linear-gradient(90deg, #031318 0%, #00537d 100%);
@@ -3269,47 +3272,47 @@ html {
     float: left;
     border-color: transparent transparent #012533 transparent;
     border-width: 0 20px 20px 20px; }
-  .edrpgsheet label.nameField input {
+  .edrpgsheet label.nameField input, .edrpgitemsheet label.nameField input {
     font-size: 2em; }
-  .edrpgsheet label.karma input {
+  .edrpgsheet label.karma input, .edrpgitemsheet label.karma input {
     background: linear-gradient(90deg, #c5bfdc 0%, white 100%); }
-  .edrpgsheet label.karma span {
+  .edrpgsheet label.karma span, .edrpgitemsheet label.karma span {
     background: linear-gradient(90deg, #562485 0%, #654996 100%); }
-  .edrpgsheet label.endurance input {
+  .edrpgsheet label.endurance input, .edrpgitemsheet label.endurance input {
     background: linear-gradient(90deg, #f0cdc6 0%, white 100%); }
-  .edrpgsheet label.endurance span {
+  .edrpgsheet label.endurance span, .edrpgitemsheet label.endurance span {
     background: linear-gradient(90deg, #e2490f 0%, #f4a300 100%); }
-.edrpgsheet .text-right {
+.edrpgsheet .text-right, .edrpgitemsheet .text-right {
   text-align: right; }
-.edrpgsheet .tableitems .tableheading {
+.edrpgsheet .tableitems .tableheading, .edrpgitemsheet .tableitems .tableheading {
   margin-bottom: 0;
   text-align: center; }
-  .edrpgsheet .tableitems .tableheading > div {
+  .edrpgsheet .tableitems .tableheading > div, .edrpgitemsheet .tableitems .tableheading > div {
     background: #78a0d1;
     color: white;
     font-weight: bold;
     font-size: .7em;
     text-transform: uppercase;
     border: solid 1px #ffffff; }
-.edrpgsheet .tableitems .tablerow {
+.edrpgsheet .tableitems .tablerow, .edrpgitemsheet .tableitems .tablerow {
   margin-bottom: 0; }
-  .edrpgsheet .tableitems .tablerow > div {
+  .edrpgsheet .tableitems .tablerow > div, .edrpgitemsheet .tableitems .tablerow > div {
     border: solid 1px #ffffff;
     position: relative;
     align-items: center;
     align-content: center; }
-  .edrpgsheet .tableitems .tablerow .tableheader {
+  .edrpgsheet .tableitems .tablerow .tableheader, .edrpgitemsheet .tableitems .tablerow .tableheader {
     background: linear-gradient(90deg, white 0%, #b3c5e3 100%);
     text-align: right;
     font-weight: bold;
     font-size: .8em; }
-    .edrpgsheet .tableitems .tablerow .tableheader a {
+    .edrpgsheet .tableitems .tablerow .tableheader a, .edrpgitemsheet .tableitems .tablerow .tableheader a {
       display: block; }
-  .edrpgsheet .tableitems .tablerow .tabledescripion {
+  .edrpgsheet .tableitems .tablerow .tabledescripion, .edrpgitemsheet .tableitems .tablerow .tabledescripion {
     padding-left: 0;
     padding-right: 0;
     display: none; }
-    .edrpgsheet .tableitems .tablerow .tabledescripion > * {
+    .edrpgsheet .tableitems .tablerow .tabledescripion > *, .edrpgitemsheet .tableitems .tablerow .tabledescripion > * {
       font-size: .8em;
       position: relative;
       border: solid 1px #a9b6c5;
@@ -3320,7 +3323,7 @@ html {
       left: 0;
       width: calc(100%);
       height: 100%; }
-  .edrpgsheet .tableitems .tablerow .tableinput > * {
+  .edrpgsheet .tableitems .tablerow .tableinput > *, .edrpgitemsheet .tableitems .tablerow .tableinput > * {
     font-size: .8em;
     position: absolute;
     display: flex;
@@ -3336,22 +3339,23 @@ html {
     height: 100%;
     border: solid 1px #a5a4a8;
     background: #f1f1f3; }
-  .edrpgsheet .tableitems .tablerow .tableinput.tableinputblue > * {
+  .edrpgsheet .tableitems .tablerow .tableinput.tableinputblue > *, .edrpgitemsheet .tableitems .tablerow .tableinput.tableinputblue > * {
     border: solid 1px #a9b6c5;
     background: #e4ecf7; }
-  .edrpgsheet .tableitems .tablerow .inline > div, .edrpgsheet .tableitems .tablerow .inline > p {
+  .edrpgsheet .tableitems .tablerow .inline > div, .edrpgsheet .tableitems .tablerow .inline > p, .edrpgitemsheet .tableitems .tablerow .inline > div, .edrpgitemsheet .tableitems .tablerow .inline > p {
     display: inline; }
-.edrpgsheet .tableitems.tablebackgrounds .tablerow .tableheader {
+.edrpgsheet .tableitems.tablebackgrounds .tablerow .tableheader, .edrpgitemsheet .tableitems.tablebackgrounds .tablerow .tableheader {
   text-align: left; }
-.edrpgsheet .sheet-tabs {
+.edrpgsheet .sheet-tabs, .edrpgitemsheet .sheet-tabs {
   margin: .8em 0;
   border-top: solid 1px #012533;
   border-bottom: solid 1px #012533;
   font-weight: bold;
   background: linear-gradient(90deg, white 0%, #b3c5e3 100%); }
-  .edrpgsheet .sheet-tabs .item {
-    padding: 5px 10px; }
-  .edrpgsheet .sheet-tabs .active {
+  .edrpgsheet .sheet-tabs .item, .edrpgitemsheet .sheet-tabs .item {
+    padding: 5px 10px;
+    width: 100%; }
+  .edrpgsheet .sheet-tabs .active, .edrpgitemsheet .sheet-tabs .active {
     background: #78a0d1;
     color: #ffffff;
     text-shadow: none; }

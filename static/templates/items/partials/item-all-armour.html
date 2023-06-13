@@ -68,24 +68,6 @@
   </div>
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4">
-      <span>{{localize 'ITEM.Armour.AthleticsScore'}}</span>
-    </div>
-    <div class="col-12 col-md-6 col-lg-8">
-      <input type="number" value="{{system.armour.athleticsScore.value}}" name="system.armour.athleticsScore.value"
-             placeholder="{{localize 'ITEM.Armour.AthleticsScore'}}" title="{{localize 'ITEM.Armour.AthleticsScore'}}" min="0" step="10">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-md-6 col-lg-4">
-      <span>{{localize 'ITEM.Armour.IntimidateScore'}}</span>
-    </div>
-    <div class="col-12 col-md-6 col-lg-8">
-      <input type="number" value="{{system.armour.intimidateScore.value}}" name="system.armour.intimidateScore.value"
-             placeholder="{{localize 'ITEM.Armour.IntimidateScore'}}" title="{{localize 'ITEM.Armour.IntimidateScore'}}" min="0" step="10">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-md-6 col-lg-4">
       <span>{{localize 'ITEM.Armour.Hardened'}}</span>
     </div>
     <div class="col-12 col-md-6 col-lg-8">
@@ -98,8 +80,14 @@
       <span>{{localize 'ITEM.Armour.Enhancement'}}</span>
     </div>
     <div class="col-12 col-md-6 col-lg-8">
-      <input type="number" value="{{system.armour.enhancement.value}}" name="system.armour.enhancement.value"
-             placeholder="{{localize 'ITEM.Armour.Enhancement'}}" title="{{localize 'ITEM.Armour.Enhancement'}}">
+      {{#select system.armour.enhancement.value}}
+      <select name="system.armour.enhancement.value">
+        <option>--</option>
+        {{#each enhancements as |enhancement id|}}
+        <option value="{{id}}">{{enhancement.name}}</option>
+        {{/each}}
+      </select>
+      {{/select}}
     </div>
   </div>
   <div class="row">

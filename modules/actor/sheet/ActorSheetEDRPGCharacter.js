@@ -11,7 +11,7 @@ export default class ActorSheetEDRPGCharacter extends ActorSheetEDRPG {
     'Cybernetics',
     'General Equipment',
     'Ranged Weapons',
-    'Melee Weapon',
+    'Melee Weapons',
     'Ammo Clips'
   ];
 
@@ -42,63 +42,14 @@ export default class ActorSheetEDRPGCharacter extends ActorSheetEDRPG {
   }
 
   async _onDropBackgrounds(item) {
-    const effects = item.system.backgrounds.effects;
-    const skills = [];
-    if (effects && effects.length) {
-      effects.forEach(effect => {
-        if (effect.type === 'skill') {
-          skills.push(effect);
-        }
-        /** @todo other types! **/
-      });
-    }
-    if(skills.length > 0){
-      await this.addSkillValue(skills);
-    }
-    return true;
+    return await this.actor.addBackgrounds(item);
   }
 
   async _onRemoveBackgrounds(item) {
-    const effects = item.system.backgrounds.effects;
-    const skills = [];
-    if (effects && effects.length) {
-      effects.forEach(effect => {
-        if (effect.type === 'skill') {
-          skills.push({skillId: effect.skillId, skillValue: -effect.skillValue});
-        }
-        /** @todo other types! **/
-      });
-    }
-    if(skills.length > 0){
-      await this.addSkillValue(skills);
-    }
-    return true;
-  }
-
-  async _onSkillClick(event) {
-    const skillId = event.target.getAttribute('data-skill');
-    const skillSectionId = event.target.getAttribute('data-section');
-    const skills = duplicate(this.actor._source.system.skills);
-    const skill = skills[skillSectionId].skills[skillId];
-    const data = {
-      ...skill, ...{
-        callback: async () => {
-          if (skills[skillSectionId].skills[skillId].isChecked === 0) {
-            skills[skillSectionId].skills[skillId].isChecked = 1;
-            await this.actor.update({"system.skills": skills});
-          }
-        },
-        difficulty: 9
-      }
-    }
-    const roll = new EDRPGSkillTests(data, this.actor);
-    const rollResult = await roll.prepareTest();
-    //let roll = await new Roll("1d10").roll({ async: true });
-    //console.log(rollResult, skill);
+    return await this.actor.removeBackgrounds(item);
   }
 
   activateListeners(html) {
     super.activateListeners(html);
-    html.find('.skill-roll').click(this._onSkillClick.bind(this));
   }
 }

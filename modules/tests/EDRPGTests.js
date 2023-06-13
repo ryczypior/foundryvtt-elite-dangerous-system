@@ -1,3 +1,5 @@
+import EDRPGUtils from "../system/EDRPGUtils";
+
 export default class EDRPGTests {
   constructor(data, actor) {
     if (!data) {
@@ -136,6 +138,7 @@ export default class EDRPGTests {
   }
 
   async showTest(){
+    const canReRoll = game.settings.get('edrpg', 'allowToRerollAllTests') || parseInt(this.data.roll, 10) === 1;
     const templateData = {
       title: this.data.title,
       difficulty: this.data.difficulty,
@@ -147,7 +150,7 @@ export default class EDRPGTests {
       actorImage: this.actor ? this.actor.img : null,
       isPassed: true,
       isCritical: false,
-      canReRoll: parseInt(this.data.roll, 10) === 1,
+      canReRoll: canReRoll,
     };
     templateData.isPassed = templateData.result >= templateData.difficulty;
     if(templateData.roll === 1){

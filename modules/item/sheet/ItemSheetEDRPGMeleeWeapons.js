@@ -6,15 +6,6 @@ export default class ItemSheetEDRPGMeleeWeapons extends ItemSheetEDRPG {
     return "systems/edrpg/templates/items/melee-weapons.html";
   }
 
-  async getData() {
-    const sheetData = await super.getData();
-    sheetData.meleeWeaponsTypes = duplicate(EDRPG.meleeWeaponsTypes);
-    sheetData.meleeHands = duplicate(EDRPG.meleeHands);
-    return sheetData;
-  }
-
-
-
   activateListeners(html) {
     super.activateListeners(html);
   }

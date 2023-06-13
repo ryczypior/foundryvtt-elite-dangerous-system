@@ -1,12 +1,16 @@
-.edrpgsheet {
+.edrpgsheet, .edrpgitemsheet {
   .window-content{
     background: $window-background-color;
   }
   input, textarea, select, .personal{
-  /*  background: $personal-info-gradient;
+    background: $personal-info-gradient;
     border: solid 1px $default-color;
     border-radius: 0;
-    padding: 5px 10px;*/
+    padding: 5px 10px;
+  }
+  select{
+    padding: unset;
+    max-width: 100%;
   }
   .row{
     margin-bottom: .5em;
@@ -165,6 +169,7 @@
     background: $sheet-tabs-gradient;
     .item{
       padding: 5px 10px;
+      width: 100%;
     }
     .active{
       background: $active-tab-background;

@@ -1,4 +1,5 @@
 import EDRPG from "../../system/EDRPG";
+import EDRPGSkillTests from "../../tests/EDRPGSkillTests";
 
 export default class ActorSheetEDRPG extends ActorSheet {
   validItemTypes = [
@@ -24,7 +25,8 @@ export default class ActorSheetEDRPG extends ActorSheet {
     const sheetData = await super.getData();
     sheetData.system = sheetData.data.system // project system data so that handlebars has the same name and value paths
     sheetData.items = sheetData.data.items;
-    console.log(sheetData.items);
+    sheetData.meleeWeaponsTypes = EDRPG.meleeWeaponsTypes;
+    sheetData.meleeHands = EDRPG.meleeHands;
     return sheetData;
   }
 
@@ -49,51 +51,22 @@ export default class ActorSheetEDRPG extends ActorSheet {
   }
 
   async changeSkillValue(skill, value){
-    const skills = duplicate(this.actor._source.system.skills);
-    value = Number(value);
-    for(let skillSectionId in skills){
-      for(let skillId in skills[skillSectionId].skills){
-        if(skillId === skill){
-          let maxCap = skills[skillSectionId].skills[skillId].maxCapModifier + this.actor._source.system.status.rank.value.skillCap;
-          /* maximum cap cannot be more than 100 */
-          if(maxCap > 100){
-            maxCap = 100;
-          }
-          if (value > maxCap) {
-            value = maxCap;
-          }
-          if(value < 10){
-            value = 10;
-          }
-          skills[skillSectionId].skills[skillId].value = value;
-          skills[skillSectionId].skills[skillId].bonus = Math.floor(skills[skillSectionId].skills[skillId].value / 10);
-        }
-      }
-    }
-    return await this.actor.update({"system.skills": skills});
+    return await this.actor.changeSkillValue(skill, value);
   }
 
   /**
    * @param skillsToChange [{skillId, skillValue}]
    */
   async addSkillValue(skillsToChange){
-    const skills = duplicate(this.actor._source.system.skills);
-    skillsToChange.forEach(element => {
-      for(let skillSectionId in skills){
-        for(let skillId in skills[skillSectionId].skills){
-          if(skillId === element.skillId){
-            skills[skillSectionId].skills[skillId].value = skills[skillSectionId].skills[skillId].value + element.skillValue;
-          }
-        }
-      }
-    });
-    return await this.actor.update({"system.skills": skills});
+    await this.actor.addSkillValue(skillsToChange);
+    return this.render();
   }
 
   async _onChangeSkillValue(event) {
     event.preventDefault();
     const skillIndex = event.currentTarget.attributes['data-skill'].value;
-    return await this.changeSkillValue(skillIndex, event.target.value);
+    await this.actor.changeSkillValue(skillIndex, event.target.value);
+    return this.render();
   }
 
   async _onClickChecked(event){
@@ -112,11 +85,13 @@ export default class ActorSheetEDRPG extends ActorSheet {
   async _onDropItem(event, data){
     const item = await fromUuid(data.uuid);
     if(this.validItemTypes.indexOf(item.type) === -1){
+      ui.notifications.warn(game.i18n.localize('WARN.ItemCannotBeAdded'));
       return null;
     }
-    const method = '_onDrop'+item.type.charAt(0).toUpperCase()+item.type.slice(1);
-    if(this[method]){
-      await this[method](item);
+
+    const method = 'add'+item.type.charAt(0).toUpperCase()+item.type.slice(1);
+    if(this.actor[method]){
+      await this.actor[method](item);
     }
     return await super._onDropItem(event, data);
   }
@@ -124,11 +99,11 @@ export default class ActorSheetEDRPG extends ActorSheet {
   async _onRemoveItem(id){
     const item = this.actor.items.get(id);
     if(item){
-      const method = '_onRemove'+item.type.charAt(0).toUpperCase()+item.type.slice(1);
-      if(!this[method]){
+      const method = 'remove'+item.type.charAt(0).toUpperCase()+item.type.slice(1);
+      if(!this.actor[method]){
         return null;
       }
-      return await this[method](item);
+      return await this.actor[method](item);
     }
     return null;
   }
@@ -142,10 +117,8 @@ export default class ActorSheetEDRPG extends ActorSheet {
 
   _onChangeActiveDescription(event){
     event.preventDefault();
-    console.log(event);
     const elements = event.currentTarget.closest('.tablerow').getElementsByClassName("tabledescripion");
     for(const x of elements){
-      console.log(x);
       if(x.style.display === 'block'){
         x.style.display = 'none';
       } else {
@@ -154,13 +127,47 @@ export default class ActorSheetEDRPG extends ActorSheet {
     }
   }
 
+  async _onChangeSocialFactor(event){
+    if(event && event.preventDefault){
+      event.preventDefault();
+    }
+    const socialFactor = duplicate(this.actor._source.system.socialFactor);
+    socialFactor.sfOther.value = parseInt(event.target.value, 10);
+    await this.actor.update({"system.socialFactor": socialFactor});
+    return await this.actor.calculateSocialFactor();
+  }
+
+  async _onSkillClick(event) {
+    const skillId = event.target.getAttribute('data-skill');
+    const skillSectionId = event.target.getAttribute('data-section');
+    const skills = duplicate(this.actor._source.system.skills);
+    const skill = skills[skillSectionId].skills[skillId];
+    const data = {
+      ...skill, ...{
+        callback: async () => {
+          if (skills[skillSectionId].skills[skillId].isChecked === 0) {
+            skills[skillSectionId].skills[skillId].isChecked = 1;
+            await this.actor.update({"system.skills": skills});
+          }
+        },
+        difficulty: 9
+      }
+    }
+    const roll = new EDRPGSkillTests(data, this.actor);
+    const rollResult = await roll.prepareTest();
+    return rollResult;
+  }
+
+
   activateListeners(html) {
     super.activateListeners(html);
-    html.find(".changeStatusValue").change(this._onChangeStatusValue.bind(this));
-    html.find(".changeSkillValue").change(this._onChangeSkillValue.bind(this));
-    html.find(".changeCapValue").change(this._onChangeCapValue.bind(this));
-    html.find(".clickChecked").click(this._onClickChecked.bind(this));
-    html.find(".clickRemoveItem").click(this._onClickRemoveItem.bind(this));
-    html.find(".onChangeActiveDescription").click(this._onChangeActiveDescription.bind(this));
+    html.find(".changeStatusValue").on('change', this._onChangeStatusValue.bind(this));
+    html.find(".changeSkillValue").on('change', this._onChangeSkillValue.bind(this));
+    html.find(".changeCapValue").on('change', this._onChangeCapValue.bind(this));
+    html.find(".clickChecked").on('click', this._onClickChecked.bind(this));
+    html.find(".clickRemoveItem").on('click', this._onClickRemoveItem.bind(this));
+    html.find(".onChangeActiveDescription").on('click', this._onChangeActiveDescription.bind(this));
+    html.find('.skill-roll').on('click', this._onSkillClick.bind(this));
+    html.find(".systemSocialFactorSfOtherValue").on('change', this._onChangeSocialFactor.bind(this));
   }
 }
