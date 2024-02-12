@@ -22,19 +22,22 @@ export default {
         jscc({      
             values : {_ENV :  process.env.NODE_ENV}
         }),
-        scss({ fileName: `./static/css/${manifest.id}.css` }),
+        scss({
+            output: `./static/css/edrpg.css`,
+            failOnError: true,
+            runtime: require("sass"),
+            quietDeps: true,
+        }),
         copy({
             targets : [
                 {src : "./template.json", dest : systemPath},
                 {src : "./system.json", dest : systemPath},
-                //{src : "./WFRP-Header.jpg", dest : systemPath},
                 {src : "./static/*", dest : systemPath},
             ],
             watch: process.env.NODE_ENV == "production" ? false : ["./static/*/**", "system.json", "template.json"]
         })
     ],
     onwarn(warning, warn) {
-        // suppress eval warnings
         if (warning.code === 'EVAL') return
         warn(warning)
     }

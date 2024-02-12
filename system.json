@@ -8,7 +8,7 @@
         {
             "name": "Ryczypior",
             "email": "ryczypior@gmail.com",
-            "discord": "Ryczypior#1313"
+            "discord": "Ryczypior"
         }
     ],
     "esmodules" : [],
@@ -38,11 +38,11 @@
     "media": [
         {
             "type": "cover",
-            "url": "https://user-images.githubusercontent.com/28637157/97379891-e4a1cc00-1893-11eb-9e0c-d93b92844d5b.jpg"
+            "url": "https://gitlab.com/ryczypior/elite-dangerous-rpg-foundry-vtt/-/raw/main/static/images/cover.jpg"
         }
     ],
     "initiative": "1d10 + @skills.intelligence.skills.tactics.bonus",
-    "background" : "systems/elite-dangerous-rpg-foundry-vtt/edrpg-header.jpg",
+    "background" : "systems/edrpg/images/edrpg-header.jpg",
     "gridDistance": 10,
     "gridUnits": "m",
     "primaryTokenAttribute": "status.wounds",

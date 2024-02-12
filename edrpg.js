@@ -59,7 +59,7 @@ import ItemEffects from "./modules/item/helpers/ItemEffects";
 import ItemSheetEDRPGWearables from "./modules/item/sheet/ItemSheetEDRPGWearables";
 import ActorSheetEDRPGNPCShip from "./modules/actor/sheet/ActorSheetEDRPGNPCShip";
 import ActorSheetEDRPGNPCVehicle from "./modules/actor/sheet/ActorSheetEDRPGNPCVehicle";
-
+import './static/css/edrpg.scss';
 Hooks.once("init", async function () {
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);

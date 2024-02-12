@@ -1,5 +1,6 @@
 import ItemSheetEDRPG from "./ItemSheetEDRPG.js";
 import EDRPG from "../../system/EDRPG.js";
+import EDRPGUtils from "../../system/EDRPGUtils";
 
 export default class ItemSheetEDRPGBackground extends ItemSheetEDRPG {
   get template() {
@@ -10,7 +11,7 @@ export default class ItemSheetEDRPGBackground extends ItemSheetEDRPG {
     const sheetData = await super.getData();
     sheetData.backgroundBonusTypes = duplicate(EDRPG.backgroundBonusTypes);
     sheetData.skills = duplicate(EDRPG.skills);
-    sheetData.enhancements = EDRPG.searchFor('enhancements');
+    sheetData.enhancements = EDRPGUtils.findItemsByType('Enhancements');
     return sheetData;
   }
 
