@@ -11,7 +11,7 @@ export default class ItemSheetEDRPGBackground extends ItemSheetEDRPG {
     const sheetData = await super.getData();
     sheetData.backgroundBonusTypes = duplicate(EDRPG.backgroundBonusTypes);
     sheetData.skills = duplicate(EDRPG.skills);
-    sheetData.enhancements = EDRPGUtils.findItemsByType('Enhancements');
+    //sheetData.enhancements = EDRPGUtils.findItemsByType('Enhancements');
     return sheetData;
   }
 
