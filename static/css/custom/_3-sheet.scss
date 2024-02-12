@@ -24,7 +24,8 @@
   }
   label{
     overflow: hidden;
-    input, .input{
+    display: block;
+    input, .input, select, textarea{
       background: $personal-info-gradient;
       border: solid 1px $default-color;
       border-radius: 0;
@@ -32,6 +33,7 @@
       display: block;
       font-size: .9em;
       height: auto;
+      width: 100%;
     }
     span{
       display: block;
@@ -47,14 +49,14 @@
     }
 
     &.nameField{
-      input{
+      input, select, textarea{
         font-size: 2em;
       }
       span{
       }
     }
     &.karma{
-      input {
+      input, select, textarea {
         background: $karma-input-gradient;
       }
       span{
@@ -62,7 +64,7 @@
       }
     }
     &.endurance{
-      input {
+      input, select, textarea {
         background: $endurance-input-gradient;
       }
       span{

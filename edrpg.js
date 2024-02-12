@@ -56,23 +56,29 @@ import ItemSheetEDRPGVehicleWeapons from "./modules/item/sheet/ItemSheetEDRPGVeh
 import ItemSheetEDRPGVehicleSpecials from "./modules/item/sheet/ItemSheetEDRPGVehicleSpecials";
 import ActorSheetEDRPGShip from "./modules/actor/sheet/ActorSheetEDRPGShip";
 import ItemEffects from "./modules/item/helpers/ItemEffects";
+import ItemSheetEDRPGWearables from "./modules/item/sheet/ItemSheetEDRPGWearables";
+import ActorSheetEDRPGNPCShip from "./modules/actor/sheet/ActorSheetEDRPGNPCShip";
+import ActorSheetEDRPGNPCVehicle from "./modules/actor/sheet/ActorSheetEDRPGNPCVehicle";
 
 Hooks.once("init", async function () {
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('edrpg', ActorSheetEDRPGCharacter, {types: ['character'], makeDefault: true});
-  Actors.registerSheet('edrpg', ActorSheetEDRPGNPC, {types: ['npc'], makeDefault: true});
-  Actors.registerSheet('edrpg', ActorSheetEDRPGVehicle, {types: ['vehicle'], makeDefault: true});
-  Actors.registerSheet('edrpg', ActorSheetEDRPGCreature, {types: ['creature'], makeDefault: true});
-  Actors.registerSheet('edrpg', ActorSheetEDRPGShip, {types: ['ship'], makeDefault: true});
+  Actors.registerSheet('edrpg', ActorSheetEDRPGCharacter, {types: ['Character'], makeDefault: true});
+  Actors.registerSheet('edrpg', ActorSheetEDRPGNPC, {types: ['NPC'], makeDefault: true});
+  Actors.registerSheet('edrpg', ActorSheetEDRPGVehicle, {types: ['Vehicle'], makeDefault: true});
+  Actors.registerSheet('edrpg', ActorSheetEDRPGNPCVehicle, {types: ['NPC Vehicle'], makeDefault: true});
+  Actors.registerSheet('edrpg', ActorSheetEDRPGCreature, {types: ['Creature'], makeDefault: true});
+  Actors.registerSheet('edrpg', ActorSheetEDRPGShip, {types: ['Ship'], makeDefault: true});
+  Actors.registerSheet('edrpg', ActorSheetEDRPGNPCShip, {types: ['NPC Ship'], makeDefault: true});
   Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('edrpg', ItemSheetEDRPGBackground, {types: ['backgrounds'], makeDefault: true});
-  Items.registerSheet('edrpg', ItemSheetEDRPGEnhancement, {types: ['enhancements'], makeDefault: true});
+  Items.registerSheet('edrpg', ItemSheetEDRPGBackground, {types: ['Backgrounds'], makeDefault: true});
+  Items.registerSheet('edrpg', ItemSheetEDRPGEnhancement, {types: ['Enhancements'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGKarmaCap, {types: ['Karma Capabilities'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGArmour, {types: ['Armour'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGAmmoClips, {types: ['Ammo Clips'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGCybernetics, {types: ['Cybernetics'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGGeneralEquipment, {types: ['General Equipment'], makeDefault: true});
+  Items.registerSheet('edrpg', ItemSheetEDRPGWearables, {types: ['Wearables'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGRangedWeapons, {types: ['Ranged Weapons'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGMeleeWeapons, {types: ['Melee Weapons'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGCommodities, {types: ['Commodities'], makeDefault: true});
@@ -120,6 +126,7 @@ Hooks.once("init", async function () {
       ItemSheetEDRPGAmmoClips,
       ItemSheetEDRPGCybernetics,
       ItemSheetEDRPGGeneralEquipment,
+      ItemSheetEDRPGWearables,
       ItemSheetEDRPGRangedWeapons,
       ItemSheetEDRPGMeleeWeapons,
       ItemSheetEDRPGCommodities,

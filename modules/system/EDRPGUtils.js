@@ -10,7 +10,7 @@ export default class EDRPGUtils {
       if (type !== null) {
         additionalCondition = item && item.type === type;
       }
-      return item.system.internalId && item.system.internalId.value === internalId && additionalCondition;
+      return item.system.internalId && item.system.internalId.value && item.system.internalId.value.toLowerCase() === internalId.toLowerCase() && additionalCondition;
     });
     if (item) {
       return item;
@@ -26,7 +26,7 @@ export default class EDRPGUtils {
           if (type !== null) {
             additionalCondition = item && item.type === type;
           }
-          return item.system.internalId && item.system.internalId.value === internalId && additionalCondition;
+          return item.system.internalId && item.system.internalId.value && item.system.internalId.value.toLowerCase() === internalId.toLowerCase() && additionalCondition;
         });
         if (item) {
           return item;

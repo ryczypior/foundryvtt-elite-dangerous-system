@@ -27,6 +27,8 @@ export default class ActorSheetEDRPG extends ActorSheet {
     sheetData.items = sheetData.data.items;
     sheetData.meleeWeaponsTypes = EDRPG.meleeWeaponsTypes;
     sheetData.meleeHands = EDRPG.meleeHands;
+    sheetData.imperialRanks = EDRPG.imperialHonoraryRanks;
+    sheetData.federationRanks = EDRPG.federationHonoraryRanks
     return sheetData;
   }
 
@@ -82,6 +84,54 @@ export default class ActorSheetEDRPG extends ActorSheet {
     return await this.actor.update({"system.skills": skills});
   }
 
+  async __wearItem(item){
+    const worn = duplicate(item._source.system.worn);
+    worn.value = true;
+    await item.update({"system.worn": worn});
+    await this.actor.calculateSocialFactor();
+    return item;
+  }
+
+  async __unWearItem(item) {
+    const worn = duplicate(item._source.system.worn);
+    worn.value = false;
+    await item.update({"system.worn": worn});
+    await this.actor.calculateSocialFactor();
+    return item;
+  }
+
+  async _onClickCheckedWorn(event){
+    event.preventDefault();
+    const id = event.currentTarget.attributes['data-id'].value;
+    const item = this.actor.items.get(id);
+    if(!item){
+      ui.notifications.warn("Item not found");
+      return null;
+    }
+    if(item._source.system.worn.value === false){
+      await this.__wearItem(item);
+    } else {
+      await this.__unWearItem(item);
+    }
+    return null;
+  }
+
+  async _onClickCheckedEquipped(event){
+    event.preventDefault();
+    const id = event.currentTarget.attributes['data-id'].value;
+    const item = this.actor.items.get(id);
+    if(!item){
+      ui.notifications.warn("Item not found");
+      return null;
+    }
+    if(item._source.system.equipped.value === false){
+      await this.__wearItem(item);
+    } else {
+      await this.__unWearItem(item);
+    }
+    return null;
+  }
+
   async _onDropItem(event, data){
     const item = await fromUuid(data.uuid);
     if(this.validItemTypes.indexOf(item.type) === -1){
@@ -99,6 +149,7 @@ export default class ActorSheetEDRPG extends ActorSheet {
   async _onRemoveItem(id){
     const item = this.actor.items.get(id);
     if(item){
+      await this.__unWearItem(item);
       const method = 'remove'+item.type.charAt(0).toUpperCase()+item.type.slice(1);
       if(!this.actor[method]){
         return null;
@@ -158,6 +209,21 @@ export default class ActorSheetEDRPG extends ActorSheet {
     return rollResult;
   }
 
+  async _onChangeFederationRank(event){
+    const honoraryRanks = duplicate(this.actor._source.system.honoraryRanks);
+    honoraryRanks.federation.socialFactor = EDRPG.federationHonoraryRanks[event.target.value].socialFactor;
+    honoraryRanks.federation.unlocks = EDRPG.federationHonoraryRanks[event.target.value].unlocks;
+    await this.actor.update({"system.honoraryRanks": honoraryRanks});
+    return await this.actor.calculateSocialFactor();
+  }
+
+  async _onChangeImperialRank(event){
+    const honoraryRanks = duplicate(this.actor._source.system.honoraryRanks);
+    honoraryRanks.imperial.socialFactor = EDRPG.imperialHonoraryRanks[event.target.value].socialFactor;
+    honoraryRanks.imperial.unlocks = EDRPG.imperialHonoraryRanks[event.target.value].unlocks;
+    await this.actor.update({"system.honoraryRanks": honoraryRanks});
+    return await this.actor.calculateSocialFactor();
+  }
 
   activateListeners(html) {
     super.activateListeners(html);
@@ -165,9 +231,14 @@ export default class ActorSheetEDRPG extends ActorSheet {
     html.find(".changeSkillValue").on('change', this._onChangeSkillValue.bind(this));
     html.find(".changeCapValue").on('change', this._onChangeCapValue.bind(this));
     html.find(".clickChecked").on('click', this._onClickChecked.bind(this));
+//    html.find(".clickCheckedArmourWorn").on('click', this._onClickCheckedArmourWorn.bind(this));
     html.find(".clickRemoveItem").on('click', this._onClickRemoveItem.bind(this));
     html.find(".onChangeActiveDescription").on('click', this._onChangeActiveDescription.bind(this));
     html.find('.skill-roll').on('click', this._onSkillClick.bind(this));
     html.find(".systemSocialFactorSfOtherValue").on('change', this._onChangeSocialFactor.bind(this));
+    html.find("[name='system.honoraryRanks.federation.value']").on('change', this._onChangeFederationRank.bind(this));
+    html.find("[name='system.honoraryRanks.imperial.value']").on('change', this._onChangeImperialRank.bind(this));
+    html.find(".clickCheckedWorn").on('click', this._onClickCheckedWorn.bind(this));
+    html.find(".clickCheckedEquipped").on('click', this._onClickCheckedEquipped.bind(this));
   }
 }

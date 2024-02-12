@@ -1,10 +1,13 @@
 {
   "Actor": {
     "types": [
-      "character",
-      "npc",
-      "vehicle",
-      "creature"
+      "Character",
+      "NPC",
+      "Vehicle",
+      "NPC Vehicle",
+      "Ship",
+      "NPC Ship",
+      "Creature"
     ],
     "templates": {
       "info": {
@@ -128,11 +131,13 @@
         "honoraryRanks": {
           "imperial": {
             "value": "",
-            "socialFactor": 0
+            "socialFactor": 0,
+            "unlocks": null
           },
           "federation": {
             "value": "",
-            "socialFactor": 0
+            "socialFactor": 0,
+            "unlocks": null
           }
         }
       },
@@ -140,7 +145,7 @@
         "skills": {}
       }
     },
-    "character": {
+    "Character": {
       "templates": [
         "status",
         "skills",
@@ -148,22 +153,32 @@
         "honoraryRanks"
       ]
     },
-    "npc": {
+    "NPC": {
       "templates": [
         "status"
       ]
     },
-    "vehicle": {
+    "Vehicle": {
       "templates": [
         "status"
       ]
     },
-    "creature": {
+    "NPC Vehicle": {
       "templates": [
         "status"
       ]
     },
-    "ship": {
+    "Ship": {
+      "templates": [
+        "status"
+      ]
+    },
+    "NPC Ship": {
+      "templates": [
+        "status"
+      ]
+    },
+    "Creature": {
       "templates": [
         "status"
       ]
@@ -172,10 +187,12 @@
   "Item": {
     "types": [
       "Armour",
-      "backgrounds",
+      "Backgrounds",
       "Cybernetics",
+      "Enhancements",
       "enhancements",
       "General Equipment",
+      "Wearables",
       "Karma Capabilities",
       "Ranged Weapons",
       "Melee Weapons",
@@ -585,10 +602,11 @@
         "socialFactor",
         "notes",
         "wearable",
+        "worn",
         "armour"
       ]
     },
-    "backgrounds": {
+    "Backgrounds": {
       "templates": [
         "internalId",
         "details",
@@ -608,17 +626,29 @@
         "socialFactor",
         "effects",
         "wearable",
+        "worn",
         "armour",
         "cybernetics"
       ]
     },
-    "enhancements": {
+    "Enhancements": {
       "templates": [
         "details",
         "internalId"
       ]
     },
     "General Equipment": {
+      "templates": [
+        "internalId",
+        "onShip",
+        "cost",
+        "details",
+        "notes",
+        "socialFactor",
+        "effects"
+      ]
+    },
+    "Wearables": {
       "templates": [
         "internalId",
         "onShip",
@@ -661,6 +691,7 @@
         "notes",
         "effects",
         "details",
+        "removable",
         "equipped",
         "melee"
       ]
@@ -670,6 +701,7 @@
         "internalId",
         "cost",
         "onShip",
+        "worn",
         "details",
         "count"
       ]

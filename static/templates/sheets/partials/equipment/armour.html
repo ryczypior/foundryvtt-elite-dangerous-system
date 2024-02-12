@@ -10,7 +10,7 @@
                 {{localize 'SHEET.Equipment.Armour'}}
             </div>
             <div class="col-2">
-                {{localize 'SHEET.SocialFactor'}}
+                {{localize 'SHEET.SocialFactorAbbr'}}
             </div>
             <div class="col-2">
                 {{localize 'SHEET.Equipment.Worn'}}
@@ -32,7 +32,7 @@
                     </span>
                 </div>
                 <div class="col-2 tableinput">
-                    <span class="clickCheckedArmourWorn" data-id="{{id}}" data-discreet="{{item.discreet}}">
+                    <span class="clickCheckedArmourWorn" data-id="{{item._id}}">
                     {{#if item.system.armour.worn.value}}
                         <i class="far fa-check-square"></i>
                     {{else}}

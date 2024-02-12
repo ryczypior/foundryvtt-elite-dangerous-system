@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <h2 class="col">
-      {{localize 'SHEET.Equipment.Cybernetics'}}
+      {{localize 'SHEET.Equipment.Wearables'}}
     </h2>
   </div>
   <div class="tablebackgrounds tableitems">
@@ -10,7 +10,7 @@
         {{localize 'SHEET.Equipment.Item'}}
       </div>
       <div class="col-2">
-        {{localize 'SHEET.Equipment.KarmaCost'}}
+        {{localize 'SHEET.SocialFactorAbbr'}}
       </div>
       <div class="col-2">
         {{localize 'SHEET.Equipment.Worn'}}
@@ -21,14 +21,14 @@
     </div>
     <section class="background-list item-list">
       {{#each items as |item id|}}
-      {{#if (eq item.type "Cybernetics")}}
+      {{#if (eq item.type "Wearables")}}
       <div class="row tablerow">
         <div class="col-6 tableheader">
           <a class="onChangeActiveDescription">{{item.name}}</a>
         </div>
         <div class="col-2 tableinput">
                     <span>
-                      {{item.system.karmaCost.value}}
+                      {{item.system.socialFactor.value}}
                     </span>
         </div>
         <div class="col-2 tableinput">

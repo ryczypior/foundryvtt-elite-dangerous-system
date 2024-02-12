@@ -108,7 +108,7 @@ export default class ActorEDRPG extends Actor {
     const cap = parseInt(game.settings.get("edrpg", 'socialFactorCap'), 10);
     socialFactor.sfWornItems.value = 0;
     this.items.forEach(item => {
-      console.log(item);
+      socialFactor.sfWornItems.value+=item.socialFactor;
     });
     socialFactor.sfHonoraryRanks.value = parseInt(this._source.system.honoraryRanks.imperial.socialFactor, 10) + parseInt(this._source.system.honoraryRanks.federation.socialFactor, 10);
     socialFactor.sfTotal.value = parseInt(socialFactor.sfOther.value, 10) + parseInt(socialFactor.sfHonoraryRanks.value, 10) + parseInt(socialFactor.sfWornItems.value, 10);
@@ -126,8 +126,8 @@ export default class ActorEDRPG extends Actor {
     }
     const items = this.items.map((i) => i.toObject())
     /** Add default items */
-    if (this.type === 'character'){
-      const pilotTrained = await EDRPGUtils.findItemByInternalID('PILOT TRAINED', 'backgrounds');
+    if (['Character', 'NPC'].indexOf(this.type) !== -1){
+      const pilotTrained = await EDRPGUtils.findItemByInternalID('PILOT TRAINED', 'Backgrounds');
       if(pilotTrained){
         let object = pilotTrained.toObject();
         object.system.removable.value = false;
@@ -139,6 +139,13 @@ export default class ActorEDRPG extends Actor {
       const escapeDeath = await EDRPGUtils.findItemByInternalID('ESCAPE DEATH', 'Karma Capabilities');
       if(escapeDeath){
         let object = escapeDeath.toObject();
+        object.system.removable.value = false;
+        items.push(object);
+        await this.updateSource({ items });
+      }
+      const fighting = await EDRPGUtils.findItemByInternalID('Fighting', 'Melee Weapons');
+      if(fighting){
+        let object = fighting.toObject();
         object.system.removable.value = false;
         items.push(object);
         await this.updateSource({ items });

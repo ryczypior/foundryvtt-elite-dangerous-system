@@ -72,6 +72,7 @@
               <input class=""
                      name="system.status.karma.value"
                      type="number" value="{{system.status.karma.value}}"
+                     max="{{system.status.rank.value.karmaPoints}}"
                      min="0"
                      step="1"
               >
@@ -93,6 +94,7 @@
                      name="system.status.karmaCyber.value"
                      type="number" value="{{system.status.karmaCyber.value}}"
                      min="0"
+                     max="{{system.status.karmaCyberMax.value}}"
                      step="1"
               >
               <span>{{localize "SHEET.KarmaCyber"}}</span>
@@ -118,6 +120,7 @@
               <input class=""
                      name="system.status.endurance.value"
                      type="number" value="{{system.status.endurance.value}}"
+                     max="{{system.status.rank.value.endurance}}"
                      step="1"
               >
               <span>{{localize "SHEET.Endurance"}}</span>
@@ -180,11 +183,12 @@
               {{> systems/edrpg/templates/sheets/partials/equipment/ranged-weapons.html}}
               {{> systems/edrpg/templates/sheets/partials/equipment/clips-grenades.html}}
               {{> systems/edrpg/templates/sheets/partials/equipment/armour.html}}
+              {{> systems/edrpg/templates/sheets/partials/equipment/general.html}}
             </div>
             <div class="col-12 col-lg-6">
               {{> systems/edrpg/templates/sheets/partials/equipment/close-combat.html}}
               {{> systems/edrpg/templates/sheets/partials/equipment/cybernetics.html}}
-              {{> systems/edrpg/templates/sheets/partials/equipment/general.html}}
+              {{> systems/edrpg/templates/sheets/partials/equipment/wearables.html}}
             </div>
             <div class="col-12 col-lg-6">
             </div>

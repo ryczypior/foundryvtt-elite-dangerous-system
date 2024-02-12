@@ -4,15 +4,16 @@ import EDRPGSkillTests from "../../tests/EDRPGSkillTests.js";
 export default class ActorSheetEDRPGCharacter extends ActorSheetEDRPG {
 
   validItemTypes = [
-    'backgrounds',
-    'enhancements',
+    'Backgrounds',
+    'Enhancements',
     'Karma Capabilities',
     'Armour',
     'Cybernetics',
     'General Equipment',
     'Ranged Weapons',
     'Melee Weapons',
-    'Ammo Clips'
+    'Ammo Clips',
+    'Wearables',
   ];
 
   get template() {

@@ -3252,15 +3252,17 @@ html {
 .edrpgsheet .characterImage img, .edrpgitemsheet .characterImage img {
   background: linear-gradient(90deg, #bbc7dd 0%, white 100%); }
 .edrpgsheet label, .edrpgitemsheet label {
-  overflow: hidden; }
-  .edrpgsheet label input, .edrpgsheet label .input, .edrpgitemsheet label input, .edrpgitemsheet label .input {
+  overflow: hidden;
+  display: block; }
+  .edrpgsheet label input, .edrpgsheet label .input, .edrpgsheet label select, .edrpgsheet label textarea, .edrpgitemsheet label input, .edrpgitemsheet label .input, .edrpgitemsheet label select, .edrpgitemsheet label textarea {
     background: linear-gradient(90deg, #bbc7dd 0%, white 100%);
     border: solid 1px #012533;
     border-radius: 0;
     padding: 3px 10px;
     display: block;
     font-size: .9em;
-    height: auto; }
+    height: auto;
+    width: 100%; }
   .edrpgsheet label span, .edrpgitemsheet label span {
     display: block;
     padding: 3px 10px;
@@ -3272,13 +3274,13 @@ html {
     float: left;
     border-color: transparent transparent #012533 transparent;
     border-width: 0 20px 20px 20px; }
-  .edrpgsheet label.nameField input, .edrpgitemsheet label.nameField input {
+  .edrpgsheet label.nameField input, .edrpgsheet label.nameField select, .edrpgsheet label.nameField textarea, .edrpgitemsheet label.nameField input, .edrpgitemsheet label.nameField select, .edrpgitemsheet label.nameField textarea {
     font-size: 2em; }
-  .edrpgsheet label.karma input, .edrpgitemsheet label.karma input {
+  .edrpgsheet label.karma input, .edrpgsheet label.karma select, .edrpgsheet label.karma textarea, .edrpgitemsheet label.karma input, .edrpgitemsheet label.karma select, .edrpgitemsheet label.karma textarea {
     background: linear-gradient(90deg, #c5bfdc 0%, white 100%); }
   .edrpgsheet label.karma span, .edrpgitemsheet label.karma span {
     background: linear-gradient(90deg, #562485 0%, #654996 100%); }
-  .edrpgsheet label.endurance input, .edrpgitemsheet label.endurance input {
+  .edrpgsheet label.endurance input, .edrpgsheet label.endurance select, .edrpgsheet label.endurance textarea, .edrpgitemsheet label.endurance input, .edrpgitemsheet label.endurance select, .edrpgitemsheet label.endurance textarea {
     background: linear-gradient(90deg, #f0cdc6 0%, white 100%); }
   .edrpgsheet label.endurance span, .edrpgitemsheet label.endurance span {
     background: linear-gradient(90deg, #e2490f 0%, #f4a300 100%); }
