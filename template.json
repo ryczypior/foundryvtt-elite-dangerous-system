@@ -4,9 +4,7 @@
       "Character",
       "NPC",
       "Vehicle",
-      "NPC Vehicle",
       "Ship",
-      "NPC Ship",
       "Creature"
     ],
     "templates": {
@@ -163,17 +161,7 @@
         "status"
       ]
     },
-    "NPC Vehicle": {
-      "templates": [
-        "status"
-      ]
-    },
     "Ship": {
-      "templates": [
-        "status"
-      ]
-    },
-    "NPC Ship": {
       "templates": [
         "status"
       ]
@@ -198,6 +186,7 @@
       "Melee Weapons",
       "Ammo Clips",
       "Commodities",
+      "Skills",
       "Ship Bulkheads",
       "Ship Power Plants",
       "Ship Thrusters",
@@ -590,6 +579,30 @@
             "value": 0
           }
         }
+      },
+      "skill": {
+        "skill": {
+          "skillCategory": {
+            "type": "String",
+            "value": "personalCombat"
+          },
+          "skillScoreStart": {
+            "type": "Number",
+            "value": 10
+          },
+          "skillChecked": {
+            "type": "Boolean",
+            "value": false
+          },
+          "skillBonus": {
+            "type": "Number",
+            "value": 1
+          },
+          "skillGenius": {
+            "type": "Number",
+            "value": 0
+          }
+        }
       }
     },
     "Armour": {
@@ -895,6 +908,12 @@
       "templates": [
         "internalId",
         "cost",
+        "details"
+      ]
+    },
+    "Skills": {
+      "templates": [
+        "skill",
         "details"
       ]
     }

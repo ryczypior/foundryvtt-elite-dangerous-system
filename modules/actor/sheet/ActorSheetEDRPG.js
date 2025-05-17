@@ -14,19 +14,25 @@ export default class ActorSheetEDRPG extends ActorSheet {
 
   get template(){
     let template = super.template;
-    const skills = duplicate(this.actor._source.system.skills);
-    if(Object.keys(skills).length === 0){
-      this.actor.update({ "system.skills": duplicate(EDRPG.skills) });
-    }
     return template;
   }
 
   async getData() {
     const sheetData = await super.getData();
     sheetData.system = sheetData.data.system // project system data so that handlebars has the same name and value paths
-    sheetData.items = sheetData.data.items;
+    sheetData.items = sheetData.data.items.sort((a, b) => {
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    });
     sheetData.meleeWeaponsTypes = EDRPG.meleeWeaponsTypes;
     sheetData.meleeHands = EDRPG.meleeHands;
+    sheetData.socialFactorCap = game.settings.get("edrpg", 'socialFactorCap');
+    sheetData.skillsCategories = EDRPG.skillsCategories;
     sheetData.imperialRanks = EDRPG.imperialHonoraryRanks;
     sheetData.federationRanks = EDRPG.federationHonoraryRanks
     return sheetData;
@@ -36,24 +42,19 @@ export default class ActorSheetEDRPG extends ActorSheet {
     event.preventDefault();
     const status = duplicate(this.actor._source.system.status);
     status[event.currentTarget.attributes['data-stateid'].value].value = Number(event.target.value);
+    console.log(status);
     return await this.actor.update({"system.status": status});
   }
 
   async _onChangeCapValue(event) {
     event.preventDefault();
-    const skills = duplicate(this.actor._source.system.skills);
-    const skillIndex = event.currentTarget.attributes['data-skill'].value;
-    const skillSectionIndex = event.currentTarget.attributes['data-section'].value;
+    const item = this.actor.items.get(event.currentTarget.attributes['data-skill'].value);
     if (isNaN(event.target.value)) {
-      event.target.value = skills[skillSectionIndex].skills[skillIndex].maxCapModifier;
-      return;
+      event.target.value = 0
     }
-    skills[skillSectionIndex].skills[skillIndex].maxCapModifier = Number(event.target.value);
-    return await this.actor.update({"system.skills": skills});
-  }
-
-  async changeSkillValue(skill, value){
-    return await this.actor.changeSkillValue(skill, value);
+    return await item.update({
+      'system.skill.skillGenius.value': Number(event.target.value),
+    });
   }
 
   /**
@@ -66,36 +67,45 @@ export default class ActorSheetEDRPG extends ActorSheet {
 
   async _onChangeSkillValue(event) {
     event.preventDefault();
-    const skillIndex = event.currentTarget.attributes['data-skill'].value;
-    await this.actor.changeSkillValue(skillIndex, event.target.value);
+    const item = this.actor.items.get(event.currentTarget.attributes['data-skill'].value);
+    await this.actor.changeSkillValue(item, event.target.value);
     return this.render();
   }
 
   async _onClickChecked(event){
     event.preventDefault();
-    const skills = duplicate(this.actor._source.system.skills);
-    const skillIndex = event.currentTarget.attributes['data-skill'].value;
-    const skillSectionIndex = event.currentTarget.attributes['data-section'].value;
-    if(skills[skillSectionIndex].skills[skillIndex].isChecked === 1){
-      skills[skillSectionIndex].skills[skillIndex].isChecked = 0;
-    } else {
-      skills[skillSectionIndex].skills[skillIndex].isChecked = 1;
-    }
-    return await this.actor.update({"system.skills": skills});
+    const item = this.actor.items.get(event.currentTarget.attributes['data-skill'].value);
+    return await item.update({
+      'system.skill.skillChecked.value': !item.system.skill.skillChecked.value,
+    });
+  }
+
+  async _onRemoveSkill(event){
+    event.preventDefault();
+    const skillId = event.currentTarget.attributes['data-skill'].value;
+    const sectionId = event.currentTarget.attributes['data-section'].value;
+
+    await this.actor.removeSkill(skillId, sectionId);
+    return this.render();
+    return null;
   }
 
   async __wearItem(item){
-    const worn = duplicate(item._source.system.worn);
-    worn.value = true;
-    await item.update({"system.worn": worn});
+    try {
+      const worn = duplicate(item._source.system.worn);
+      worn.value = true;
+      await item.update({"system.worn": worn});
+    } catch (e) {}
     await this.actor.calculateSocialFactor();
     return item;
   }
 
   async __unWearItem(item) {
-    const worn = duplicate(item._source.system.worn);
-    worn.value = false;
-    await item.update({"system.worn": worn});
+    try {
+      const worn = duplicate(item._source.system.worn);
+      worn.value = false;
+      await item.update({"system.worn": worn});
+    } catch (e) {}
     await this.actor.calculateSocialFactor();
     return item;
   }
@@ -182,23 +192,27 @@ export default class ActorSheetEDRPG extends ActorSheet {
     if(event && event.preventDefault){
       event.preventDefault();
     }
+    if(isNaN(event.target.value)) {
+      event.target.value = 0;
+    }
     const socialFactor = duplicate(this.actor._source.system.socialFactor);
-    socialFactor.sfOther.value = parseInt(event.target.value, 10);
+    socialFactor.sfOther.value = Number(event.target.value);
     await this.actor.update({"system.socialFactor": socialFactor});
     return await this.actor.calculateSocialFactor();
   }
 
   async _onSkillClick(event) {
-    const skillId = event.target.getAttribute('data-skill');
-    const skillSectionId = event.target.getAttribute('data-section');
-    const skills = duplicate(this.actor._source.system.skills);
-    const skill = skills[skillSectionId].skills[skillId];
+    const item = this.actor.items.get(event.currentTarget.attributes['data-skill'].value);
+    if(!item) {
+      return null;
+    }
     const data = {
-      ...skill, ...{
+      ...item, ...{
         callback: async () => {
-          if (skills[skillSectionId].skills[skillId].isChecked === 0) {
-            skills[skillSectionId].skills[skillId].isChecked = 1;
-            await this.actor.update({"system.skills": skills});
+          if (!item.system.skill.skillChecked.value) {
+            await item.update({
+              'system.skill.skillChecked.value': true,
+            });
           }
         },
         difficulty: 9

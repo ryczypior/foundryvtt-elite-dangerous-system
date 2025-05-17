@@ -260,6 +260,7 @@ EDRPG.federationHonoraryRanks = {
 EDRPG.skills = {
   "personalCombat": {
     "label": "SHEET.Skills.PersonalCombat",
+    "isEvolution": false,
     "skills": {
       "dodge": {
         "type": "Number",
@@ -345,6 +346,7 @@ EDRPG.skills = {
   },
   "intelligence": {
     "label": "SHEET.Skills.Intelligence",
+    "isEvolution": false,
     "skills": {
       "computer": {
         "type": "Number",
@@ -429,6 +431,7 @@ EDRPG.skills = {
     }
   },
   "social": {
+    "isEvolution": false,
     "label": "SHEET.Skills.SocialSkills",
     "skills": {
       "bargain": {
@@ -507,6 +510,7 @@ EDRPG.skills = {
   },
   "vehicleSkills": {
     "label": "SHEET.Skills.VehicleSkills",
+    "isEvolution": false,
     "skills": {
       "navigation": {
         "type": "Number",
@@ -582,6 +586,7 @@ EDRPG.skills = {
   },
   "espionage": {
     "label": "SHEET.Skills.Espionage",
+    "isEvolution": false,
     "skills": {
       "athletics": {
         "type": "Number",
@@ -644,6 +649,48 @@ EDRPG.skills = {
         "maxCapModifier": 0
       }
     }
+  },
+  "evolution": {
+    "label": "SHEET.Skills.Evolution",
+    "isEvolution": true,
+    "skills": {}
+  }
+};
+EDRPG.skillsCategories = {
+  "personalCombat": {
+    "label": "SHEET.Skills.PersonalCombat",
+    "isEvolution": false,
+    "skills": {
+    }
+  },
+  "intelligence": {
+    "label": "SHEET.Skills.Intelligence",
+    "isEvolution": false,
+    "skills": {
+    }
+  },
+  "social": {
+    "isEvolution": false,
+    "label": "SHEET.Skills.SocialSkills",
+    "skills": {
+    }
+  },
+  "vehicleSkills": {
+    "label": "SHEET.Skills.VehicleSkills",
+    "isEvolution": false,
+    "skills": {
+    }
+  },
+  "espionage": {
+    "label": "SHEET.Skills.Espionage",
+    "isEvolution": false,
+    "skills": {
+    }
+  },
+  "evolution": {
+    "label": "SHEET.Skills.Evolution",
+    "isEvolution": true,
+    "skills": {}
   }
 };
 

@@ -3,6 +3,7 @@ import ActorSheetEDRPG from "./modules/actor/sheet/ActorSheetEDRPG.js";
 import ActorSheetEDRPGCharacter from "./modules/actor/sheet/ActorSheetEDRPGCharacter.js";
 import ItemEDRPG from "./modules/item/ItemEDRPG.js";
 import ItemSheetEDRPG from "./modules/item/sheet/ItemSheetEDRPG.js";
+import ItemSheetEDRPGSkills from "./modules/item/sheet/ItemSheetEDRPGSkills.js";
 import ItemSheetEDRPGBackground from "./modules/item/sheet/ItemSheetEDRPGBackground.js";
 import ItemSheetEDRPGEnhancement from "./modules/item/sheet/ItemSheetEDRPGEnhancement.js";
 import ItemSheetEDRPGKarmaCap from "./modules/item/sheet/ItemSheetEDRPGKarmaCap.js";
@@ -57,8 +58,6 @@ import ItemSheetEDRPGVehicleSpecials from "./modules/item/sheet/ItemSheetEDRPGVe
 import ActorSheetEDRPGShip from "./modules/actor/sheet/ActorSheetEDRPGShip";
 import ItemEffects from "./modules/item/helpers/ItemEffects";
 import ItemSheetEDRPGWearables from "./modules/item/sheet/ItemSheetEDRPGWearables";
-import ActorSheetEDRPGNPCShip from "./modules/actor/sheet/ActorSheetEDRPGNPCShip";
-import ActorSheetEDRPGNPCVehicle from "./modules/actor/sheet/ActorSheetEDRPGNPCVehicle";
 import './static/css/edrpg.scss';
 Hooks.once("init", async function () {
   // Register sheet application classes
@@ -66,11 +65,10 @@ Hooks.once("init", async function () {
   Actors.registerSheet('edrpg', ActorSheetEDRPGCharacter, {types: ['Character'], makeDefault: true});
   Actors.registerSheet('edrpg', ActorSheetEDRPGNPC, {types: ['NPC'], makeDefault: true});
   Actors.registerSheet('edrpg', ActorSheetEDRPGVehicle, {types: ['Vehicle'], makeDefault: true});
-  Actors.registerSheet('edrpg', ActorSheetEDRPGNPCVehicle, {types: ['NPC Vehicle'], makeDefault: true});
   Actors.registerSheet('edrpg', ActorSheetEDRPGCreature, {types: ['Creature'], makeDefault: true});
   Actors.registerSheet('edrpg', ActorSheetEDRPGShip, {types: ['Ship'], makeDefault: true});
-  Actors.registerSheet('edrpg', ActorSheetEDRPGNPCShip, {types: ['NPC Ship'], makeDefault: true});
   Items.unregisterSheet('core', ItemSheet);
+  Items.registerSheet('edrpg', ItemSheetEDRPGSkills, {types: ['Skills'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGBackground, {types: ['Backgrounds'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGEnhancement, {types: ['Enhancements'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGKarmaCap, {types: ['Karma Capabilities'], makeDefault: true});
@@ -120,6 +118,7 @@ Hooks.once("init", async function () {
       ActorSheetEDRPGCreature,
       ItemSheetEDRPG,
       ItemSheetEDRPGBackground,
+      ItemSheetEDRPGSkills,
       ItemSheetEDRPGEnhancement,
       ItemSheetEDRPGKarmaCap,
       ItemSheetEDRPGArmour,

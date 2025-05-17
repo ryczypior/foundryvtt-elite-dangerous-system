@@ -14,6 +14,7 @@ export default class ActorSheetEDRPGCharacter extends ActorSheetEDRPG {
     'Melee Weapons',
     'Ammo Clips',
     'Wearables',
+    'Skills',
   ];
 
   get template() {

@@ -133,7 +133,7 @@ export default class EDRPGTests {
 
   activateListeners(html){
     html.find('.difficulty-button').click(this._onDifficultyClick.bind(this));
-    html.find('.bonus').change(this._onBonusChange.bind(this));
+    html.find('.bonusModifier').change(this._onBonusChange.bind(this));
     html.find('.roll-mode').change(this._onRollModeChange.bind(this));
   }
 

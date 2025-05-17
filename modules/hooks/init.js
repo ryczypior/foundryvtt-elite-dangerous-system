@@ -81,6 +81,7 @@ export default function () {
       "systems/edrpg/templates/items/partials/item-karma.html",
       "systems/edrpg/templates/items/partials/item-melee.html",
       "systems/edrpg/templates/items/partials/item-cybernetics.html",
+      "systems/edrpg/templates/items/partials/item-skill-attributes.html",
       "systems/edrpg/templates/tests/skill-test.html",
       "systems/edrpg/templates/chat/message.html",
       "systems/edrpg/templates/chat/roll/skill.html",
@@ -101,14 +102,6 @@ export default function () {
       default: 9,
       type: Number
     });
-    game.settings.register("edrpg", "allowToRerollAllTests", {
-      name: "SETTINGS.allowToRerollAllTestsName",
-      hint: "SETTINGS.allowToRerollAllTestsHint",
-      scope: "world",
-      config: true,
-      default: false,
-      type: Boolean
-    });
     game.settings.register("edrpg", "socialFactorCap", {
       name: "SETTINGS.socialFactorCapName",
       hint: "SETTINGS.socialFactorCapHint",
@@ -116,6 +109,30 @@ export default function () {
       config: true,
       default: 4,
       type: Number
+    });
+    game.settings.register("edrpg", "evolutionMaxSkillCap", {
+      name: "SETTINGS.evolutionMaxSkillCapName",
+      hint: "SETTINGS.evolutionMaxSkillCapHint",
+      scope: "world",
+      config: true,
+      default: false,
+      type: Boolean
+    });
+    game.settings.register("edrpg", "evolutionEnableEvolutionSkills", {
+      name: "SETTINGS.evolutionEnableEvolutionSkillsName",
+      hint: "SETTINGS.evolutionEnableEvolutionSkillsHint",
+      scope: "world",
+      config: true,
+      default: false,
+      type: Boolean
+    });
+    game.settings.register("edrpg", "allowToRerollAllTests", {
+      name: "SETTINGS.allowToRerollAllTestsName",
+      hint: "SETTINGS.allowToRerollAllTestsHint",
+      scope: "world",
+      config: true,
+      default: false,
+      type: Boolean
     });
   });
 }

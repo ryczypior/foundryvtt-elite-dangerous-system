@@ -1,9 +1,9 @@
 {
     "id": "edrpg",
     "name": "edrpg",
-    "title": "E.D.R.P.G. - Unofficial ",
+    "title": "E.D.R.P.G. - Unofficial (Evolution expansion ready)",
     "description": "TAKE CONTROL OF YOUR OWN SPACESHIP AND FORGE YOUR OWN DESTINY IN A CUT-THROAT GALAXY USING FOUNDRY VTT",
-    "version": "0.0.1",
+    "version": "0.1.23",
     "authors" : [
         {
             "name": "Ryczypior",
@@ -50,7 +50,7 @@
     "compatibility" : {
         "minimum" : 10.279,
         "verified" : 10,
-        "maximum" : 11
+        "maximum" : 12
     },
     "manifestPlusVersion": "1.0.0",
     "templateVersion":3,

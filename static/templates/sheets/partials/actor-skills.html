@@ -1,39 +1,49 @@
 <div class="container-fluid">
     <div class="row">
-    {{#each system.skills as |sk s|}}
+    {{#each skillsCategories as |sk s|}}
         <div class="col-12 col-lg-6 tableitems tableskill">
             <h2>{{localize sk.label}}</h2>
             <div class="row tableheading">
                 <div class="col-4 text-right">{{localize "SHEET.SkillLabel"}}</div>
                 <div class="col-2">{{localize "SHEET.ScoreLabel"}}</div>
                 <div class="col-2">{{localize "SHEET.GeniusLabel"}}</div>
-                <div class="col-2">{{localize "SHEET.BonusLabel"}}</div>
-                <div class="col-2">{{localize "SHEET.CheckedLabel"}}</div>
+                <div class="col-2 no-gutters">{{localize "SHEET.BonusLabel"}}</div>
+                <div class="col-1 no-gutters">{{localize "SHEET.CheckedLabel"}}</div>
+                <div class="col-1">{{localize "SHEET.RemoveLabel"}}</div>
             </div>
-                {{#each sk.skills as |skillObject skillKey|}}
+                {{#each ../items as |item id|}}
+                {{#if (eq item.type "Skills")}}
+                {{#if (eq item.system.skill.skillCategory.value s)}}
                 <div class="row tablerow">
                     <div class="col-4 tableheader">
-                        <a class="skill-roll" data-skill="{{skillKey}}" data-section="{{s}}">{{localize skillObject.label}}</a>
+                        <a class="skill-roll" data-skill="{{item._id}}" data-section="{{s}}">{{item.name}}</a>
                     </div>
                     <div class="col-2 tableinput">
-                        <input class="changeSkillValue" value="{{skillObject.value}}" type="number" step="1" min="10" data-skill="{{skillKey}}" data-section="{{s}}">
+                        <input class="changeSkillValue" value="{{item.system.skill.skillScoreStart.value}}" type="number" step="1" min="0" data-skill="{{item._id}}" data-section="{{s}}">
                     </div>
                     <div class="col-2 tableinput">
-                        <input class="changeCapValue" value="{{skillObject.maxCapModifier}}" type="number" step="10" min="0" data-skill="{{skillKey}}" data-section="{{s}}">
+                        <input class="changeCapValue" value="{{item.system.skill.skillGenius.value}}" type="number" step="10" min="0" data-skill="{{item._id}}" data-section="{{s}}">
                     </div>
                     <div class="col-2 tableinput">
-                        <span>{{skillObject.bonus}}</span>
+                        <span>{{item.system.skill.skillBonus.value}}</span>
                     </div>
-                    <div class="col-2 tableinput tableinputblue">
-                        <span class="clickChecked" data-skill="{{skillKey}}" data-section="{{s}}">
-                        {{#if (eq skillObject.isChecked 1)}}
+                    <div class="col-1 tableinput tableinputblue">
+                        <span class="clickChecked" data-skill="{{item._id}}" data-section="{{s}}">
+                        {{#if (eq item.system.skill.skillChecked.value true)}}
                             <i class="far fa-check-square"></i>
                         {{else}}
                             <i class="far fa-square"></i>
                         {{/if}}
                         </span>
                     </div>
+                    <div class="col-1 tableinput">
+                        <span class="clickRemoveItem" data-id="{{item._id}}">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                    </div>
                 </div>
+                {{/if}}
+                {{/if}}
                 {{/each}}
         </div>
     {{/each}}

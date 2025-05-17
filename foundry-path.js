@@ -6,7 +6,7 @@ function foundryConfig(systemId) {
   let config;
 
   if (fs.existsSync(configPath)) {
-      config = fs.readJSONSync(configPath);
+    config = fs.readJSONSync(configPath);
   }
 
   let foundryPath

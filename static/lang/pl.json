@@ -9,8 +9,9 @@
   "SHEET.RankPoints": "Punkty Rangi",
   "SHEET.SkillLabel": "Umiejętność",
   "SHEET.ScoreLabel": "Punkty",
-  "SHEET.BonusLabel": "Bonus",
-  "SHEET.CheckedLabel": "Zaznacz",
+  "SHEET.BonusLabel": "Bns",
+  "SHEET.CheckedLabel": "Zazn",
+  "SHEET.RemoveLabel": "Us",
   "SHEET.Actions": "Akcje",
 
   "SHEET.SkillsLabel": "Umiejętności",
@@ -39,6 +40,7 @@
   "SHEET.Skills.SocialSkills": "Umiejętności Społeczne",
   "SHEET.Skills.VehicleSkills": "Obsługa Pojazdów",
   "SHEET.Skills.Espionage": "Szpiegostwo",
+  "SHEET.Skills.Evolution": "Evolution",
 
   "SHEET.Skills.PC.Dodge": "Unik",
   "SHEET.Skills.PC.DodgeDescription": "Unik to twoja umiejętność schodzenia z drogi pociskom, wiązkom energii, nożom i ciosom. Jest on używany w walce osobistej i określa twój bonus do obrony (Unik).",
@@ -181,10 +183,11 @@
   "ITEM.BackgroundTypeEnhancement": "Wybierz Ulepszenie",
   "ITEM.BackgroundTypeSkillSelect": "Wybierz Typ Umiej.",
   "ITEM.BackgroundTypeSkillBonus": "Wartość Bonusu",
+  "ITEM.BackgroundTypeEnhancementSelect": "Wybierz Typ Ulepszenia",
 
   "ITEM.Karma.Prerequisite": "Warunek użycia",
   "ITEM.Karma.Effect": "Efekt",
-  "ITEM.Karma.Cost": "Koszt",
+  "ITEM.Karma.Cost": "Koszt (0 oznacza WSZYSTKIE)",
   "ITEM.Karma.Skill": "Umiejętność",
   "ITEM.Karma.AllPoints": "Wszystkie punkty",
 
@@ -251,6 +254,10 @@
   "ITEM.UsesAmmo": "Używa amunicji",
   "ITEM.MaxAmmoInClip": "Max ilość amunicji w magazynku",
 
+  "ITEM.SkillAttributes": "Właściwości",
+  "ITEM.SkillCategory": "Kategoria umiejętności",
+  "ITEM.SkillScoreStart": "Wartość startowa umiejętności",
+
   "RANK.Harmless": "Harmless",
   "RANK.MostlyHarmless": "Mostly Harmless",
   "RANK.Novice": "Novice",
@@ -303,10 +310,14 @@
   "SETTINGS.systemMaxBackgroundsHint": "Określa maksymalną liczbę slotów do zapełnienia Pochodzenie bohaterów. Domyślnie wg zasad - 4. Darmowe pochodzenie 'Trained Pilot' nie jest wliczone do puli. 0 oznacza brak limitów",
   "SETTINGS.defaultDifficultyNumberName": "Domyślny poziom trudności testów",
   "SETTINGS.defaultDifficultyNumberHint": "Określa domyślnie ustawiony poziom trudności dla rzutów",
-  "SETTINGS.allowToRerollAllTestsName": "Pozwól na przerzut każdego testu",
-  "SETTINGS.allowToRerollAllTestsHint": "Homerule - pozwala na przerzut z Karmy każdego testu, w zasadach podręcznika przerzut możliwy jest tylko jeśli wypadnie 1 na rzucie",
+  "SETTINGS.allowToRerollAllTestsName": "Homerule: Pozwól na przerzut każdego testu",
+  "SETTINGS.allowToRerollAllTestsHint": "Pozwala na przerzut z Karmy każdego testu, w zasadach podręcznika przerzut możliwy jest tylko jeśli wypadnie 1 na rzucie",
   "SETTINGS.socialFactorCapName": "Ograniczenie Współczynnika Socjalnego",
-  "SETTINGS.socialFactorCapHint": "Maksymalna wartość Współczynnika Socjalnego dodawana do rzutów. 0 osnacza bez ograniczeń",
+  "SETTINGS.socialFactorCapHint": "Maksymalna wartość Współczynnika Socjalnego dodawana do rzutów. 0 oznacza bez ograniczeń",
+  "SETTINGS.evolutionMaxSkillCapName": "Evolution: odblokuj maksymalne ograniczenie umiejętności",
+  "SETTINGS.evolutionMaxSkillCapHint": "Ograniczenie umiejętności może przekroczyć 100",
+  "SETTINGS.evolutionEnableEvolutionSkillsName": "Evolution: niestandardowe umiejętności",
+  "SETTINGS.evolutionEnableEvolutionSkillsHint": "Pozwala na dodanie niestandardowych umiejętności do karty postaci",
 
   "TEST.SkillCheck": "Test Umiejętności: {skill}",
   "TEST.DifficultyNumber": "Poziom trudności",
@@ -340,9 +351,16 @@
   "CHAT.NoKarmaPoints": "Brak punktów Karmy",
   "CHAT.ReRollUsingKarmaTitle": "Przerzut z Karmy",
   "CHAT.ReRollUsingKarmaMessage": "<strong>{actorName}</strong> przerzuca test: <strong>{testName}</strong> używając punktu Karmy",
+  "CHAT.EditRoll": "Edytuj Rzut",
+  "CHAT.Submit": "Zatwierdź",
+  "CHAT.Cancel": "Anuluj",
 
   "WARN.ItemNotFound": "Przedmiot o wewnętrznym ID: '{internalId}' nie został znaleziony ani w przedmiotach, ani w kompendium. Spodziewany typ przedmiotu: '{type}'",
   "WARN.ItemCannotBeAdded": "Przedmiot '{item}' nie może zostać dodany do tej postaci",
+  "WARN.MaxCapWarning": "Maksymalna wartość umiejętności {skillName} jest ustawiona na {maxCap}. Próbujesz ustawić wartość {skillValue}, która przekracza ograniczenie.",
+
+  "EDRPG.DeleteSkillTitle": "Usuń Umiejętność",
+  "EDRPG.DeleteSkillContent": "Czy na pewno chcesz usunąć tę umiejętność? Tej operacji nie można cofnąć.",
 
   "Yes": "Tak",
   "No": "Nie"

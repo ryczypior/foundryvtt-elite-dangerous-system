@@ -19,7 +19,7 @@ export default {
         clearScreen: true
     },
     plugins: [
-        jscc({      
+        jscc({
             values : {_ENV :  process.env.NODE_ENV}
         }),
         scss({

@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="flex"><span>{{localize 'ITEM.SkillAttributes'}}</span></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{localize 'ITEM.SkillCategory'}}
+        </div>
+        <div class="col-6">
+            {{#select system.skill.skillCategory.value}}
+            <select name="system.skill.skillCategory.value">
+                {{#each skillsCategories as |skillType skillTypeId|}}
+                <option value="{{skillTypeId}}">{{localize skillType.label}}</option>
+                {{/each}}
+            </select>
+            {{/select}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{localize 'ITEM.SkillScoreStart'}}
+        </div>
+        <div class="col-6">
+            <input type="number" step="1" min="0" value="{{system.skill.skillScoreStart.value}}" name="system.skill.skillScoreStart.value"
+                   placeholder="{{localize 'ITEM.SkillScoreStart'}}" title="{{localize 'ITEM.SkillScoreStart'}}">
+        </div>
+    </div>
+</div>

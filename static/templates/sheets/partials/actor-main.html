@@ -4,7 +4,7 @@
             <h2 class="col">
                 {{localize 'SHEET.SocialFactor'}}
             </h2>
-            <p><em>{{localize 'SHEET.SocialFactorInfo'}}</em></p>
+            <p><em>{{localize 'SHEET.SocialFactorInfo' socialFactorCap=socialFactorCap}}</em></p>
         </div>
     </div>
     <div class="row">
@@ -24,7 +24,7 @@
         </div>
         <div class="col-6 col-lg-3">
             <label class="karma">
-                <input type="number" class="systemSocialFactorSfOtherValue" value="{{system.socialFactor.sfOther.value}}">
+                <input type="number" class="systemSocialFactorSfOtherValue" min="-100" step="1" max="100" value="{{system.socialFactor.sfOther.value}}">
                 <span>
                     {{localize 'SHEET.SocialFactorFromOther'}}
                 </span>

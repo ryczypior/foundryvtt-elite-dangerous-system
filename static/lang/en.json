@@ -9,8 +9,9 @@
     "SHEET.RankPoints": "Rank Points",
     "SHEET.SkillLabel": "Skill",
     "SHEET.ScoreLabel": "Score",
-    "SHEET.BonusLabel": "Bonus",
-    "SHEET.CheckedLabel": "Checked",
+    "SHEET.BonusLabel": "Bns",
+    "SHEET.CheckedLabel": "Chk",
+    "SHEET.RemoveLabel": "Rm",
     "SHEET.Actions": "Actions",
 
     "SHEET.SkillsLabel": "Skills",
@@ -39,6 +40,7 @@
     "SHEET.Skills.SocialSkills": "Social Skills",
     "SHEET.Skills.VehicleSkills": "Vehicle Skills",
     "SHEET.Skills.Espionage": "Espionage",
+    "SHEET.Skills.Evolution": "Evolution",
 
     "SHEET.Skills.PC.Dodge": "Dodge",
     "SHEET.Skills.PC.DodgeDescription": "Dodge is your skill at getting out of the way of bullets, energy beams, knives and punches. It is used extensively in personal combat and determines your Defence (Dodge) bonus.",
@@ -83,7 +85,7 @@
     "SHEET.Skills.SOC.Diplomacy": "Diplomacy",
     "SHEET.Skills.SOC.DiplomacyDescription": "Diplomacy is the ability to resolve disputes through respect and persuasion, treating your debating target as an equal. Use it when you wish to show common cause with a potential enemy, or to explain, rationally, what you are doing, to a suspicious guard. Diplomacy relies on openness and honesty – if you are lying to your target use Bluff instead.",
     "SHEET.Skills.SOC.Gambling": "Gambling",
-    "SHEET.Skills.SOC.GamblingDescription": "With Gambling you increase your skill in all games of chance, from card games to token slot machines. You can count cards and figure out the win/loss conditions programmed into casino gambling machines. ",
+    "SHEET.Skills.SOC.GamblingDescription": "With Gambling you increase your skill in all games of chance, from card games to token slot machines. You can count cards and figure out the win/loss conditions programmed into casino gambling machines.",
     "SHEET.Skills.SOC.Insight": "Insight",
     "SHEET.Skills.SOC.InsightDescription": "The Insight Skill allows you to read people’s emotional state by studying their faces and body posture. It is not telepathy but it can tell you if a person is lying, earnest, angry, in love or intoxicated, making it very helpful during interrogations and questioning.",
     "SHEET.Skills.SOC.Intimidate": "Intimidate",
@@ -181,10 +183,11 @@
     "ITEM.BackgroundTypeEnhancement": "Select Enhancement",
     "ITEM.BackgroundTypeSkillSelect": "Select Skill Type",
     "ITEM.BackgroundTypeSkillBonus": "Skill Bonus Value",
+    "ITEM.BackgroundTypeEnhancementSelect": "Select Enhancement Type",
 
     "ITEM.Karma.Prerequisite": "Prerequisite",
     "ITEM.Karma.Effect": "Effect",
-    "ITEM.Karma.Cost": "Cost",
+    "ITEM.Karma.Cost": "Cost (0 means ALL)",
     "ITEM.Karma.Skill": "Skill",
     "ITEM.Karma.AllPoints": "All points",
 
@@ -248,6 +251,10 @@
     "ITEM.RangedWeapons.DamageInjury": "Injury",
     "ITEM.RangedWeapons.MinimumSafeRange": "Minimum Safe Range",
 
+    "ITEM.SkillAttributes": "Skill Attributes",
+    "ITEM.SkillCategory": "Skill type",
+    "ITEM.SkillScoreStart": "Skill start value",
+
     "ITEM.UsesAmmo": "Uses Ammo",
     "ITEM.MaxAmmoInClip": "Max ammo in clip",
 
@@ -303,10 +310,14 @@
     "SETTINGS.systemMaxBackgroundsHint": "Specifies the maximum number of background choices. Default value is 4. 'Trained Pilot' is free and it is not included in the pool. 0 means unlimited choices",
     "SETTINGS.defaultDifficultyNumberName": "Default test difficulty number",
     "SETTINGS.defaultDifficultyNumberHint": "Specifies the default difficulty number for roll checks",
-    "SETTINGS.allowToRerollAllTestsName": "Allow to reroll all tests",
-    "SETTINGS.allowToRerollAllTestsHint": "Homerule - allows to reroll all tests using Karma point. Core Book rule allows to reroll only when there is a 1 on roll dice",
     "SETTINGS.socialFactorCapName": "Social Factor Cap",
     "SETTINGS.socialFactorCapHint": "Max Social Factor bonus added to rolls. 0 for infinite",
+    "SETTINGS.evolutionMaxSkillCapName": "Evolution: Remove max skill cap",
+    "SETTINGS.evolutionMaxSkillCapHint": "Skill cap can exceed 100",
+    "SETTINGS.allowToRerollAllTestsName": "Homerule: Allow to reroll all tests",
+    "SETTINGS.allowToRerollAllTestsHint": "Allows to reroll all tests using Karma point. Core Book rule allows to reroll only when there is a 1 on roll dice",
+    "SETTINGS.evolutionEnableEvolutionSkillsName": "Evolution: custom skills",
+    "SETTINGS.evolutionEnableEvolutionSkillsHint": "Allows to add custom skills to the Character Sheet",
 
     "TEST.SkillCheck": "Skill Check: {skill}",
     "TEST.DifficultyNumber": "Difficulty Number",
@@ -340,9 +351,16 @@
     "CHAT.NoKarmaPoints": "No Karma points left",
     "CHAT.ReRollUsingKarmaTitle": "Karma Rereoll",
     "CHAT.ReRollUsingKarmaMessage": "<strong>{actorName}</strong> rerolls <strong>{testName}</strong> using 1 Karma point",
+    "CHAT.EditRoll": "Edit Roll",
+    "CHAT.Submit": "Submit",
+    "CHAT.Cancel": "Cancel",
 
     "WARN.ItemNotFound": "Item with internal ID {internalId} not found in items nor compendium. Expected type: {type}",
     "WARN.ItemCannotBeAdded": "Item '{item}' cannot be added to this character",
+    "WARN.MaxCapWarning": "Skill {skillName} max cap is set to {maxCap}. You're trying to set {skillValue} which exceed it.",
+
+    "EDRPG.DeleteSkillTitle": "Delete Skill",
+    "EDRPG.DeleteSkillContent": "Are you sure you want to delete this skill? This action cannot be undone.",
 
     "Yes": "Yes",
     "No": "No"

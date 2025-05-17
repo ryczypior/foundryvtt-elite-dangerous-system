@@ -18,7 +18,30 @@ export default class ItemSheetEDRPG extends ItemSheet {
     sheetData.rangedWeaponsTypes = duplicate(EDRPG.rangedWeaponsTypes);
     sheetData.meleeWeaponsTypes = duplicate(EDRPG.meleeWeaponsTypes);
     sheetData.meleeHands = duplicate(EDRPG.meleeHands);
-    sheetData.skills = duplicate(EDRPG.skills);
+    sheetData.skills = duplicate(EDRPG.skillsCategories);
+    const skills = await EDRPGUtils.findItemsByType('Skills');
+    if(skills){
+      for(let key of Object.keys(skills)){
+        const skill = skills[key];
+        if(!skill.system.internalId.value || skill.system.internalId.value === "" ) {
+          continue;
+        }
+        if(!sheetData.skills[skill.system.skill.skillCategory.value]) {
+          sheetData.skills[skill.system.skill.skillCategory.value] = {skills: {}};
+        }
+        sheetData.skills[skill.system.skill.skillCategory.value].skills[skill.system.internalId.value] = {
+          "type": "Number",
+          "label": skill.name,
+          "description": skill.system.details.description.value,
+          "initial": skill.system.skill.skillScoreStart.value,
+          "isChecked": 0,
+          "value": skill.system.skill.skillScoreStart.value,
+          "bonus": Math.floor(skill.system.skill.skillScoreStart.value/10),
+          "maxCapModifier": 0
+        };
+      }
+    }
+    console.log(sheetData.skills);
     sheetData.ammoClips = await EDRPGUtils.findItemsByType('Ammo Clips');
     sheetData.enhancements = await EDRPGUtils.findItemsByType('enhancements');
     sheetData.enrichment = await this._handleEnrichment(sheetData.system);
@@ -31,9 +54,14 @@ export default class ItemSheetEDRPG extends ItemSheet {
 
   async _handleEnrichment(system)
   {
-    let enrichment = {}
-    enrichment["system.details.description.value"] = await TextEditor.enrichHTML(system.details.description.value, { async: true });
-    enrichment["system.details.gmdescription.value"] = await TextEditor.enrichHTML(system.details.gmdescription.value, { async: true });
+    let enrichment = {};
+    console.log(system.details.description);
+    if(system.details.description) {
+      enrichment["system.details.description.value"] = await TextEditor.enrichHTML(system.details.description.value, {async: true});
+    }
+    if(system.details.gmdescription) {
+      enrichment["system.details.gmdescription.value"] = await TextEditor.enrichHTML(system.details.gmdescription.value, {async: true});
+    }
     if(system.notes){
       enrichment["system.notes.value"] = await TextEditor.enrichHTML(system.notes.value, { async: true });
     }
