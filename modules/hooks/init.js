@@ -40,6 +40,7 @@ export default function () {
       "systems/edrpg/templates/items/wearables.html",
       "systems/edrpg/templates/items/ship-bulkheads.html",
       "systems/edrpg/templates/items/ship-fsd.html",
+      "systems/edrpg/templates/items/ship-cargo-hatch.html",
       "systems/edrpg/templates/items/ship-internal-afm-units.html",
       "systems/edrpg/templates/items/ship-internal-cargo-racks.html",
       "systems/edrpg/templates/items/ship-internal-collector-limpet.html",

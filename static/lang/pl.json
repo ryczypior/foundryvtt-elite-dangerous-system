@@ -333,6 +333,7 @@
     "InitiativeBonus": "Bonus do Inicjatywy",
     "DogfightingBonus": "Bonus do Starcia",
     "ShieldBonus": "Bonus do Tarczy",
+    "GeneralScanBonus": "Bonus do Skanowania",
     "ShipRange": "Zasięg (LY)"
   },
   "RANK": {

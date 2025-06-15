@@ -333,6 +333,7 @@
     "InitiativeBonus": "Initiative Bonus",
     "DogfightingBonus": "Dogfighting Bonus",
     "ShieldBonus": "Shield Bonus",
+    "GeneralScanBonus": "General Scan Bonus",
     "ShipRange": "Range (LY)",
     "ShipLifeSupportTime": "Life Support Time"
   },

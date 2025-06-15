@@ -59,6 +59,7 @@ import ActorSheetEDRPGShip from "./modules/actor/sheet/ActorSheetEDRPGShip";
 import ItemEffects from "./modules/item/helpers/ItemEffects";
 import ItemSheetEDRPGWearables from "./modules/item/sheet/ItemSheetEDRPGWearables";
 import './static/css/edrpg.scss';
+import ItemSheetEDRPGShipCargoHatch from "./modules/item/sheet/ItemSheetEDRPGShipCargoHatch";
 Hooks.once("init", async function () {
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
@@ -89,6 +90,7 @@ Hooks.once("init", async function () {
   Items.registerSheet('edrpg', ItemSheetEDRPGShipSensors, {types: ['Ship Sensors'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGShipShields, {types: ['Ship Shields'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGShipWeapons, {types: ['Ship Weapons'], makeDefault: true});
+  Items.registerSheet('edrpg', ItemSheetEDRPGShipCargoHatch, {types: ['Ship Cargo Hatch'], makeDefault: true});
   Items.registerSheet('edrpg', ItemSheetEDRPGShipUtilityMounts, {types: ['Ship Utility Mounts'], makeDefault: true});
 
   Items.registerSheet('edrpg', ItemSheetEDRPGShipInternalAFMUnits, {types: ['Ship Internal - AFM Units'], makeDefault: true});
@@ -137,6 +139,7 @@ Hooks.once("init", async function () {
       ItemSheetEDRPGShipPowerDistributors,
       ItemSheetEDRPGShipSensors,
       ItemSheetEDRPGShipShields,
+      ItemSheetEDRPGShipCargoHatch,
       ItemSheetEDRPGShipWeapons,
       ItemSheetEDRPGShipUtilityMounts,
       ItemSheetEDRPGShipInternalAFMUnits,
