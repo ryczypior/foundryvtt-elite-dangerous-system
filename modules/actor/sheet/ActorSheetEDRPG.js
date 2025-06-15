@@ -2,8 +2,8 @@ import EDRPG from "../../system/EDRPG";
 import EDRPGSkillTests from "../../tests/EDRPGSkillTests";
 
 export default class ActorSheetEDRPG extends ActorSheet {
-  validItemTypes = [
-  ];
+  validItemTypes = [];
+
   static get defaultOptions() {
     const options = super.defaultOptions;
     options.tabs = [{navSelector: ".tabs", contentSelector: ".content", initial: "main"}];
@@ -12,7 +12,7 @@ export default class ActorSheetEDRPG extends ActorSheet {
     return options;
   }
 
-  get template(){
+  get template() {
     let template = super.template;
     return template;
   }
@@ -60,7 +60,7 @@ export default class ActorSheetEDRPG extends ActorSheet {
   /**
    * @param skillsToChange [{skillId, skillValue}]
    */
-  async addSkillValue(skillsToChange){
+  async addSkillValue(skillsToChange) {
     await this.actor.addSkillValue(skillsToChange);
     return this.render();
   }
@@ -72,7 +72,7 @@ export default class ActorSheetEDRPG extends ActorSheet {
     return this.render();
   }
 
-  async _onClickChecked(event){
+  async _onClickChecked(event) {
     event.preventDefault();
     const item = this.actor.items.get(event.currentTarget.attributes['data-skill'].value);
     return await item.update({
@@ -80,7 +80,7 @@ export default class ActorSheetEDRPG extends ActorSheet {
     });
   }
 
-  async _onRemoveSkill(event){
+  async _onRemoveSkill(event) {
     event.preventDefault();
     const skillId = event.currentTarget.attributes['data-skill'].value;
     const sectionId = event.currentTarget.attributes['data-section'].value;
@@ -90,12 +90,13 @@ export default class ActorSheetEDRPG extends ActorSheet {
     return null;
   }
 
-  async __wearItem(item){
+  async __wearItem(item) {
     try {
       const worn = duplicate(item._source.system.worn);
       worn.value = true;
       await item.update({"system.worn": worn});
-    } catch (e) {}
+    } catch (e) {
+    }
     await this.actor.calculateSocialFactor();
     return item;
   }
@@ -105,20 +106,21 @@ export default class ActorSheetEDRPG extends ActorSheet {
       const worn = duplicate(item._source.system.worn);
       worn.value = false;
       await item.update({"system.worn": worn});
-    } catch (e) {}
+    } catch (e) {
+    }
     await this.actor.calculateSocialFactor();
     return item;
   }
 
-  async _onClickCheckedWorn(event){
+  async _onClickCheckedWorn(event) {
     event.preventDefault();
     const id = event.currentTarget.attributes['data-id'].value;
     const item = this.actor.items.get(id);
-    if(!item){
+    if (!item) {
       ui.notifications.warn("Item not found");
       return null;
     }
-    if(item._source.system.worn.value === false){
+    if (item._source.system.worn.value === false) {
       await this.__wearItem(item);
     } else {
       await this.__unWearItem(item);
@@ -126,15 +128,15 @@ export default class ActorSheetEDRPG extends ActorSheet {
     return null;
   }
 
-  async _onClickCheckedEquipped(event){
+  async _onClickCheckedEquipped(event) {
     event.preventDefault();
     const id = event.currentTarget.attributes['data-id'].value;
     const item = this.actor.items.get(id);
-    if(!item){
+    if (!item) {
       ui.notifications.warn("Item not found");
       return null;
     }
-    if(item._source.system.equipped.value === false){
+    if (item._source.system.equipped.value === false) {
       await this.__wearItem(item);
     } else {
       await this.__unWearItem(item);
@@ -142,26 +144,26 @@ export default class ActorSheetEDRPG extends ActorSheet {
     return null;
   }
 
-  async _onDropItem(event, data){
+  async _onDropItem(event, data) {
     const item = await fromUuid(data.uuid);
-    if(this.validItemTypes.indexOf(item.type) === -1){
+    if (this.validItemTypes.indexOf(item.type) === -1) {
       ui.notifications.warn(game.i18n.localize('WARN.ItemCannotBeAdded'));
       return null;
     }
 
-    const method = 'add'+item.type.charAt(0).toUpperCase()+item.type.slice(1);
-    if(this.actor[method]){
+    const method = 'add' + item.type.charAt(0).toUpperCase() + item.type.slice(1);
+    if (this.actor[method]) {
       await this.actor[method](item);
     }
     return await super._onDropItem(event, data);
   }
 
-  async _onRemoveItem(id){
+  async _onRemoveItem(id) {
     const item = this.actor.items.get(id);
-    if(item){
+    if (item) {
       await this.__unWearItem(item);
-      const method = 'remove'+item.type.charAt(0).toUpperCase()+item.type.slice(1);
-      if(!this.actor[method]){
+      const method = 'remove' + item.type.charAt(0).toUpperCase() + item.type.slice(1);
+      if (!this.actor[method]) {
         return null;
       }
       return await this.actor[method](item);
@@ -169,18 +171,18 @@ export default class ActorSheetEDRPG extends ActorSheet {
     return null;
   }
 
-  _onClickRemoveItem(event){
+  _onClickRemoveItem(event) {
     event.preventDefault();
     const id = event.currentTarget.attributes['data-id'].value;
     this._onRemoveItem(id);
     this.actor.deleteEmbeddedDocuments("Item", [id]);
   }
 
-  _onChangeActiveDescription(event){
+  _onChangeActiveDescription(event) {
     event.preventDefault();
     const elements = event.currentTarget.closest('.tablerow').getElementsByClassName("tabledescripion");
-    for(const x of elements){
-      if(x.style.display === 'block'){
+    for (const x of elements) {
+      if (x.style.display === 'block') {
         x.style.display = 'none';
       } else {
         x.style.display = 'block';
@@ -188,11 +190,11 @@ export default class ActorSheetEDRPG extends ActorSheet {
     }
   }
 
-  async _onChangeSocialFactor(event){
-    if(event && event.preventDefault){
+  async _onChangeSocialFactor(event) {
+    if (event && event.preventDefault) {
       event.preventDefault();
     }
-    if(isNaN(event.target.value)) {
+    if (isNaN(event.target.value)) {
       event.target.value = 0;
     }
     const socialFactor = duplicate(this.actor._source.system.socialFactor);
@@ -201,11 +203,7 @@ export default class ActorSheetEDRPG extends ActorSheet {
     return await this.actor.calculateSocialFactor();
   }
 
-  async _onSkillClick(event) {
-    const item = this.actor.items.get(event.currentTarget.attributes['data-skill'].value);
-    if(!item) {
-      return null;
-    }
+  async skillRoll(item) {
     const data = {
       ...item, ...{
         callback: async () => {
@@ -215,15 +213,39 @@ export default class ActorSheetEDRPG extends ActorSheet {
             });
           }
         },
-        difficulty: 9
+        difficulty: game.settings.get("edrpg", 'defaultDifficultyNumber')
       }
     }
     const roll = new EDRPGSkillTests(data, this.actor);
-    const rollResult = await roll.prepareTest();
-    return rollResult;
+    return await roll.prepareTest();
   }
 
-  async _onChangeFederationRank(event){
+  async _onSkillClick(event) {
+    if (event && event.preventDefault) {
+      event.preventDefault();
+    }
+    const item = this.actor.items.get(event.currentTarget.attributes['data-skill'].value);
+    if (!item) {
+      return null;
+    }
+    return await this.skillRoll(item);
+  }
+
+  async _onSkillByInternalIDClick(event) {
+    if (event && event.preventDefault) {
+      event.preventDefault();
+    }
+    const item = this.actor.items.find((element) => {
+      console.log(element)
+      return element.system.internalId.value.toLowerCase() == event.currentTarget.attributes['data-skill'].value.toLowerCase();
+    });
+    if (!item) {
+      return null;
+    }
+    return await this.skillRoll(item);
+  }
+
+  async _onChangeFederationRank(event) {
     const honoraryRanks = duplicate(this.actor._source.system.honoraryRanks);
     honoraryRanks.federation.socialFactor = EDRPG.federationHonoraryRanks[event.target.value].socialFactor;
     honoraryRanks.federation.unlocks = EDRPG.federationHonoraryRanks[event.target.value].unlocks;
@@ -231,7 +253,7 @@ export default class ActorSheetEDRPG extends ActorSheet {
     return await this.actor.calculateSocialFactor();
   }
 
-  async _onChangeImperialRank(event){
+  async _onChangeImperialRank(event) {
     const honoraryRanks = duplicate(this.actor._source.system.honoraryRanks);
     honoraryRanks.imperial.socialFactor = EDRPG.imperialHonoraryRanks[event.target.value].socialFactor;
     honoraryRanks.imperial.unlocks = EDRPG.imperialHonoraryRanks[event.target.value].unlocks;
@@ -249,6 +271,7 @@ export default class ActorSheetEDRPG extends ActorSheet {
     html.find(".clickRemoveItem").on('click', this._onClickRemoveItem.bind(this));
     html.find(".onChangeActiveDescription").on('click', this._onChangeActiveDescription.bind(this));
     html.find('.skill-roll').on('click', this._onSkillClick.bind(this));
+    html.find('.skill-roll-by-internalId').on('click', this._onSkillByInternalIDClick.bind(this));
     html.find(".systemSocialFactorSfOtherValue").on('change', this._onChangeSocialFactor.bind(this));
     html.find("[name='system.honoraryRanks.federation.value']").on('change', this._onChangeFederationRank.bind(this));
     html.find("[name='system.honoraryRanks.imperial.value']").on('change', this._onChangeImperialRank.bind(this));

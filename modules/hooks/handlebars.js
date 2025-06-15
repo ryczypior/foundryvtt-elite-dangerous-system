@@ -58,6 +58,10 @@ export default function () {
       return tokenDocument.hidden ? "???" : tokenDocument.name;
     });
 
+    Handlebars.registerHelper('formatNumber', function(number) {
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    });
+
     Handlebars.registerHelper("settings", function (key) {
       return game.settings.get("edrpg", key);
     });

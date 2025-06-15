@@ -27,18 +27,21 @@ $skill-blue-border: #a9b6c5;
 $description-background: #e4ecf7;
 $description-border: #a9b6c5;
 
+$placeholder-border-color: #777777;
+$placeholder-background-color: #dddddd;
+
 $chat-background: #ffffff;
 $chat-color: #012533;
 $chat-heading-background: #78a0d1;
 $chat-heading-color: #ffffff;
 $chat-test-success-color: #33d633;
 $chat-test-failure-color: #d63333;
+$red: #d63333;
 $chat-img-background: #78a0d1;
 $chat-actor-border: dashed 1px #78a0d1;
 $chat-button-border: solid 1px rgba(86,36,133,1);
 $chat-button-color: $default-color;
 $chat-button-background: $karma-input-gradient;
-
 
 
 @import 'bootstrap/bootstrap-grid';
@@ -47,6 +50,8 @@ $chat-button-background: $karma-input-gradient;
 @import "custom/3-sheet";
 @import "custom/4-tests";
 @import "custom/5-chat";
+@import "custom/6-shipSheet";
+
 
 i{
   pointer-events: none;
@@ -71,3 +76,6 @@ body{
   max-width: 100%;
 }
 
+.Compendium-sidebar{
+  overflow: overlay;
+}

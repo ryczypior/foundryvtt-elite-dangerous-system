@@ -43,6 +43,9 @@
               readonly="readonly"
           >
           <span>{{localize "SHEET.DefenceDodge"}}</span>
+          <a class="skill-roll-by-internalId roll-button" data-skill="dodge">
+            <i class="fa-solid fa-dice-d10"></i>
+          </a>
         </label>
       </div>
       <div class="col-12 col-lg-4">
@@ -51,6 +54,9 @@
               type="number" value="{{system.info.initiative.value}}"
               readonly="readonly"
           >
+          <a class="skill-roll-by-internalId roll-button" data-skill="tactics">
+            <i class="fa-solid fa-dice-d10"></i>
+          </a>
           <span>{{localize "SHEET.InitiativeTactics"}}</span>
         </label>
       </div>
@@ -60,6 +66,9 @@
                   type="number" value="{{system.info.parry.value}}"
               readonly="readonly"
           >
+          <a class="skill-roll-by-internalId roll-button" data-skill="parry">
+            <i class="fa-solid fa-dice-d10"></i>
+          </a>
           <span>{{localize "SHEET.DefenceParry"}}</span>
         </label>
       </div>

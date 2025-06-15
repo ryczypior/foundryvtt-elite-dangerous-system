@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>{{localize "SHIPSHEET.ComponentSize"}}</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+            <span>{{localize 'SHIPSHEET.ComponentSize'}}</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-8">
+            {{#select system.size.value}}
+            <select name="system.size.value">
+            {{#each shipComponentClasses as |element x|}}
+            <option value="{{element}}"
+                    {{#if (eq element item.size.value)}}
+                    selected="selected"
+                    {{/if}}
+            >{{element}}</option>
+            {{/each}}
+            </select>
+            {{/select}}
+        </div>
+    </div>
+</div>

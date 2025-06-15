@@ -1,0 +1,96 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="container-fluid" ondragstart="return false;" ondrop="return false;">
+        <div class="row">
+            <div class="col-4 col-lg-2 characterImage">
+                <img class="" src="{{actor.img}}" title="{{actor.name}}" data-edit="img">
+            </div>
+            <div class="col-6 col-lg-10">
+                <div class="row">
+                    <div class="col-12">
+                        <label class="nameField">
+                            <input name="name" type="text" value="{{actor.name}}"
+                                   placeholder="{{localize 'SHIPSHEET.ShipModel'}}">
+                            <span>{{localize "SHIPSHEET.ShipModel"}}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <label>
+                            <input
+                                    type="number" value="{{system.shipInfo.defence.value}}"
+                                    readonly="readonly"
+                            >
+                            <span>{{localize "SHIPSHEET.Defence"}}</span>
+                            <a class="skill-roll-by-internalId roll-button" data-skill="tactics">
+                                <i class="fa-solid fa-dice-d10"></i>
+                            </a>
+                        </label>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <label>
+                            <input
+                                    type="number" value="{{system.shipInfo.initiative.value}}"
+                                    readonly="readonly"
+                            >
+                            <a class="skill-roll-by-internalId roll-button" data-skill="tactics">
+                                <i class="fa-solid fa-dice-d10"></i>
+                            </a>
+                            <span>{{localize "SHIPSHEET.Initiative"}}</span>
+                        </label>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <label>
+                            <input
+                                    type="number" value="{{system.shipInfo.pursuit.value}}"
+                                    readonly="readonly"
+                            >
+                            <a class="skill-roll-by-internalId roll-button" data-skill="tactics">
+                                <i class="fa-solid fa-dice-d10"></i>
+                            </a>
+                            <span>{{localize "SHIPSHEET.Pursuit"}}</span>
+                        </label>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <label>
+                            <input
+                                    type="number" value="{{system.shipInfo.dogfight.value}}"
+                                    readonly="readonly"
+                            >
+                            <a class="skill-roll-by-internalId roll-button" data-skill="tactics">
+                                <i class="fa-solid fa-dice-d10"></i>
+                            </a>
+                            <span>{{localize "SHIPSHEET.Dogfight"}}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- TABS -->
+    <section id="tab-sections">
+        <nav id="edrpg-tabs" class="sheet-tabs tabs" ondragstart="return false;" ondrop="return false;">
+            <a class="item active" data-tab="main">{{localize "SHIPSHEET.MainLabel"}}</a>
+            <a class="item" data-tab="components">{{localize "SHIPSHEET.ComponentsLabel"}}</a>
+            <a class="item" data-tab="crew">{{localize "SHIPSHEET.CrewLabel"}}</a>
+            <a class="item" data-tab="equipment">{{localize "SHIPSHEET.EquipmentLabel"}}</a>
+        </nav>
+
+        <section class="content">
+            <div class="tab main save-scroll" data-tab="main">
+                {{> systems/edrpg/templates/sheets/partials-ship/ship-main.html}}
+            </div>
+            <div class="tab skills save-scroll" data-tab="components">
+                {{> systems/edrpg/templates/sheets/partials-ship/ship-components.html}}
+            </div>
+            <div class="tab main save-scroll" data-tab="crew">
+                {{> systems/edrpg/templates/sheets/partials-ship/ship-crew.html}}
+            </div>
+            <div class="tab main save-scroll" data-tab="equipment">
+                {{> systems/edrpg/templates/sheets/partials-ship/ship-equipment.html}}
+            </div>
+        </section>
+    </section>
+
+</form>

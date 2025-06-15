@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h2>{{localize "SHIPSHEET.PilotLabel"}}</h2>
+            <div class="pilot">
+                {{#if pilot.name}}
+                <div class="pilot-entry">
+                    <div class="image">
+                        <img src="{{pilot.img}}" />
+                    </div>
+                    <div class="name">
+                        <strong>{{pilot.name}}</strong>
+                        <p>
+                            {{localize "SHIPSHEET.PilotDodgeBonus"}}: <strong>{{pilotDodge}}</strong>,
+                            {{localize "SHIPSHEET.PilotInitiativeBonus"}}: <strong>{{pilotInitiative}}</strong>,
+                            {{localize "SHIPSHEET.PilotSpaceShipPilotingBonus"}}: <strong>{{pilotSpaceshipPiloting}}</strong>
+                        </p>
+                    </div>
+                    <div class="actions">
+                        <a class="remove-pilot" title="{{localize 'SHIPSHEET.RemovePilot'}}"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+                {{else}}
+                <div class="pilot-placeholder">
+                    <div class="image">
+                        <img src="icons/svg/mystery-man.svg" />
+                    </div>
+                    <div class="name">
+                        <strong>{{localize "SHIPSHEET.PilotPlaceholder"}}</strong>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h2>{{localize "SHIPSHEET.ShipStats"}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-lg-3">
+            <label>
+                <input type="number" min="0" step="1" value="{{system.shipInfo.agility.value}}">
+                <span>{{localize 'SHIPSHEET.ShipStatsAgility'}}</span>
+            </label>
+        </div>
+        <div class="col-6 col-lg-3">
+            <label>
+                <input type="number" min="0" step="1" value="{{system.shipInfo.speed.value}}">
+                <span>{{localize 'SHIPSHEET.ShipStatsSpeed'}}</span>
+            </label>
+        </div>
+        <div class="col-6 col-lg-3">
+            <label>
+                <input type="number" min="0" step="1" value="{{system.shipInfo.range.value}}">
+                <span>{{localize 'SHIPSHEET.ShipStatsRange'}}</span>
+            </label>
+        </div>
+    </div>
+</div>
+

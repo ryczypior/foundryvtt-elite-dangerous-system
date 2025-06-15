@@ -18,6 +18,8 @@ export default class ItemSheetEDRPG extends ItemSheet {
     sheetData.rangedWeaponsTypes = duplicate(EDRPG.rangedWeaponsTypes);
     sheetData.meleeWeaponsTypes = duplicate(EDRPG.meleeWeaponsTypes);
     sheetData.meleeHands = duplicate(EDRPG.meleeHands);
+    sheetData.shipComponentClasses = EDRPG.shipComponentClasses;
+    sheetData.shipComponentTypes = EDRPG.shipComponentTypes;
     sheetData.skills = duplicate(EDRPG.skillsCategories);
     const skills = await EDRPGUtils.findItemsByType('Skills');
     if(skills){
@@ -41,9 +43,9 @@ export default class ItemSheetEDRPG extends ItemSheet {
         };
       }
     }
-    console.log(sheetData.skills);
     sheetData.ammoClips = await EDRPGUtils.findItemsByType('Ammo Clips');
-    sheetData.enhancements = await EDRPGUtils.findItemsByType('enhancements');
+    sheetData.enhancements = await EDRPGUtils.findItemsByType('Enhancements');
+    console.log(sheetData.enhancements);
     sheetData.enrichment = await this._handleEnrichment(sheetData.system);
     return sheetData;
   }

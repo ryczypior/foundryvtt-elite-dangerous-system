@@ -52,7 +52,8 @@ export default class EDRPGUtils {
     /** search in compendium */
     const packs = Array.from(game.packs.keys());
     for(let x = 0; x < packs.length; x++){
-      if(/^edrpg/.test(packs[x])){
+      console.log(packs[x]);
+      if(/edrpg/.test(packs[x])){
         let packItems = await game.packs.get(packs[x]).getDocuments();
         packItems.forEach(item => {
           if(item.type === type){

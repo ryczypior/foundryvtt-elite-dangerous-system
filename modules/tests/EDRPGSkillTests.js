@@ -15,6 +15,7 @@ export default class EDRPGSkillTests extends EDRPGTests {
     this.item = skill;
   }
 
+
   async prepareTest() {
     const data = {
       skillName: this.item.name,

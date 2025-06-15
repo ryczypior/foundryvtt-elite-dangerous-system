@@ -18,8 +18,23 @@ export default class ActorEDRPG extends Actor {
     }
   }
 
-  findSkillByInternalId(internalId) {
-    for (let item of this.items) {
+  findSkillByInternalId(internalId, context = null) {
+    if(!context) {
+      context = this;
+    }
+    for (let item of context.items) {
+      if (item.system.internalId.value && item.system.internalId.value.toLowerCase() === internalId.toLowerCase() && item.type.toLowerCase() === 'skills') {
+        return item;
+      }
+    }
+    return null;
+  }
+
+  findItemByInternalId(internalId, context = null) {
+    if(!context) {
+      context = this;
+    }
+    for (let item of context.items) {
       if (item.system.internalId.value && item.system.internalId.value.toLowerCase() === internalId.toLowerCase()) {
         return item;
       }
@@ -69,7 +84,16 @@ export default class ActorEDRPG extends Actor {
       'system.skill.skillBonus.value': Math.floor(value / 10),
     };
     await item.update(updates);
-    return await this.updateMainAttributes();
+    await this.updateMainAttributes()
+    for (let actor of game.actors) {
+      if(actor.system.pilot && actor.system.pilot._id === this._id){
+        console.log(actor);
+        await actor.update({
+          'system.pilot': this
+        });
+      }
+    }
+    return true;
   }
 
   async addSkillValue(skillsToChange) {
@@ -162,39 +186,56 @@ export default class ActorEDRPG extends Actor {
       }
       await this.updateSource({items});
     }
+    if (['Ship', 'Vehicle'].indexOf(this.type) !== -1) {
+      this.updateSource({pilot: null});
+    }
+  }
+
+  async _onCreateShipData(data, options, user){
+    const fixedComponents = ['bulkhead', 'powerPlant', 'thrusters', 'fsd', 'lifeSupport', 'powerDistributor', 'sensors', 'cargoHatch'];
+    for (let component of fixedComponents) {
+      
+    }
+  }
+
+  async _onCreateCharacterData(data, options, user){
+    const pilotTrained = await EDRPGUtils.findItemByInternalID('PILOT TRAINED', 'Backgrounds');
+    if (pilotTrained) {
+      let items = this.items.map((i) => i.toObject())
+      let object = pilotTrained.toObject();
+      object.system.removable.value = false;
+      object.system.backgrounds.choices.value = 0;
+      items.push(object);
+      await this.update({items});
+      await this.addBackgrounds(pilotTrained);
+    }
+    const escapeDeath = await EDRPGUtils.findItemByInternalID('ESCAPE DEATH', 'Karma Capabilities');
+    if (escapeDeath) {
+      let items = this.items.map((i) => i.toObject())
+      let object = escapeDeath.toObject();
+      object.system.removable.value = false;
+      items.push(object);
+      await this.update({items});
+    }
+    const fighting = await EDRPGUtils.findItemByInternalID('Fighting', 'Melee Weapons');
+    if (fighting) {
+      let items = this.items.map((i) => i.toObject())
+      let object = fighting.toObject();
+      object.system.removable.value = false;
+      items.push(object);
+      await this.update({items});
+    }
+    return await this.updateMainAttributes();
   }
 
   async _onCreate(data, options, user) {
     await super._onCreate(data, options, user);
     /** Add default items */
+    if (['Ship'].indexOf(this.type) !== -1) {
+      await this._onCreateShipData(data, options, user);
+    }
     if (['Character', 'NPC'].indexOf(this.type) !== -1) {
-      const pilotTrained = await EDRPGUtils.findItemByInternalID('PILOT TRAINED', 'Backgrounds');
-      if (pilotTrained) {
-        let items = this.items.map((i) => i.toObject())
-        let object = pilotTrained.toObject();
-        object.system.removable.value = false;
-        object.system.backgrounds.choices.value = 0;
-        items.push(object);
-        await this.updateSource({items});
-        await this.addBackgrounds(pilotTrained);
-      }
-      const escapeDeath = await EDRPGUtils.findItemByInternalID('ESCAPE DEATH', 'Karma Capabilities');
-      if (escapeDeath) {
-        let items = this.items.map((i) => i.toObject())
-        let object = escapeDeath.toObject();
-        object.system.removable.value = false;
-        items.push(object);
-        await this.updateSource({items});
-      }
-      const fighting = await EDRPGUtils.findItemByInternalID('Fighting', 'Melee Weapons');
-      if (fighting) {
-        let items = this.items.map((i) => i.toObject())
-        let object = fighting.toObject();
-        object.system.removable.value = false;
-        items.push(object);
-        await this.updateSource({items});
-      }
-      await this.updateMainAttributes();
+      await this._onCreateCharacterData(data, options, user);
     }
   }
 

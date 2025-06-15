@@ -24,9 +24,9 @@ export default {
         }),
         scss({
             output: `./static/css/edrpg.css`,
-            failOnError: true,
+            failOnError: false,
             runtime: require("sass"),
-            quietDeps: true,
+            quietDeps: false,
         }),
         copy({
             targets : [

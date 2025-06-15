@@ -274,8 +274,8 @@ EDRPG.skills = {
       },
       "energyWeapons": {
         "type": "Number",
-        "label": "SHEET.Skills.PC.EenergyWeapons",
-        "description": "SHEET.Skills.PC.EenergyWeapons.Description",
+        "label": "SHEET.Skills.PC.EnergyWeapons",
+        "description": "SHEET.Skills.PC.EnergyWeapons.Description",
         "initial": 10,
         "isChecked": 0,
         "value": 10,
@@ -751,5 +751,59 @@ EDRPG.rangedWeaponsTypes = {
     'name': 'ITEM.RangedWeapons.TypeHeavyExplosive'
   },
 }
+
+EDRPG.shipTypes = {
+  small: {
+    name: "SHIPSHEET.ShipTypeSmall",
+  },
+  medium: {
+    name: "SHIPSHEET.ShipTypeMedium",
+  },
+  large: {
+    name: "SHIPSHEET.ShipTypeLarge",
+  }
+}
+
+EDRPG.landingPadSizeses = {
+  small: {
+    name: "SHIPSHEET.LandingPadSizeSmall",
+  },
+  medium: {
+    name: "SHIPSHEET.LandingPadSizeMedium",
+  },
+  large: {
+    name: "SHIPSHEET.LandingPadSizeLarge",
+  }
+}
+
+EDRPG.shipWeaponsTypes = {
+  small: {
+    name: "SHIPSHEET.WeaponTypeSmall",
+  },
+  medium: {
+    name: "SHIPSHEET.WeaponTypeMedium",
+  },
+  large: {
+    name: "SHIPSHEET.WeaponTypeLarge",
+  },
+  huge: {
+    name: "SHIPSHEET.WeaponTypeHuge",
+  }
+}
+
+EDRPG.sizes = {
+  small: 1,
+  medium: 2,
+  large: 3,
+  huge: 4,
+};
+
+EDRPG.shipComponentClasses = [
+  1,2,3,4,5,6,7,8
+];
+EDRPG.shipComponentTypes = [
+  'E','D','C','B','A'
+];
+
 
 export default EDRPG;

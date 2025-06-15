@@ -44,15 +44,28 @@ owner=owner editable=editable}}
                 </optgroup>
                 {{/each}}
             </select>
-            {{else if (eq effect.type "skillSelect")}}
+            {{/if}}
+            {{#if (eq effect.type "skillSelect")}}
             <select class="changeEffectSkillType" data-idx="{{idx}}">
                 <option value="0">{{localize 'ITEM.Any'}}</option>
-                {{#each effect.skills as |skillType skillTypeId|}}
+                {{#each ../skills as |skillType skillTypeId|}}
                 <option value="{{skillTypeId}}"
                         {{#if (eq effect.skillSelect skillTypeId)}}
                         selected="selected"
                         {{/if}}
                 >{{localize skillType.label}}</option>
+                {{/each}}
+            </select>
+            {{/if}}
+            {{#if (eq effect.type "enhancement")}}
+            <select class="changeEffectEnhancement" data-idx="{{idx}}">
+                <option value="0">{{localize 'ITEM.Any'}}</option>
+                {{#each ../enhancements as |enhancement enhancementId|}}
+                <option value="{{enhancementId}}"
+                        {{#if (eq effect.enhancementId enhancementId)}}
+                        selected="selected"
+                        {{/if}}
+                >{{enhancement.name}}</option>
                 {{/each}}
             </select>
             {{/if}}

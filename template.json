@@ -32,6 +32,189 @@
           }
         }
       },
+      "pilot": {
+        "pilot": null
+      },
+      "shipStatus": {
+        "shipStatus": {
+          "defence": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "initiative": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "pursuit": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "dogfight": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "hull": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "shields": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "shieldsRecharge": {
+            "type": "Number",
+            "initial": 5,
+            "value": 5
+          },
+          "weaponsSlotNumper": {
+            "type": "Number",
+            "initial": 1,
+            "value": 1
+          },
+          "utilitySlotNumper": {
+            "type": "Number",
+            "initial": 1,
+            "value": 1
+          },
+          "internalSlotNumper": {
+            "type": "Number",
+            "initial": 1,
+            "value": 1
+          },
+          "fuel": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "fuelTank": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "agility": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "speed": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "range": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "rangeBonus": {
+            "type": "Number",
+            "initial": 0,
+            "value": 0
+          },
+          "cost": {
+            "type": "Number",
+            "value": 0
+          },
+          "percentageCost": {
+            "type": "Number",
+            "value": 0
+          },
+          "shipType": {
+            "type": "String",
+            "value": "small"
+          },
+          "manufacturer": {
+            "type": "String",
+            "value": ""
+          },
+          "dimensions": {
+            "type": "String",
+            "value": ""
+          },
+          "landingPad": {
+            "type": "String",
+            "value": "small"
+          }
+        }
+      },
+      "shipFixedComponents": {
+        "shipFixedComponents": {
+          "bulkhead": {
+            "size": 1,
+            "strength": 0,
+            "power": 0,
+            "item" : null
+          },
+          "powerPlant": {
+            "size": 1,
+            "strength": 0,
+            "power": 0,
+            "item" : null
+          },
+          "thrusters": {
+            "size": 1,
+            "strength": 0,
+            "power": 0,
+            "item" : null
+          },
+          "fsd": {
+            "size": 1,
+            "strength": 0,
+            "power": 0,
+            "item" : null
+          },
+          "lifeSupport": {
+            "size": 1,
+            "strength": 0,
+            "power": 0,
+            "item" : null
+          },
+          "powerDistributor": {
+            "size": 1,
+            "strength": 0,
+            "power": 0,
+            "item" : null
+          },
+          "sensors": {
+            "size": 1,
+            "strength": 0,
+            "power": 0,
+            "item" : null
+          },
+          "cargoHatch": {
+            "size": 1,
+            "strength": 0,
+            "power": 0,
+            "item" : null
+          }
+        }
+      },
+      "shipInternalComponents": {
+        "shipInternalComponents": {
+          "component": []
+        }
+      },
+      "shipWeapons": {
+        "shipWeapons": {
+          "weapon": []
+        }
+      },
+      "shipUtilityMounts": {
+        "shipUtilityMounts": {
+          "mount": []
+        }
+      },
+      "crew": {
+        "crew": {
+          "actor": []
+        }
+      },
       "status": {
         "status": {
           "dodge": {
@@ -163,7 +346,13 @@
     },
     "Ship": {
       "templates": [
-        "status"
+        "pilot",
+        "crew",
+        "shipStatus",
+        "shipFixedComponents",
+        "shipInternalComponents",
+        "shipWeapons",
+        "shipUtilityMounts"
       ]
     },
     "Creature": {
@@ -178,7 +367,6 @@
       "Backgrounds",
       "Cybernetics",
       "Enhancements",
-      "enhancements",
       "General Equipment",
       "Wearables",
       "Karma Capabilities",
@@ -193,6 +381,7 @@
       "Ship FSD",
       "Ship Life Support",
       "Ship Power Distributor",
+      "Ship Cargo Hatch",
       "Ship Sensors",
       "Ship Shields",
       "Ship Weapons",
@@ -731,8 +920,7 @@
     "Ship Bulkheads": {
       "templates": [
         "internalId",
-        "cost",
-        "onShip",
+        "percentageCost",
         "details"
       ]
     },
@@ -764,7 +952,21 @@
         "details"
       ]
     },
+    "Ship Power Distributor": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
     "Ship Sensors": {
+      "templates": [
+        "internalId",
+        "cost",
+        "details"
+      ]
+    },
+    "Ship Cargo Hatch": {
       "templates": [
         "internalId",
         "cost",

@@ -10,7 +10,7 @@
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
   --bs-pink: #d63384;
-  --bs-red: #dc3545;
+  --bs-red: #d63333;
   --bs-orange: #fd7e14;
   --bs-yellow: #ffc107;
   --bs-green: #198754;
@@ -34,7 +34,7 @@
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
-  --bs-danger: #dc3545;
+  --bs-danger: #d63333;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
   --bs-primary-rgb: 13, 110, 253;
@@ -42,7 +42,7 @@
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
   --bs-warning-rgb: 255, 193, 7;
-  --bs-danger-rgb: 220, 53, 69;
+  --bs-danger-rgb: 214, 51, 51;
   --bs-light-rgb: 248, 249, 250;
   --bs-dark-rgb: 33, 37, 41;
   --bs-white-rgb: 255, 255, 255;
@@ -4261,9 +4261,13 @@
 .edrpgsheet .characterImage img, .edrpgitemsheet .characterImage img {
   background: linear-gradient(90deg, rgb(187, 199, 221) 0%, rgb(255, 255, 255) 100%);
 }
+.edrpgsheet .red, .edrpgitemsheet .red {
+  color: #d63333;
+}
 .edrpgsheet label, .edrpgitemsheet label {
   overflow: hidden;
   display: block;
+  position: relative;
 }
 .edrpgsheet label input, .edrpgsheet label .input, .edrpgsheet label select, .edrpgsheet label textarea, .edrpgitemsheet label input, .edrpgitemsheet label .input, .edrpgitemsheet label select, .edrpgitemsheet label textarea {
   background: linear-gradient(90deg, rgb(187, 199, 221) 0%, rgb(255, 255, 255) 100%);
@@ -4274,6 +4278,12 @@
   font-size: 0.9em;
   height: auto;
   width: 100%;
+}
+.edrpgsheet label .roll-button, .edrpgitemsheet label .roll-button {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  z-index: 10;
 }
 .edrpgsheet label span, .edrpgitemsheet label span {
   display: block;
@@ -4304,6 +4314,9 @@
 }
 .edrpgsheet .text-right, .edrpgitemsheet .text-right {
   text-align: right;
+}
+.edrpgsheet .text-left, .edrpgitemsheet .text-left {
+  text-align: left !important;
 }
 .edrpgsheet .tableitems .tableheading, .edrpgitemsheet .tableitems .tableheading {
   margin-bottom: 0;
@@ -4531,6 +4544,49 @@
   background: linear-gradient(90deg, rgb(197, 191, 220) 0%, rgb(255, 255, 255) 100%);
 }
 
+.pilot {
+  width: 100%;
+}
+.pilot .pilot-placeholder {
+  border: 3px dashed #777777;
+  background: #dddddd;
+  display: flex;
+  width: 100%;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.pilot .pilot-placeholder .image {
+  opacity: 75;
+}
+.pilot .pilot-entry {
+  background: linear-gradient(90deg, rgb(197, 191, 220) 0%, rgb(255, 255, 255) 100%);
+  border: solid 1px #012533;
+  padding: 1rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+.pilot .image {
+  border-radius: 50%;
+  flex-grow: 2;
+  width: 60px;
+  height: 60px;
+}
+.pilot .name {
+  padding: 0 1rem;
+  flex-grow: 2;
+  width: 100%;
+}
+.pilot .actions {
+  width: 60px;
+}
+
+#compendium-world.edrpg-items {
+  overflow-y: auto;
+}
+
 i {
   pointer-events: none;
 }
@@ -4551,4 +4607,8 @@ body {
 
 .input {
   max-width: 100%;
+}
+
+.Compendium-sidebar {
+  overflow: overlay;
 }

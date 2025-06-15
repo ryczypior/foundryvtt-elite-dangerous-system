@@ -68,6 +68,13 @@ export default class ItemSheetEDRPGBackground extends ItemSheetEDRPG {
     return await this.item.update({"system.backgrounds.effects": effects});
   }
 
+  async _onChangeEffectEnhancement(event) {
+    const effects = duplicate(this.item._source.system.backgrounds.effects);
+    const index = event.target.getAttribute('data-idx');
+    effects[index].enhancementId = event.target.value;
+    return await this.item.update({"system.backgrounds.effects": effects});
+  }
+
   async _onChangeEffectSkillValue(event) {
     const effects = duplicate(this.item._source.system.backgrounds.effects);
     const index = event.target.getAttribute('data-idx');
@@ -82,6 +89,7 @@ export default class ItemSheetEDRPGBackground extends ItemSheetEDRPG {
     html.find('.changeEffectType').change(this._onChangeEffectType.bind(this));
     html.find('.changeEffectSkillType').change(this._onChangeEffectSkillType.bind(this));
     html.find('.changeEffectSkill').change(this._onChangeEffectSkill.bind(this));
+    html.find('.changeEffectEnhancement').change(this._onChangeEffectEnhancement.bind(this));
     html.find('.changeEffectSkillValue').change(this._onChangeEffectSkillValue.bind(this));
   }
 }
