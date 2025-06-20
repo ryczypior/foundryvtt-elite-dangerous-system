@@ -56,7 +56,7 @@ export default class ActorSheetEDRPGShip extends ActorSheetEDRPG {
     return "systems/edrpg/templates/sheets/ship-sheet.html";
   }
 
-  async getFixedComponents(){
+  async getFixedComponents() {
     const elements = {
       "bulkhead": {
         title: game.i18n.localize("SHIPSHEET.FixedBulkhead"),
@@ -111,12 +111,13 @@ export default class ActorSheetEDRPGShip extends ActorSheetEDRPG {
     sheetData.pilotSpaceshipPiloting = 0;
     sheetData.shipComponentClasses = EDRPG.shipComponentClasses;
     sheetData.shipComponentTypes = EDRPG.shipComponentTypes;
-    console.log(sheetData.pilot);
+    sheetData.shipCategories = EDRPG.shipTypes;
+    sheetData.landingPadSizes = EDRPG.landingPadSizeses;
     if (sheetData.pilot) {
       sheetData.pilotDodge = sheetData.pilot.system.info.dodge.value;
       sheetData.pilotInitiative = sheetData.pilot.system.info.initiative.value;
       const spaceshipPiloting = this.actor.findSkillByInternalId('Spaceship Piloting', sheetData.pilot.actor);
-      if(spaceshipPiloting) {
+      if (spaceshipPiloting) {
         sheetData.pilotSpaceshipPiloting = spaceshipPiloting.system.skill.skillBonus.value;
       }
     }
@@ -144,28 +145,46 @@ export default class ActorSheetEDRPGShip extends ActorSheetEDRPG {
       });
       return true;
     }
+    await this.recalculateFormulas();
     return false;
   }
 
-  async recalculateFormulas() {
+  async recalculateFormulas(event) {
+    if (event) {
+      const data = {
+        'system.shipInfo.defence.value': 0,
+        'system.shipInfo.initiative.value': 0,
+        'system.shipInfo.pursuit.value': 0,
+        'system.shipInfo.dogfight.value': 0,
+      };
+      if (this.actor.system.pilot) {
+        const spaceshipPiloting = this.actor.findSkillByInternalId('Spaceship Piloting', this.actor.system.pilot.actor);
+        if(spaceshipPiloting) {
+          data['system.shipInfo.defence.value'] += Number(spaceshipPiloting.system.skill.skillBonus.value);
+        }
+        data['system.shipInfo.initiative.value'] += Number(this.actor.system.pilot.system.info.initiative.value);
+      }
+      data['system.shipInfo.defence.value'] += Number(this.actor.system.shipInfo.agility.value);
+      await this.actor.update(data);
+    }
     return true;
   }
 
   async _onDropFixedComponents(event, item) {
     if (event.target.closest(".ship-components-fixed")) {
       const itemType = item.type;
-      if(this.fixedComponentsTypes[itemType] === undefined) {
+      if (this.fixedComponentsTypes[itemType] === undefined) {
         return true;
       }
       let itemSize = 0;
       let slotSize = 0;
-      if(item.system.size){
+      if (item.system.size) {
         itemSize = Number(item.system.size.value);
       }
-      if(this.actor.system.shipFixedComponents[this.fixedComponentsTypes[itemType]].size) {
+      if (this.actor.system.shipFixedComponents[this.fixedComponentsTypes[itemType]].size) {
         slotSize = Number(this.actor.system.shipFixedComponents[this.fixedComponentsTypes[itemType]].size);
       }
-      if(itemSize !== 0 && slotSize !== 0 && itemSize !== slotSize) {
+      if (itemSize !== 0 && slotSize !== 0 && itemSize !== slotSize) {
         ui.notifications.warn(game.i18n.format('WARN.ShipImproperSlotSize', {
           itemSize, slotSize, itemName: item.name,
         }));
@@ -185,21 +204,24 @@ export default class ActorSheetEDRPGShip extends ActorSheetEDRPG {
     if (Object.keys(this.fixedComponentsTypes).indexOf(item.type) !== -1) {
       return await this._onDropFixedComponents(event, item);
     }
+    await this.recalculateFormulas();
     return true;
   }
 
   async _onRemovePilot(event) {
-    return await this.actor.update({
+    await this.actor.update({
       'system.pilot': null
     });
+    return await this.recalculateFormulas();
   }
 
   async _changeFixedComponentSize(event) {
     const item = event.currentTarget.attributes['data-idx'].value;
     const value = event.currentTarget.value;
-    return await this.actor.update({
+    await this.actor.update({
       [`system.shipFixedComponents.${item}.size`]: value
     });
+    return await this.recalculateFormulas();
   }
 
   activateListeners(html) {
@@ -207,5 +229,6 @@ export default class ActorSheetEDRPGShip extends ActorSheetEDRPG {
     html.find('.skill-roll').click(this._onSkillClick.bind(this));
     html.find('.remove-pilot').click(this._onRemovePilot.bind(this));
     html.find('.changeFixedComponentSize').change(this._changeFixedComponentSize.bind(this));
+    html.find('.recalculateFormula').change(this.recalculateFormulas.bind(this));
   }
 }

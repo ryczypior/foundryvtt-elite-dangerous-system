@@ -205,7 +205,19 @@
     "FixedLifeSupport": "Life Support",
     "FixedPowerDistributor": "Power Distributor",
     "FixedSensors": "Sensors",
-    "FixedCargoHatch": "Cargo Hatch"
+    "FixedCargoHatch": "Cargo Hatch",
+    "ShipStatsFuelTank": "Fuel Tank",
+    "ShipStatsFuel": "Fuel",
+    "ShipStatsHull": "Hull",
+    "ShipManufacturer": "Manufacturer",
+    "ShipPlate": "Plate",
+    "ShipCost": "Cost [cr]",
+    "ShipCategory": "Ship Category",
+    "ShipLandingPad": "Landing Pad",
+    "ShipDimensions": "Ship Dimensions",
+    "WeaponsMountNo": "Weapon Mounts Number",
+    "UtlityMountNo": "Utility Mounts Number",
+    "InternalMountNo": "Internal Components Number"
   },
   "ITEM": {
     "Any": "Any",

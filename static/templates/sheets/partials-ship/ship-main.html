@@ -39,22 +39,114 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-12">
+            <label>
+                <input type="text" name="system.shipInfo.manufacturer.value" value="{{system.shipInfo.manufacturer.value}}">
+                <span>{{localize 'SHIPSHEET.ShipManufacturer'}}</span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <label>
+                <input type="text" name="system.shipInfo.plate.value" value="{{system.shipInfo.plate.value}}">
+                <span>{{localize 'SHIPSHEET.ShipPlate'}}</span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-6 col-lg-3">
             <label>
-                <input type="number" min="0" step="1" value="{{system.shipInfo.agility.value}}">
+                <input type="number" name="system.shipInfo.agility.value" min="0" step="1" value="{{system.shipInfo.agility.value}}" class="recalculateFormula">
                 <span>{{localize 'SHIPSHEET.ShipStatsAgility'}}</span>
             </label>
         </div>
         <div class="col-6 col-lg-3">
             <label>
-                <input type="number" min="0" step="1" value="{{system.shipInfo.speed.value}}">
+                <input type="number" name="system.shipInfo.speed.value" min="0" step="1" value="{{system.shipInfo.speed.value}}" class="recalculateFormula">
                 <span>{{localize 'SHIPSHEET.ShipStatsSpeed'}}</span>
             </label>
         </div>
         <div class="col-6 col-lg-3">
             <label>
-                <input type="number" min="0" step="1" value="{{system.shipInfo.range.value}}">
+                <input type="number" name="system.shipInfo.range.value" min="0" step="1" value="{{system.shipInfo.range.value}}" class="recalculateFormula">
                 <span>{{localize 'SHIPSHEET.ShipStatsRange'}}</span>
+            </label>
+        </div>
+        <div class="col-6 col-lg-3">
+            <label>
+                <input type="number" name="system.shipInfo.fuel.value" min="0" step="1" value="{{system.shipInfo.fuel.value}}" class="recalculateFormula">
+                <span>{{localize 'SHIPSHEET.ShipStatsFuelTank'}}</span>
+            </label>
+        </div>
+        <div class="col-6 col-lg-3">
+            <label>
+                <input type="number" name="system.shipInfo.hull.value" min="0" step="1" value="{{system.shipInfo.hull.value}}" class="recalculateFormula">
+                <span>{{localize 'SHIPSHEET.ShipStatsHull'}}</span>
+            </label>
+        </div>
+        <div class="col-6 col-lg-3">
+            <label>
+                {{#select system.shipInfo.shipType.value}}
+                <select name="system.shipInfo.shipType.value" class="recalculateFormula">
+                    {{#each shipCategories as |type id|}}
+                    <option value="{{id}}"
+                            {{#if (eq system.shipInfo.shipType.value id)}}
+                            selected="selected"
+                            {{/if}}
+                    >{{localize type.name}}</option>
+                    {{/each}}
+                </select>
+                {{/select}}
+                <span>{{localize 'SHIPSHEET.ShipCategory'}}</span>
+            </label>
+        </div>
+        <div class="col-6 col-lg-3">
+            <label>
+                {{#select system.shipInfo.landingPad.value}}
+                <select name="system.shipInfo.landingPad.value" class="recalculateFormula">
+                    {{#each landingPadSizes as |type id|}}
+                    <option value="{{id}}"
+                            {{#if (eq system.shipInfo.landingPad.value id)}}
+                            selected="selected"
+                            {{/if}}
+                    >{{localize type.name}}</option>
+                    {{/each}}
+                </select>
+                {{/select}}
+                <span>{{localize 'SHIPSHEET.ShipLandingPad'}}</span>
+            </label>
+        </div>
+        <div class="col-6 col-lg-3">
+            <label>
+                <input type="text" name="system.shipInfo.dimensions.value" min="0" step="1" value="{{system.shipInfo.dimensions.value}}">
+                <span>{{localize 'SHIPSHEET.ShipDimensions'}}</span>
+            </label>
+        </div>
+        <div class="col-6 col-lg-3">
+            <label>
+                <input type="number" name="system.shipInfo.cost.value" min="0" step="1" value="{{system.shipInfo.cost.value}}">
+                <span>{{localize 'SHIPSHEET.ShipCost'}}</span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-lg-3">
+            <label>
+                <input type="number" name="system.shipInfo.weaponsSlotNumper.value" min="1" step="1" value="{{system.shipInfo.weaponsSlotNumper.value}}" class="recalculateFormula">
+                <span>{{localize 'SHIPSHEET.WeaponsMountNo'}}</span>
+            </label>
+        </div>
+        <div class="col-6 col-lg-3">
+            <label>
+                <input type="number" name="system.shipInfo.utilitySlotNumper.value" min="1" step="1" value="{{system.shipInfo.utilitySlotNumper.value}}" class="recalculateFormula">
+                <span>{{localize 'SHIPSHEET.UtlityMountNo'}}</span>
+            </label>
+        </div>
+        <div class="col-6 col-lg-3">
+            <label>
+                <input type="number" name="system.shipInfo.internalSlotNumper.value" min="1" step="1" value="{{system.shipInfo.internalSlotNumper.value}}" class="recalculateFormula">
+                <span>{{localize 'SHIPSHEET.InternalMountNo'}}</span>
             </label>
         </div>
     </div>

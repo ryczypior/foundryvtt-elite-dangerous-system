@@ -77,7 +77,7 @@
       <div class="ship-components-fixed">
         {{#each fixedComponents as |item i|}}
         <div class="row ship-bulkhead tablerow">
-          <div class="col-7 tableheader text-left">
+          <div class="col-7 tableheader text-left onChangeActiveDescription">
             <span class="red">{{item.title}}:</span>
             {{#if item.item}}
               {{item.item.name}}
@@ -117,6 +117,11 @@
             <span class="clickRemoveItem" data-id="{{item._id}}">
                 <i class="fas fa-trash"></i>
             </span>
+          </div>
+          <div class="col-12 tabledescripion">
+            <div>
+              {{{item.item.system.details.description.value}}}
+            </div>
           </div>
         </div>
         {{/each}}

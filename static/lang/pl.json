@@ -205,7 +205,19 @@
     "FixedLifeSupport": "Podtrzymywanie Życia",
     "FixedPowerDistributor": "Dystrybutor Energii",
     "FixedSensors": "Sensory",
-    "FixedCargoHatch": "Luk Ładunkowy"
+    "FixedCargoHatch": "Luk Ładunkowy",
+    "ShipStatsFuelTank": "Zbiornik Paliwa",
+    "ShipStatsFuel": "Paliwo",
+    "ShipStatsHull": "Pancerz",
+    "ShipManufacturer": "Producent",
+    "ShipPlate": "Nr Rejestracyjny",
+    "ShipCost": "Cost [cr]",
+    "ShipCategory": "Kategoria Statku",
+    "ShipLandingPad": "Lądowisko",
+    "ShipDimensions": "Wymiary Statku",
+    "WeaponsMountNo": "Liczba Przyczepów Broni",
+    "UtlityMountNo": "Liczba Przyczepów Użytkowych",
+    "InternalMountNo": "Liczna Wewnętrznych Komponentów"
   },
   "ITEM": {
     "Any": "Dowolne",

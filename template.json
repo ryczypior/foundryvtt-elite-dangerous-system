@@ -133,6 +133,10 @@
             "type": "String",
             "value": ""
           },
+          "plate": {
+            "type": "String",
+            "value": ""
+          },
           "dimensions": {
             "type": "String",
             "value": ""
